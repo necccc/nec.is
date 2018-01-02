@@ -17,4 +17,5 @@ footer::after {
     bottom: 0;
     top: -8rem;
     transform: skewY(var(--footerSkew));
+    transition: transform ease-out .1s;
 }

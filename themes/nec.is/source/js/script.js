@@ -34,6 +34,8 @@ const addHeaderShrink = function () {
     if (!document.querySelector('.header--shrink')) {
         const body = document.querySelector('body')
         body.className += 'header--shrink ';
+
+        document.querySelector('header input').checked = false;
     }
 }
 
@@ -41,6 +43,7 @@ const removeHeaderShrink = function () {
     const body = document.querySelector('body')
     const cl = body.className;
     body.className = cl.replace(/header--shrink/g, '');
+    document.querySelector('header input').checked = false;
 }
 
 document.documentElement.style.setProperty(`--headerSkew`, getHeaderSkew() + 'deg');
