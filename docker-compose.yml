@@ -1,0 +1,12 @@
+---
+version: '2'
+
+services:
+    hexo:
+        image: node:8.6-alpine
+        volumes:
+          - .:/usr/src/app
+        working_dir: /usr/src/app
+        command: ["npm", "run", "server"]
+        ports:
+            - "4000:4000"

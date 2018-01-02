@@ -1,0 +1,28 @@
+# Header
+menu:
+  about: /
+  writing: /writing
+  speaking: /speaking
+  twitter: https://twitter.com/_nec
+rss: /atom.xml
+
+# Content
+excerpt_link: Read More
+
+# widget behavior
+archive_type: 'monthly'
+show_count: false
+
+# Miscellaneous
+google_analytics:
+gauges_analytics:
+favicon: /favicon.png
+twitter:
+google_plus:
+fb_admins:
+fb_app_id:
+
+node_sass:
+  outputStyle: nested
+  precision: 4
+  sourceComments: false

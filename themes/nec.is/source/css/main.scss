@@ -1,0 +1,104 @@
+@import 'colors.scss';
+@import 'mixins.scss';
+main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 2rem 4rem;
+
+    article{
+        margin-bottom: 4rem;
+
+        &::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    }
+
+    a {
+        text-decoration: none;
+        color: $color-blue;
+
+        &:visited {
+            color: $color-blue;
+        }
+
+        &:hover {
+            @include underline($color-white, $color-blue)
+        }
+    }
+
+    h2,
+    h3,
+    h4 {
+        font-family: 'Libre Franklin', sans-serif;
+        font-weight: 500;
+        position: relative;
+        margin: 2rem 0 2rem -2rem;
+        padding-left: calc(2rem - 2px);
+        border-left: 2px solid #030303;
+
+        a {
+            color: $color-black;
+
+            &:visited {
+                color: $color-black;
+            }
+
+            &:hover {
+                @include underline($color-white, $color-black)
+            }
+        }
+
+    }
+
+    h2 {
+        font-size: 1.999rem;
+        line-height: 2.8rem;
+    }
+
+    h3 {
+        font-size: 1.414rem;
+        line-height: 2.1rem;
+    }
+
+    img {
+        margin-bottom: 2rem;
+
+        &.wrap-right {
+            float: left;
+            margin-right: 2rem;
+        }
+
+        &.wrap-left {
+            float: right;
+            margin-left: 2rem;
+        }
+
+        &.full {
+            width: calc(100% + 4rem);
+            margin: 2rem 0 2rem -2rem;
+            display: inherit;
+        }
+    }
+
+    p {
+        margin: 2rem 0;
+    }
+
+    ul {
+        margin: 1rem 0;
+        padding: 0 0 0 1rem;
+        list-style-type:  square;
+    }
+
+    li {
+        margin:  0;
+        padding:  0;
+    }
+
+}
+
+.header--shrink main {
+    padding-top: var(--headerHeight);
+}

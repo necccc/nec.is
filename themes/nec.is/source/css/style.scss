@@ -1,0 +1,32 @@
+
+/* Source: http://www.jordanm.co.uk/post/65776639602/responding-to-environmental-lighting-with-css-media */
+@import 'colors.scss';
+
+:root {
+    --footerSkew: 0;
+    --headerSkew: 0;
+    --headerHeight: 0;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 400;
+    font-size: 100%;
+    line-height: 1.8em;
+    color: $color-black;
+    background-color: $color-white;
+}
+
+@media (max-width:480) {
+    html, body {
+        font-size: 90%;
+    }
+}
+
+@import 'header.scss';
+@import 'main.scss';
+@import 'index.scss';
+@import 'footer.scss';
+

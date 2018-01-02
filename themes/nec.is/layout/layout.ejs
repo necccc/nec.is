@@ -1,0 +1,22 @@
+<%
+  var bodyClass = [];
+
+  if (is_home()) {
+    bodyClass.push('index')
+  }
+%>
+
+<%- partial('_partial/head') %>
+<body class="<%= bodyClass.join(' ') %>">
+
+  <%- partial('_partial/header', null, {cache: !config.relative_link}) %>
+
+  <main>
+    <%- body %>
+  </main>
+
+  <%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
+
+  <%- partial('_partial/after-footer') %>
+</body>
+</html>

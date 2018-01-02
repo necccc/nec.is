@@ -1,0 +1,7 @@
+<p class="index-intro">
+    Introduction Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed arcu nisl, luctus sed malesuada ut,
+    elementum ut elit. Morbi nulla lorem, mattis in urna quis, pretium malesuada massa. Sed sed dolor placerat,
+    finibus urna et, consectetur purus. Proin posuere dictum dignissim.
+</p>
+
+<%- partial('_partial/archive', {pagination: 1, index: true,  page: site.categories.findOne({name: 'writing'}) }) %>
