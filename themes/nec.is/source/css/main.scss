@@ -1,19 +1,15 @@
 @import 'colors.scss';
 @import 'mixins.scss';
-main {
+
+article,
+section.article-meta {
+    position: relative;
     max-width: 960px;
-    margin: 0 auto;
     padding: 0 2rem 4rem;
+    margin: 0 auto;
 
-    article{
-        margin-bottom: 4rem;
 
-        &::after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-    }
+
 
     a {
         text-decoration: none;
@@ -34,9 +30,8 @@ main {
         font-family: 'Libre Franklin', sans-serif;
         font-weight: 500;
         position: relative;
-        margin: 2rem 0 2rem -2rem;
-        padding-left: calc(2rem - 2px);
-        border-left: 2px solid #030303;
+
+
 
         a {
             color: $color-black;
@@ -54,6 +49,9 @@ main {
     h2 {
         font-size: 1.999rem;
         line-height: 2.8rem;
+        border-left: 2px solid #030303;
+        margin: 2rem 0 2rem -2rem;
+        padding-left: calc(2rem - 2px);
     }
 
     h3 {
@@ -97,6 +95,78 @@ main {
     }
 }
 
+article {
+    &:last-child,
+    &:last-of-type {
+        margin-bottom: 4rem;
+
+        &::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    }
+}
+
 .header--shrink main {
     padding-top: var(--headerHeight);
+}
+
+section.article-meta {
+    max-width: 100%;
+    width: 100%;
+    padding: 2rem 0 6rem;
+    margin: -6rem 0 0;
+    transform: translateY(6rem);
+    background-color: $color-light-1;
+
+    font-family: 'Libre Franklin', sans-serif;
+    font-weight: 300;
+    font-size: .9em;
+
+    &::after {
+        z-index: 1;
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        transform: skewY(calc(var(--footerSkew) * -0.6));
+        transform-origin: left top;
+        background-color: inherit;
+    }
+
+    .article-meta__inner {
+        position: relative;
+        z-index: 2;
+        max-width: 960px;
+        padding: 0 2rem 4rem;
+        margin: 0 auto;
+    }
+
+    ul.article-tag-list {
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+
+        li {
+            display: inherit;
+            padding-right: .3rem;
+
+            a::after {
+                content: ',';
+            }
+
+            &:last-child {
+                padding-right: 0;
+                a::after {
+                    content: '';
+                }
+            }
+        }
+    }
+
+
+
 }

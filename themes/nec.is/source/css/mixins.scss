@@ -1,9 +1,27 @@
 
-@mixin underline( $shadow-color: $color-white, $border-color: currentcolor, $border-width: 1px ) {
+/*
+    fancy underlines!
+*/
+@mixin underline($background: #fff, $text: #000, $selection: #ffc, $position: 100%, $width:0.12em){
+    color: $text;
     text-decoration: none;
-    text-shadow: -2px -2px $shadow-color, -2px 2px $shadow-color, 2px -2px $shadow-color, 2px 2px $shadow-color, 0px 2px $shadow-color;
-    background-size: 1px 1em;
-    box-shadow: inset 0 -0.06em $shadow-color, inset 0 -0.13em $border-color;
-    display: inline;
-}
+    background:
+        linear-gradient($background, $background),
+        linear-gradient($background, $background),
+        linear-gradient($text, $text);
+    background-size: .05em $width, .05em $width, $width $width;
+    background-repeat: no-repeat, no-repeat, repeat-x;
+    text-shadow: 0.03em 0 $background, -0.03em 0 $background, 0 0.03em $background, 0 -0.03em $background, 0.06em 0 $background, -0.06em 0 $background, 0.09em 0 $background, -0.09em 0 $background, 0.12em 0 $background, -0.12em 0 $background, 0.15em 0 $background, -0.15em 0 $background;
+    background-position: 0 $position, 100% $position;
 
+    &::selection {
+        text-shadow: 0.03em 0 $selection, -0.03em 0 $selection, 0 0.03em $selection, 0 -0.03em $selection, 0.06em 0 $selection, -0.06em 0 $selection, 0.09em 0 $selection, -0.09em 0 $selection, 0.12em 0 $selection, -0.12em 0 $selection, 0.15em 0 $selection, -0.15em 0 $selection;
+        background: $selection;
+    }
+    &:before, &:after, *, *:before, *:after {
+        text-shadow: none;
+    }
+    &:visited {
+        color: $text;
+    }
+}
