@@ -15,11 +15,12 @@
         </h1>
         <nav>
             <input type="checkbox" id="menu-open">
-            <label for="menu-open">menu</label>
+            <label for="menu-open"><span>menu</span></label>
             <ul>
                 <% for (var i in theme.menu){ %>
                     <li><a href="<%- url_for(theme.menu[i]) %>"><%= i %></a></li>
                 <% } %>
+                    <li><%- twitter_link() %></li>
             </ul>
         </nav>
     </div>
