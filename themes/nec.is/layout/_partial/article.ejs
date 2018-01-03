@@ -7,14 +7,23 @@
 <section class="article-meta">
   <div class="article-meta__inner">
 
-    Posted on <time datetime="<%= date_xml(post.date) %>" ><%= date(post.date, config.date_format) %></time>
-    <% if (post.tags && post.tags.length){ %>
-      , tagged as
-      <%- list_tags(post.tags, {
-        style: 'text',
-        show_count: false,
-        class: 'article-tag'
-      }) %>
-    <% } %>.
+    <p>
+      Posted on <time datetime="<%= date_xml(post.date) %>" ><%= date(post.date, config.date_format) %></time>
+      <% if (post.tags && post.tags.length){ %>
+        , tagged as
+        <%- list_tags(post.tags, {
+          style: 'text',
+          show_count: false,
+          class: 'article-tag'
+        }) %>
+      <% } %>.
+    </p>
+    <p>
+
+
+
+      If you wish to comment, correct someting silly I've wrote or ask a question,
+      the <%- github_post_source('source for this post is on github') %>, contact me there, or via <%- mail_to(config.email, 'email') %>, or just find me on <%- twitter_link() %>.
+    </p>
   </div>
 </section>

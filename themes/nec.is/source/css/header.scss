@@ -19,6 +19,10 @@ header {
         transform: skewY(var(--headerSkew));
         transform-origin: bottom left;
         transition: transform ease-out .1s;
+
+        @media (max-width:480px) {
+            transform: skewY(calc(var(--headerSkew) * 0.4));
+        }
     }
 
     .top {
@@ -26,7 +30,7 @@ header {
         display: block;
         z-index: 3;
         height: 4rem;
-        max-width: 960px;
+        max-width: 60rem;
         margin: 0 auto;
         margin-bottom: 2rem;
 
@@ -40,6 +44,22 @@ header {
         position: relative;
         z-index: 2;
         margin: 0;
+
+        &.title {
+            margin: 0 auto;
+            max-width: 64rem;
+            color: #fff;
+            font-size: 2.827em;
+            line-height: 1.3em;
+            font-weight: 700;
+            padding: 0 40% 6rem 2rem;
+
+            box-sizing: border-box;
+
+            @media (max-width:480px) {
+                padding-right: 2rem;
+            }
+        }
 
         &.logo {
             position: absolute;
@@ -144,7 +164,7 @@ header {
             position: relative;
 
             display: block;
-            max-width: 960px;
+            max-width: 60rem;
             margin: 0 auto;
             padding: 0 2rem;
             text-align: right;
@@ -235,16 +255,6 @@ header {
         height: 4rem;
         margin-bottom: 0;
     }
-}
-
-header h1.title {
-    margin: 0 auto;
-    max-width: 960px;
-    color: #fff;
-    font-size: 2.827em;
-    line-height: 1.3em;
-    font-weight: 700;
-    padding: 0 2rem 3em;
 }
 
 .index header {

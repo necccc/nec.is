@@ -4,10 +4,13 @@
 
 # Site
 title: nec.is
-subtitle: Hi, I'm Szabolcs, aka _Nec!
+subtitle: Hi, I'm Szabolcs, mostly known as _Nec!
 description:
 author: Szabolcs Szabolcsi-Toth
 email: nec@shell8.net
+twitter: _nec
+github: necccc
+github_source: https://github.com/necccc/nec.is/tree/master/source/
 language: en-us
 timezone: Europe/Budapest
 
