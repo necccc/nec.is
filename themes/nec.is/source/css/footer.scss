@@ -48,14 +48,14 @@ footer {
         font-size: .8em;
         line-height: 1.8em;
         text-align: center;
-        color:  #a0a0a0;
+        color: lighten($color-black, 50%);
 
         svg {
             width: 2rem;
             display: inline-block;
 
             path {
-                fill: #a0a0a0;
+                fill: lighten($color-black, 50%);
             }
         }
 

@@ -52,7 +52,7 @@ header {
             font-size: 2.827em;
             line-height: 1.3em;
             font-weight: 700;
-            padding: 0 40% 6rem 2rem;
+            padding: 0 33% 6rem 2rem;
 
             box-sizing: border-box;
 
@@ -145,7 +145,7 @@ header {
 
             input:checked ~ ul {
                 overflow: visible;
-                height: 16rem;
+                height: calc(var(--menuHeight) * 0.8);
 
                 &::after {
                     transform: skewY(7deg);

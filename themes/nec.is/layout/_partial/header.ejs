@@ -1,7 +1,7 @@
 <header>
     <div class="top">
         <h1 class="logo">
-            <a href="<%- url_for() %>">
+            <a href="<%- url_for() %>" title="Go to the home page">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340.2 340.2">
                     <path id="n-path" d="M172.1,319.4c-82.5,0-149.3-66.9-149.3-149.3S89.6,20.8,172.1,20.8s149.3,66.9,149.3,149.3
                            S254.5,319.4,172.1,319.4z M142.1,62.8l-19.4,157.3l-145.8,0.3v40.9l140.7,0h46.6l11.8-95c1-8,2.1-15,3.4-21
@@ -26,6 +26,11 @@
     </div>
     <h1 class="title">
         <% var title = page.title;
+
+            if (is_tag()) {
+                title = '#' + page.tag;
+            }
+
             if (!title) {
                 title = config.subtitle
             }
