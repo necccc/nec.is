@@ -2,8 +2,8 @@
 /*
     fancy underlines!
 */
-@mixin underline($background: #fff, $text: #000, $selection: #ffc, $position: 100%, $width:0.12em){
-    color: $text;
+@mixin underline($background: #fff, $text: #000, $position: 100%, $width:0.12em){
+
     text-decoration: none;
     background:
         linear-gradient($background, $background),
@@ -14,14 +14,11 @@
     text-shadow: 0.03em 0 $background, -0.03em 0 $background, 0 0.03em $background, 0 -0.03em $background, 0.06em 0 $background, -0.06em 0 $background, 0.09em 0 $background, -0.09em 0 $background, 0.12em 0 $background, -0.12em 0 $background, 0.15em 0 $background, -0.15em 0 $background;
     background-position: 0 $position, 100% $position;
 
-    &::selection {
-        text-shadow: 0.03em 0 $selection, -0.03em 0 $selection, 0 0.03em $selection, 0 -0.03em $selection, 0.06em 0 $selection, -0.06em 0 $selection, 0.09em 0 $selection, -0.09em 0 $selection, 0.12em 0 $selection, -0.12em 0 $selection, 0.15em 0 $selection, -0.15em 0 $selection;
-        background: $selection;
-    }
+
     &:before, &:after, *, *:before, *:after {
         text-shadow: none;
     }
     &:visited {
-        color: $text;
+        
     }
 }

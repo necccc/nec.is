@@ -52,7 +52,7 @@ header {
             font-size: 2.827em;
             line-height: 1.3em;
             font-weight: 700;
-            padding: 0 40% 6rem 2rem;
+            padding: 0 33% 6rem 2rem;
 
             box-sizing: border-box;
 
@@ -73,7 +73,9 @@ header {
             line-height: 3rem;
             color:  #fff;
 
-            @media (max-width:480px) {
+            @media (max-width:64rem) {}
+
+            @media (max-width:60rem) {
                 left: 2rem;
             }
 
@@ -134,7 +136,7 @@ header {
             }
         }
 
-        @media (max-width:480px) {
+        @media (max-width:660px) {
             text-align: right;
             height: 100%;
             width: 100%;
@@ -145,7 +147,7 @@ header {
 
             input:checked ~ ul {
                 overflow: visible;
-                height: 16rem;
+                height: calc(var(--menuHeight) * 0.8);
 
                 &::after {
                     transform: skewY(7deg);
@@ -171,7 +173,7 @@ header {
             line-height: 4rem;
             transition: height ease-in-out .2s;
 
-            @media (max-width:480px) {
+            @media (max-width:660px) {
                 overflow: hidden;
 
                 background-color: $color-black;
@@ -204,7 +206,7 @@ header {
                 position: relative;
                 z-index: 2;
 
-                @media (max-width:480px) {
+                @media (max-width:660px) {
                     display: block;
                     padding-right: 0;
                 }

@@ -4,12 +4,14 @@
 
 # Site
 title: nec.is
-subtitle: Hi, I'm Szabolcs, mostly known as _Nec!
+subtitle: Personal site of _Nec, or more like Szabolcs Szabolcsi-Toth
 description:
+greeting: Hi, I'm Szabolcs!
 author: Szabolcs Szabolcsi-Toth
 email: nec@shell8.net
 twitter: _nec
 github: necccc
+instagram: _nec
 github_source: https://github.com/necccc/nec.is/tree/master/source/
 language: en-us
 timezone: Europe/Budapest
@@ -84,3 +86,12 @@ theme: nec.is
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type:
+
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+  hub:
+  content:
+  content_limit: 140
+  content_limit_delim: ' '

@@ -1,13 +1,19 @@
 <footer>
   <div class="footer-content">
 
+    <h3>Keep updated, contact, get in touch!</h3>
 
-      contact
-      rss
+    <ul>
+      <li>Contact me via <%- mail_to(config.email, 'email') %></li>
+      <li><a href="/atom.xml">RSS feed</a> of my posts</li>
+    </ul>
+    <hr />
+    <ul>
+      <li><%- github_link({text: 'GitHub'}) %></li>
+      <li><%- instagram_link({text: 'Instagram'}) %></li>
+      <li><%- twitter_link({text: 'Twitter'}) %></li>
+    </ul>
 
-      insta
-      twitter
-      github
   </div>
   <div class="footer-bottom">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340.2 340.2">
