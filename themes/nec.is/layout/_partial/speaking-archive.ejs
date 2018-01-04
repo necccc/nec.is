@@ -1,0 +1,13 @@
+<% page.posts.each(function(post, i){ %>
+  <%- partial('archive-talk', {post: post, even: i % 2 == 0}) %>
+<% }) %>
+
+<% if (page.total > 1){ %>
+  <nav id="page-nav">
+    <% var prev_text = "&laquo; " + __('prev');var next_text = __('next') + " &raquo;"%>
+    <%- paginator({
+      prev_text: prev_text,
+      next_text: next_text
+    }) %>
+  </nav>
+<% } %>

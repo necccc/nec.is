@@ -77,7 +77,6 @@ section.article-meta {
             width: 330px;
             text-align: center;
 
-
             @media (max-width:480px) {
                 width: 100%;
             }
@@ -111,8 +110,6 @@ section.article-meta {
                 padding: 0 2rem;
             }
         }
-
-
     }
 
     p {
@@ -120,6 +117,12 @@ section.article-meta {
 
         &:last-child {
             margin-bottom: 0;
+        }
+    }
+
+    &.archive-article {
+        p {
+            margin: 1rem 0;
         }
     }
 
@@ -134,6 +137,13 @@ section.article-meta {
         padding:  0;
     }
 
+
+    .read-more::after {
+        content: '››';
+        display: inline-block;
+        padding-left: .2rem;
+    }
+
     .article-archive-meta {
         display: block;
         font-family: 'Libre Franklin', sans-serif;
@@ -142,10 +152,14 @@ section.article-meta {
         color: lighten($color-black, 50%);
         margin-top: .3rem;
 
-        .read-time::before {
-            content: '\00B7';
-            display: inline-block;
-            padding: 0 .2rem;
+        .read-time,
+        .talk-location,
+        .talk-date {
+            &::before {
+                content: '\00B7';
+                display: inline-block;
+                padding: 0 .2rem;
+            }
         }
     }
 
@@ -228,7 +242,3 @@ section.article-meta {
     }
 }
 
-
-.read-more::after {
-    content: '›';
-}

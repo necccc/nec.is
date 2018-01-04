@@ -1,0 +1,7 @@
+<time datetime="<%= date_xml(post.event_start) %>">
+    <%= date(post.event_start, 'YYYY') %>
+    <%= date(post.event_start, 'MMM D') %>
+    <% if (post.event_end) { %>
+        - <%= date(post.event_end, 'D') %>
+    <% } %>
+</time>
