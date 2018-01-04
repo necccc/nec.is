@@ -5,7 +5,6 @@
     bodyClass.push('index')
   }
 %>
-
 <%- partial('_partial/head') %>
 <body class="<%= bodyClass.join(' ') %>">
 
@@ -16,7 +15,6 @@
   </main>
 
   <%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
-
   <%- partial('_partial/after-footer') %>
 </body>
 </html>
