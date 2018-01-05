@@ -134,6 +134,7 @@ nav {
                     transition: width ease-out .1s;
                 }
 
+                &:active::after,
                 &.menu-clicked::after {
                     width: 1rem;
                 }
