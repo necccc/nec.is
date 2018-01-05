@@ -81,14 +81,20 @@
 
     init();
 
-    window.onresize = function () {
-        window.requestAnimationFrame(function () {
+    document.querySelectorAll('header nav li a').forEach((item) => {
+        item.addEventListener('click', function () {
+            this.parentNode.className += 'menu-clicked';
+        })
+    })
+
+    window.addEventListener('resize', () => {
+        window.requestAnimationFrame(() => {
             document.documentElement.style.setProperty(`--headerSkew`, getHeaderSkew() + 'deg');
         })
-    }
+    })
 
     onScroll();
-    document.onscroll = onScroll;
+    document.addEventListener('scroll', onScroll);
 
 
 
