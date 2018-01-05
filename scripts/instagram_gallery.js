@@ -1,6 +1,6 @@
 /* global hexo */
 'use strict';
-
+const MAX_IMAGES = 12;
 const ig = require('instagram-node').instagram();
 const rp = require('request-promise-native');
 
@@ -27,11 +27,6 @@ ig.use({
 });
 
 hexo.extend.tag.register("instagram_gallery", function (instaIds) {
-
-    //let instaIds = args[0];
-
-//console.log(args)
-
     return Promise.all(instaIds.map((id) => getInfo(id)))
         .then((result) => {
             return result.map((res) => res.media_id)
@@ -61,20 +56,19 @@ hexo.extend.tag.register("instagram_gallery", function (instaIds) {
             })
         })
         .then((medias) => {
-
-            console.log(medias)
-
-            return medias.map((media) => {
+            return medias.reduce((result, media) => {
                 const { link, images } = media;
-
-
-                return images.map((image) => {
-                    return `<a href="${link}" rel="noopener"><img src="${image}" width="150"></a>`
-                }).join('');
-            }).join('')
-
+                return result.concat(images.map((image) => {
+                    return { link, image }
+                }));
+            }, []).filter((item, i) => {
+                return i < MAX_IMAGES;
+            });
         }).then((content) => {
-            return `<div class="instagram-gallery">${content}</div>`
+            let images = content.map((item) => {
+                return `<a href="${item.link}"><span style="background-image: url(${item.image});"></span></a>`
+            }).join('');
+            return `<div class="instagram-gallery">${images}</div>`;
         })
         .catch((err) => {
             console.log(err)

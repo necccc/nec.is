@@ -20,7 +20,7 @@ timezone: Europe/Budapest
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: http://yoursite.com
 root: /
-permalink: :category/:title-:year-:month-:day/
+permalink: /:category/:post_title/
 permalink_defaults:
 
 # Directory

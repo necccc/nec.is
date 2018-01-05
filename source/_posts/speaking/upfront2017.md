@@ -18,7 +18,7 @@ Unfortunately there was no video recording, so the only truly succesful presenta
 
 It was really great to meet wonderful people, like Sara Soueidan, Mathias Bynens, Charlie Gerard and Alice Bartlett. At the afterparty, it was nice to see my talk somewhat inspired people, especially when I've mentioned that hardware and IOT can be hacked together with Slack bots or even LEGO.
 
-The city was beautiful, loved the mixture of old industrial buildings and modern architecture. Here's a quick impression of my one-day walk around the inner city on Instagram:
+The city was beautiful, loved the mixture of old industrial buildings and modern architecture, definitely wish to go back again! Here's a quick impression of my one-day walk around the inner city on Instagram:
 
 {% instagram_gallery 'BUZO7zPgxvc' 'BUXhgzvAxn4' 'BUUW2hmA2kd' 'BUO0LNZgBN3' 'BUP_um-gXhs' %}
 

@@ -73,7 +73,7 @@ header {
             line-height: 3rem;
             color:  #fff;
 
-            -webkit-tap-highlight-color: transparent;
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
 
             @media (max-width:60rem) {
                 left: 2rem;
