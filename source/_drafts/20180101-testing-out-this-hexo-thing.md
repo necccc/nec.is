@@ -1,4 +1,5 @@
 ---
+layout: draft
 title: Testing this Hexo thing
 summary: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed arcu nisl, luctus sed malesuada ut, elementum ut elit. Morbi nulla lorem, mattis in urna quis, pretium malesuada massa. Sed sed dolor placerat, finibus urna et, consectetur purus. Proin posuere dictum dignissim.
 categories:
