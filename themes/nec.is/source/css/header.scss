@@ -73,7 +73,7 @@ header {
             line-height: 3rem;
             color:  #fff;
 
-            @media (max-width:64rem) {}
+            -webkit-tap-highlight-color: transparent;
 
             @media (max-width:60rem) {
                 left: 2rem;
@@ -87,148 +87,14 @@ header {
                 text-align: center;
                 line-height: 4rem;
             }
-        }
-    }
 
-    nav {
-        position: relative;
-        z-index: 2;
-        height: 4rem;
-        padding-bottom: 4px;
-        margin-bottom: 2rem;
-        margin-top: 0;
-
-        font-weight: 300;
-
-        input {
-            display: none;
-        }
-
-        label {
-            display: none;
-            height: 4rem;
-            padding: 0 2rem;
-            position: relative;
-            overflow: hidden;
-
-            font-weight: 700;
-            line-height: 4rem;
-            color: #fff;
-
-            span {
-                display: inline-block;
-                transition: transform ease-in-out .1s, opacity ease-in-out .08s;
-            }
-
-            &::before {
-                content: '⟨';
-                position: absolute;
-                width: 4rem;
-                height: 4rem;
-                display: inline-block;
-                font-size: 1.6rem;
-                font-weight: 700;
-                text-align: center;
-                color: $color-white;
-
-                transform: rotate(90deg) translateX(-100%);
-                transition: transform ease-in-out .1s, opacity ease-in-out .08s;
-            }
-        }
-
-        @media (max-width:660px) {
-            text-align: right;
-            height: 100%;
-            width: 100%;
-
-            label {
-                display: block;
-            }
-
-            input:checked ~ ul {
-                overflow: visible;
-                height: calc(var(--menuHeight) * 0.8);
-
-                &::after {
-                    transform: skewY(7deg);
-                }
-            }
-            input:checked ~ label::before {
-                transform:  rotate(90deg) translateX(0);
-            }
-            input:checked ~ label span {
-                opacity: 0;
-                transform: translateY(60%);
-            }
-        }
-
-        ul {
-            position: relative;
-
-            display: block;
-            max-width: 60rem;
-            margin: 0 auto;
-            padding: 0 2rem;
-            text-align: right;
-            line-height: 4rem;
-            transition: height ease-in-out .2s;
-
-            @media (max-width:660px) {
-                overflow: hidden;
-
-                background-color: $color-black;
-                height: 0;
-                box-sizing: border-box;
-                max-width: 100%;
-                width: 100%;
-
-                &::after {
-                    content: '';
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    transition: transform ease-in-out .2s;
-                    transition-delay: .1s;
-                    z-index: 1;
-                    box-sizing: border-box;
-                    background-color: #030303;
-                    transform: skewY(0);
-                    transform-origin: bottom left;
-                }
-            }
-
-            li {
-                display: inline-block;
-                padding: 0 2rem;
-                cursor: pointer;
-                position: relative;
-                z-index: 2;
-
-                @media (max-width:660px) {
-                    display: block;
-                    padding-right: 0;
-                }
-
-                &:last-child {
-                    padding-right: 0;
-                }
-
-                a {
-                    color: #fff;
-                    text-decoration: none;
-                    line-height: 4em;
-                    display: inline-block;
-                }
-
-                &:hover a,
-                a:hover {
-                    border-bottom: 2px solid #fff;
-                }
+            &:active svg circle {
+                fill: $color-blue;
             }
         }
     }
+
+    @import 'menu.scss';
 }
 
 .header--shrink.index header,

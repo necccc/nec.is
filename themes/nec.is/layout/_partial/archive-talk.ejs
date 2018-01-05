@@ -1,0 +1,14 @@
+<article class="archive-article archive-type-<%= post.layout %>">
+
+    <%- partial('talk/title', {class_name: 'archive-talk-title'}) %>
+    <%- partial('talk/summary', {class_name: 'archive-talk-summary'}) %>
+    <p>
+        <%- partial('post/readmore') %>
+        <span class="article-archive-meta">
+            <span class="talk-event"><%= post.title %></span>
+            <span class="talk-location"><%= post.location %></span>
+            <span class="talk-date"><%- partial('talk/date') %></span>
+        </span>
+    </p>
+
+</article>
