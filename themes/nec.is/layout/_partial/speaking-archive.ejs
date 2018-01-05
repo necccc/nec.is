@@ -1,4 +1,4 @@
-<% page.posts.each(function(post, i){ %>
+<% page.posts.sort('event_start', -1).each(function(post, i){ %>
   <%- partial('archive-talk', {post: post, even: i % 2 == 0}) %>
 <% }) %>
 

@@ -1,4 +1,5 @@
 ---
+layout: draft
 title: Hello World
 summary: To create a multi-language site, you can modify the new_post_name and permalink settings like this
 categories:

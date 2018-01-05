@@ -1,7 +1,7 @@
 # Header
 menu:
   about: /
-  writing: /writing
+#  writing: /writing
   speaking: /speaking
 rss: /atom.xml
 
