@@ -41,9 +41,8 @@ hexo.extend.tag.register("instagram_gallery", function (instaIds) {
         })
         .then((medias) => {
             return medias.map((media) => {
-                let link = media.link;
+                const link = media.link;
 
-                console.log(media)
                 if (media.type === 'carousel') {
                     let images = media.carousel_media.map((d) => {
                         return d.images.standard_resolution.url;
@@ -62,14 +61,20 @@ hexo.extend.tag.register("instagram_gallery", function (instaIds) {
             })
         })
         .then((medias) => {
+
+            console.log(medias)
+
             return medias.map((media) => {
                 const { link, images } = media;
 
-                console.log(link, images)
+
                 return images.map((image) => {
                     return `<a href="${link}" rel="noopener"><img src="${image}" width="150"></a>`
                 }).join('');
             }).join('')
+
+        }).then((content) => {
+            return `<div class="instagram-gallery">${content}</div>`
         })
         .catch((err) => {
             console.log(err)
