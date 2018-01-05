@@ -131,12 +131,11 @@ nav {
                     width: 0;
                     height: 100%;
                     background-color: #fff;
-                    transition: width ease-out .1s;
                 }
 
                 &:active::after,
                 &.menu-clicked::after {
-                    width: 1rem;
+                    width: .5rem;
                 }
             }
 

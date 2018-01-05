@@ -15,7 +15,6 @@ section.article-meta {
         &:visited {
             color: $color-blue;
         }
-
         &:hover {
             @include underline($color-white, $color-blue)
         }
@@ -29,14 +28,12 @@ section.article-meta {
         position: relative;
         margin: 2rem 0;
 
-
         a {
             color: $color-black;
 
             &:visited {
                 color: $color-black;
             }
-
             &:hover {
                 @include underline($color-white, $color-blue, 94%, .09em)
             }
@@ -242,3 +239,42 @@ section.article-meta {
     }
 }
 
+
+
+.instagram-gallery {
+
+    width: calc(100% + 4rem);
+    margin: 2rem 0 2rem -2rem;
+
+    a {
+        display: inline-block;
+        width: 16.6%;
+
+        @media (max-width:768px) {
+            width: 25%;
+        }
+        @media (max-width:480px) {
+            width: 33%;
+        }
+
+        position: relative;
+        overflow: hidden;
+        vertical-align: top;
+
+        &:after {
+            content: "";
+            display: block;
+            padding-bottom: 100%;
+        }
+
+        span {
+            position: absolute;
+            top: 0;
+            display: block;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center center;
+        }
+    }
+}

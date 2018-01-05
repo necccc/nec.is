@@ -11,7 +11,6 @@ layout: speaking-page
 url: https://www.ruhrjs.de/
 ---
 
-
-The talk abstract was this:
-
+{% blockquote 'Redundant DevOps, Talk abstract' %}
 Npm has tons of modules for devops, like remote logging, metrics, service discovery, process management. Most of these are great when you do prototyping, but as soon as you arrive to production-land, you may find that a lots of these tasks are already handled by old players. This talk may be helpful for some people to avoid the same mistakes I did, when my first node app was on its journey to an established scaleable architecture.
+{% endblockquote %}
