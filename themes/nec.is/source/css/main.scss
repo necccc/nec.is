@@ -69,8 +69,8 @@ section.article-meta {
             line-height: 1.5rem;
         }
 
-        &.wrap-right,
-        &.wrap-left {
+        &.pull-left,
+        &.pull-right {
             width: 330px;
             text-align: center;
 
@@ -83,12 +83,12 @@ section.article-meta {
             }
         }
 
-        &.wrap-right {
+        &.pull-left {
             float: left;
             margin-right: 2rem;
         }
 
-        &.wrap-left {
+        &.pull-right {
             float: right;
             margin-left: 2rem;
         }
@@ -115,6 +115,18 @@ section.article-meta {
         &:last-child {
             margin-bottom: 0;
         }
+
+        
+    }
+
+    code {
+        font-weight: bold;
+        font-size: 1.35rem;
+    }
+
+    pre code {
+        font-weight: normal;
+        font-size: inherit;
     }
 
     &.archive-article {

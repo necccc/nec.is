@@ -40,14 +40,11 @@ titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
-  enable: true
-  line_number: true
-  auto_detect: false
-  tab_replace:
+  enable: false
 
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
@@ -95,3 +92,8 @@ feed:
   content:
   content_limit: 140
   content_limit_delim: ' '
+
+prism_plugin:
+  mode: 'preprocess'    # realtime/preprocess
+  theme: 'okaidia'
+  line_number: true    # default false
