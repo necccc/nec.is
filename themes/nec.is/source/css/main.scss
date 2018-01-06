@@ -134,6 +134,17 @@ section.article-meta {
         padding:  0;
     }
 
+    iframe {
+        width: 40rem;
+        height: calc(40rem * ( 9 / 16 ));
+        border: 1px solid lighten($color-black, 50%);
+
+        @media (max-width:480px) {
+            width: 100vw;
+            height: calc(100vw * ( 9 / 16 ));
+            margin: 0rem 0 0rem -2rem;
+        }
+    }
 
     .read-more::after {
         content: '››';
@@ -275,6 +286,38 @@ section.article-meta {
             height: 100%;
             background-size: cover;
             background-position: center center;
+        }
+    }
+}
+
+blockquote {
+
+    border-left: .5rem solid $color-light-2;
+    margin-left: 0;
+    padding-left: 2rem;
+
+    p {
+        font-size: 1.2rem;
+        color: lighten($color-black, 40%);
+    }
+
+    footer {
+        font-family: 'Libre Franklin', sans-serif;
+        font-weight: 300;
+        font-size: .9rem;
+
+        strong {
+            display: inline-block;
+
+        }
+
+        cite {
+            display: inline-block;
+
+            &::before {
+                content: '\00B7';
+                padding: 0 .4rem;
+            }
         }
     }
 }

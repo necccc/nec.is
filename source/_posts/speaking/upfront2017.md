@@ -10,11 +10,13 @@ layout: speaking-page
 url: http://2017.upfrontconf.com/
 ---
 
-{% blockquote 'Café Terminal, Talk abstract' %}
+{% blockquote 'Café Terminal, Talk abstract' 'http://2017.upfrontconf.com/' %}
 Welcome to our impromptu coffeeshop where you can be the connected smart barista! Create the coffee that blends with technology, hack & tamper with hardware, and brew an espresso from the command line - or from the browser!
 {% endblockquote %}
 
-Unfortunately there was no video recording, so the only truly succesful presentation of this talk remains exclusive to those, who were lucky to be there :)
+Unfortunately there was no video recording, so the only truly succesful presentation of this talk remains exclusive to those, who were lucky to be there :) Here are the slides from the talk:
+
+<iframe src="//www.slideshare.net/slideshow/embed_code/key/vDWFRzp0lgeLZi" width="595" height="375" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen> </iframe>
 
 It was really great to meet wonderful people, like Sara Soueidan, Mathias Bynens, Charlie Gerard and Alice Bartlett. At the afterparty, it was nice to see my talk somewhat inspired people, especially when I've mentioned that hardware and IOT can be hacked together with Slack bots or even LEGO.
 
