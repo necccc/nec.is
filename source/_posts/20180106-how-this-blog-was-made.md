@@ -3,6 +3,11 @@ title: How this site was made
 summary: "I’ve collected some useful info about how this blog is running, summarised in 3 topics: static site generator, deployment and some small nice details"
 categories:
 - writing
+tags: 
+- learing
+- hexo
+- netlify
+- tutorial
 ---
 
 I’ve collected some useful info about how this blog is running, summarised in 3 topics:
