@@ -1,6 +1,8 @@
 /* global hexo */
 'use strict';
 const MAX_IMAGES = 12;
+const INSTAGRAM_TOKEN = process.env['INSTAGRAM_TOKEN'];
+
 const ig = require('instagram-node').instagram();
 const rp = require('request-promise-native');
 
@@ -23,7 +25,7 @@ const getInfo = (slug) => {
 }
 
 ig.use({
-    access_token: '217217182.1677ed0.7cad815cb833450a9511ec055838a970'
+    access_token: INSTAGRAM_TOKEN
 });
 
 hexo.extend.tag.register("instagram_gallery", function (instaIds) {
