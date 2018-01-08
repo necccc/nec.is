@@ -25,6 +25,7 @@
     "version": "3.4.4"
   },
   "dependencies": {
+    "dotenv": "4.0.0",
     "hexo": "^3.2.0",
     "hexo-cli": "1.0.4",
     "hexo-generator-archive": "^0.1.4",
@@ -42,8 +43,7 @@
     "is-absolute-url": "^2.1.0",
     "reading-time": "1.1.0",
     "request": "2.83.0",
-    "request-promise-native": "1.0.5",
-    "dotenv": "4.0.0"
+    "request-promise-native": "1.0.5"
   },
   "devDependencies": {
     "convert-svg-to-png": "0.3.3"
