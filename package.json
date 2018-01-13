@@ -41,13 +41,13 @@
     "hexo-server": "^0.2.0",
     "instagram-node": "0.5.8",
     "is-absolute-url": "^2.1.0",
-    "reading-time": "1.1.0"
+    "reading-time": "1.1.0",
+    "request": "2.83.0",
+    "request-promise-native": "1.0.5"
   },
   "devDependencies": {
     "alex": "5.1.0",
     "convert-svg-to-png": "0.3.3",
-    "inquirer": "5.0.0",
-    "request": "2.83.0",
-    "request-promise-native": "1.0.5"
+    "inquirer": "5.0.0"
   }
 }
