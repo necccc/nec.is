@@ -91,8 +91,7 @@ I’ve mentioned, that I wish to move away from GitHub pages, and luckily [Sara 
 * push code
 * and you’re done!
 
-Your site appears under a random netlify URL, where you can preview it and you can review your deployment logs on their dashboard.
-After adding your custom domain, they can set up free https using LetsEncrypt - and all this free for personal projects. They’re really easy to use, definitely worth checking out!
+Your site appears under a random netlify URL, where you can preview it and you can review your deployment logs on their dashboard. After adding your custom domain, they can set up free https using [LetsEncrypt](https://letsencrypt.org/) - and all this free for personal projects. They’re really easy to use, definitely worth checking out!
 
 ## All the nice, small things
 
