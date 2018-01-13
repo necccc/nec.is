@@ -1,4 +1,4 @@
-<% page.posts.each(function(post, i){ %>
+<% page.posts.sort('date', -1).each(function(post, i){ %>
   <%- partial('archive-post', {post: post, even: i % 2 == 0}) %>
 <% }) %>
 

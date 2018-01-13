@@ -25,6 +25,7 @@
     "version": "3.4.4"
   },
   "dependencies": {
+    "dotenv": "4.0.0",
     "hexo": "^3.2.0",
     "hexo-cli": "1.0.4",
     "hexo-generator-archive": "^0.1.4",
@@ -45,6 +46,8 @@
     "request-promise-native": "1.0.5"
   },
   "devDependencies": {
-    "convert-svg-to-png": "0.3.3"
+    "alex": "5.1.0",
+    "convert-svg-to-png": "0.3.3",
+    "inquirer": "5.0.0"
   }
 }
