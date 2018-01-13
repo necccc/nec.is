@@ -1,4 +1,5 @@
 /* global hexo */
+require('dotenv').config()
 'use strict';
 const MAX_IMAGES = 12;
 const INSTAGRAM_TOKEN = process.env['INSTAGRAM_TOKEN'];
