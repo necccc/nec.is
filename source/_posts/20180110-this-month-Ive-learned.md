@@ -23,11 +23,11 @@ We use kubernetes clusters to deploy and run services, but until now it was unkn
 
 Helm aims to be the package manager for kubernetes clusters. These packages are called Charts, where you can define which docker images have to be used in your services later, exact version of images and configuration data.
 
-The configuration also contains the keys for secrets where the data itself will be provided by the k8s cluster’s secret store. (Avoid storing these in code, as I’ve mentioned this a few times in my [introductionary DevOps talk](/speaking/ruhrjs-2017/))
+The configuration also contains the keys for secrets where the data itself will be provided by the k8s cluster’s secret store. (Be sure to avoid storing these in code, as I’ve mentioned this a few times in my [introductionary DevOps talk](/speaking/ruhrjs-2017/))
 
 I’m pretty sure all these could be configured using `kubectl`, but that would be lots of commands, probably redundant, error-prone and time-consuming.
 
-But with Helm Charts, you can define your service in a kube cluster pretty easy - after you get to know what goes where. We should not forget, these charts are versioned, so you can roll back easily if there is a need.
+But with Helm Charts, you can define your service in a kube cluster pretty easy - after you get to know what goes where. We should not forget, these charts are versioned, so you can roll back if something went wrong.
 
 ### Structure of Helm Charts
 
@@ -119,12 +119,11 @@ For this site, I wanted to play with a skewed header and footer background, but 
 <video src="{% asset_path "skew.mp4" %}" autoplay loop title="Short video of how the skewed header works">
 </video>
 
-{% image_tag "pull-right" "skew-triangles.png" "" %}
+{% image_tag "pull-right" "skew-triangles.png" "The right-angled triangles, on the top and the bottom of the skewed rectangle" %}
 
-To animate these leaning layers, I have to update the css `skew` property, by a relatively small degree.
-If I look at this shape of a skewed background rectangle, the upper / or lower part is a simple right-angled triangle. The value I need, is the angle between it's adjacent and hypotenuse, that has the degree value to skew the background with.
+To animate these leaning layers, I have to update the css `skew` property, by a relatively small degree. If I look at this shape of a skewed background rectangle, the upper / or lower part is a simple [right-angled triangle](https://en.wikipedia.org/wiki/Right_triangle). The value I need, is the angle between it's adjacent and hypotenuse, that has the degree value to skew the background with.
 
-{% image_tag "pull-right" "sin-cos-tan.svg" "" %}
+{% image_tag "pull-right" "sin-cos-tan.svg" "Sine, cosine and tangent basics." "https://www.mathsisfun.com/algebra/trigonometry.html" %}
 
 Luckily, the right-angled triangle has some basic rules in trigonometry.
 
@@ -132,7 +131,7 @@ The Opposite and the Adjacent divided gives me the tangent of the skew angle. Al
 - the Adjacent is the width of the header, which is always the viewport width
 - the Opposite will be the skewed height of the header
 
-Refresh your trigonometry, it can be really useful // todo
+[Refresh your knowledge on trigonometry](https://www.mathsisfun.com/algebra/trigonometry.html), it can be really useful in usecases like mine!
 
 Using `requestAnimationFrame` on scrolling I can calculate the height of the Opposite value until a maximum pixels, and during this calculation I can set the skew angle, so as the visitor scrolls down, it starts to skew the header or the footer.
 
@@ -144,7 +143,6 @@ Setting a CSS property from JS can be painful for rendering performance. Instead
         transform: skewY(var(--headerSkew));
     }
 {% endcode %}
-
 {% code js %}
 
     headerElement.style.setProperty(`--headerSkew`, getHeaderSkew() + 'deg');

@@ -5,7 +5,6 @@ hexo.extend.tag.register('image_tag', function(args, content){
         type,
         path,
         alt,
-        title,
         source
     ] = args;
 
@@ -16,9 +15,13 @@ hexo.extend.tag.register('image_tag', function(args, content){
     }
 
     let description = '';
-    let text = title || alt;
+    let sourceText = '';
 
-    description = `<small class="image-description">${text}</small>`;
+    if (source) {
+        sourceText = ` <br /><a href="${source}">Image source</a>`
+    }
+
+    description = `<small class="image-description">${alt}${sourceText}</small>`;
 
     return `<div class="image ${type}">
         <img src="${url}" class="${type}" alt="${alt}">
