@@ -58,10 +58,9 @@ section.article-meta {
     }
 
     .image {
-        margin-bottom: 2rem;
+        margin-bottom: 4rem;
         padding-bottom: 1rem;
         border-bottom: 1px solid lighten($color-black, 75%);
-
 
         .image-description {
             display: block;
@@ -76,6 +75,7 @@ section.article-meta {
         &.pull-left,
         &.pull-right {
             width: 330px;
+            margin-top: 1rem;
             text-align: center;
 
             @media (max-width:480px) {
