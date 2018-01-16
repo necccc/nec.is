@@ -9,7 +9,7 @@ const moment = require('moment');
 module.exports = function (log, db) {
 
     return new Promise(async (resolve, reject) => {
-        fs.readFile(process.cwd()+'/themes/nec.is/source/method-draw-image.svg', async function (err, data) {
+        fs.readFile(process.cwd()+'/themes/nec.is/source/social-card-template.svg', async function (err, data) {
             if (err) return reject(err);
 
             log.write('Template SVG loaded')

@@ -75,6 +75,8 @@ During development, you can create a Hexo server from the CLI. This will re-rend
 
 Using plugins like `hexo-renderer-scss` enables your site to use SASS and sass files, functions and mixins - with zero configuration.
 
+
+
 If you’re interested, check the source of this site on GitHub.
 
 ## Deployment
@@ -94,9 +96,40 @@ I’ve mentioned, that I wish to move away from GitHub pages, and luckily [Sara 
 
 Your site appears under a random netlify URL, where you can preview it and you can review your deployment logs on their dashboard. After adding your custom domain, they can set up free https using [LetsEncrypt](https://letsencrypt.org/) - and all this free for personal projects. They’re really easy to use, definitely worth checking out!
 
+{% image_tag "full" "env-vars.png" "Setting environment variables in Netlify" %}
+
+You can set your custom ENV variables, so your secrets are not exposed! For example the `access_token` for the Instagram API is passed to  the Hexo build task in the `INSTAGRAM_TOKEN` environment variable, so I don't have to expose it in the source code.
+
 ## All the nice, small things
 
 After the basics were settled, some ideas popped into my mind to make this blog maybe a bit better.
+
+
+
+### Social card rendering
+
+{% image_tag "pull-right" "social-card.png" "The social share image for this post" %}
+
+Twitter and Facebook can render a picture next to your shared post if you set your meta tags right. These settings are well documented for [Twitter]() and [Facebook]() too.
+
+But creating these images for every post can be tedious, so I've tried to automate them. It turned out, I can render these from SVG using various tools, for example, a headless browser!
+
+I've created a [template SVG](/social-card-template.svg) with the background and the logo, and a placeholder for the text content, the title, date and estimated reading time. (Found this useful, posting the read time on social media, it may help to decide when to read the post).
+
+
+{% code html %}
+
+  <foreignObject xmlns="http://www.w3.org/2000/svg" x="30" y="40" width="350" height="200">
+    <p xmlns="http://www.w3.org/1999/xhtml" id="TitleText" style=" ... ">Text goes here</p>
+    <p xmlns="http://www.w3.org/1999/xhtml" id="MetaText" style=" ... ">Text goes here</p>
+  </foreignObject>
+{% endcode %}
+
+It is possible to add text to SVG's using HTML, and style it with CSS. I've created a `foreignObject` tag inside the SVG, where I can put text from Nodejs using [cheerio](https://www.npmjs.com/package/cheerio). Next step is to render this SVG to png with an SVG renderer that can handle `foreignObject` tags, in this case, a headless Chrome. The [convert-svg-to-png](https://www.npmjs.com/package/convert-svg-to-png) library conveniently wraps this into a simple async function call, after which I can save the resulting Buffer as an image.
+
+I've tried to move this step to the CI/deployment phase, but installing a headless Chrome in a sandboxed envrionment is not trivial, although there are [ways to encapsulate it in a Docker image for example](https://github.com/GoogleChrome/puppeteer/blob/master/docs/troubleshooting.md#running-puppeteer-in-docker)
+
+
 
 ### Instagram gallery
 
@@ -104,7 +137,7 @@ I wished to share some sights from the places I’ve been and talked, and I usua
 
 Another thing is the `media_id` for the Instagram images, which is needed in the API if you wish to query your images - but getting this ID is not that obvious. Luckily Instagram supports [oEmbed](https://oembed.com/) which is a JSON API for generating embed codes for content on the internet. This API does not provide the full amount of data I wanted to access, but using the oEmbed API of Instagram, it is possible to fetch the exact `media_id` that is needed, [like this](https://api.instagram.com/oembed/?url=http://instagram.com/p/BaL_uqIBz3Q/)
 
-So I’ve hacked a Hexo content tag together, which does the following:
+So I’ve hacked a [Hexo content tag](https://hexo.io/api/tag.html) together, which does the following:
 
 1. receives a few Instagram URL slugs form the net, of the posts I wish to use in the gallery
 2. Using the oEmbed API fetches the necessary media_id-s
