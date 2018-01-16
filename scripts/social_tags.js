@@ -10,6 +10,9 @@ hexo.extend.helper.register("social_tags", function () {
     let path = ''
     let image = ''
 
+    const layout = this.post ? this.post.layout : this.page.layout;
+
+
     if (this.post) {
         asset_dir = this.post.asset_dir || '/'
         title = this.post.title || title
@@ -28,7 +31,7 @@ hexo.extend.helper.register("social_tags", function () {
 
     url += path
 
-    if (this.post) {
+    if (layout === 'post' || layout === 'speaking-page') {
         image = url + 'social-card.png';
     } else {
         image = '/social-card.png';
