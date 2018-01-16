@@ -10,18 +10,17 @@ hexo.extend.helper.register("social_tags", function () {
     let path = ''
     let image = ''
 
-    const layout = this.post ? this.post.layout : this.page.layout;
-
+    const layout = this.post ? this.post.layout : this.page.layout
 
     if (this.post) {
         asset_dir = this.post.asset_dir || '/'
         title = this.post.title || title
-        description = this.post.summary || description
+        description = this.post.description || description
         path = this.post.path
     } else if (this.page) {
         asset_dir = this.page.asset_dir || '/'
         title = this.page.title || title
-        description = this.page.summary || description
+        description = this.page.description || description
         path = this.page.path
     }
 
@@ -32,13 +31,10 @@ hexo.extend.helper.register("social_tags", function () {
     url += path
 
     if (layout === 'post' || layout === 'speaking-page') {
-        image = url + 'social-card.png';
+        image = url + 'social-card.png'
     } else {
-        image = '/social-card.png';
+        image = '/social-card.png'
     }
-
-
-
 
     const twitter_user = '@' + this.config.twitter;
 
@@ -59,5 +55,5 @@ hexo.extend.helper.register("social_tags", function () {
         <meta property="og:image:height" content="300" />
         <meta property="og:site_name" content="${twitter_user}" />
         <meta property="og:url" content="${url}" />
-    `;
+    `
 }, {})

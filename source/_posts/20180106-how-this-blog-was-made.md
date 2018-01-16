@@ -1,6 +1,6 @@
 ---
 title: How this site was made
-summary: "I’ve collected some useful info about how this blog is running, summarised in 3 topics: static site generator, deployment and some small nice details"
+description: "I’ve collected some useful info about how this blog is running, summarised in 3 topics: static site generator, deployment and some small nice details"
 unlisted: true
 categories:
 - writing
