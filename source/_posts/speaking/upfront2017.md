@@ -2,7 +2,7 @@
 title: UpFront Conference 2017
 location: Manchester, UK
 event_start: 2017/05/19
-summary: Visited beautiful Manchester with an old coffee machine, for a lovely conference with great people
+description: Visited beautiful Manchester with an old coffee machine, for a lovely conference with great people
 topic: Café Terminal
 categories:
 - speaking
