@@ -75,9 +75,9 @@ During development, you can create a Hexo server from the CLI. This will re-rend
 
 Using plugins like `hexo-renderer-scss` enables your site to use SASS and sass files, functions and mixins - with zero configuration.
 
-
-
 If you’re interested, check the source of this site on GitHub.
+
+
 
 ## Deployment
 
@@ -110,7 +110,7 @@ After the basics were settled, some ideas popped into my mind to make this blog 
 
 {% image_tag "pull-right" "social-card.png" "The social share image for this post" %}
 
-Twitter and Facebook can render a picture next to your shared post if you set your meta tags right. These settings are well documented for [Twitter]() and [Facebook]() too.
+Twitter and Facebook can render a picture next to your shared post if you set your meta tags right. These settings are well documented for [Twitter](https://developer.twitter.com/en/docs/tweets/optimize-with-cards/guides/getting-started) and [Facebook](https://developers.facebook.com/docs/sharing/webmasters) too.
 
 But creating these images for every post can be tedious, so I've tried to automate them. It turned out, I can render these from SVG using various tools, for example, a headless browser!
 

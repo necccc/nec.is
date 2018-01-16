@@ -143,17 +143,46 @@ section.article-meta {
         }
     }
 
-    ul {
+    ul, ol {
         margin: 1rem 0;
         padding: 0 1rem 0 0rem;
-        list-style-type: square;
+        list-style-type: none;
         transform: translateX(1rem);
+        counter-reset: li;
+
+
+        li {
+            margin: 0 0 1rem 0;
+            padding: 0;
+            position: relative;
+
+            &::before {
+                position: absolute;
+                left: -1rem;
+                top: 0;
+                color: $color-blue;
+            }
+
+            counter-increment: li;
+        }
     }
 
-    li {
-        margin: 0 0 1rem 0;
-        padding: 0;
+    ul li::before {
+        content: "■";
     }
+
+    ol li::before {
+        content: counter(li);
+        font-family: 'Libre Franklin', sans-serif;
+        top: 1px;
+        width: 1rem;
+        margin-left: -0.5rem;
+        margin-right: 0.5rem;
+        text-align: right;
+        direction: rtl;
+    }
+
+
 
     iframe {
         width: 40rem;
