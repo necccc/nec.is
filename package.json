@@ -8,6 +8,7 @@
     "generate:local": "docker-compose run --rm hexo npx hexo generate",
     "generate": "npx hexo generate",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "npx hexo serve",
     "start": "docker-compose up",
     "tools": "node tools.js"
   },
