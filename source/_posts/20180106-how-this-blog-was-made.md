@@ -83,7 +83,7 @@ If you’re interested, check the source of this site on GitHub.
 
 {% image_tag "pull-right" "netlify-logo.png" "The Netlify logo" %}
 
-I’ve mentioned, that I wish to move away from GitHub pages, and luckily [Sara Soueidan]() migrated her site too recently. She picked Netlify as a static site host - so following her footsteps, I took a glance at it.
+I’ve mentioned, that I wish to move away from GitHub pages, and luckily [Sara Soueidan](https://www.sarasoueidan.com) migrated her site  recently. She picked Netlify as a static site host - so following her footsteps, I took a glance at it.
 
 [Netlify](https://www.netlify.com/) is a nice platform that summarises a CI tool, a hosting service, a CDN provider and a DNS provider. It is especially easy to use with static sites:
 
@@ -95,6 +95,8 @@ I’ve mentioned, that I wish to move away from GitHub pages, and luckily [Sara 
 * and you’re done!
 
 Your site appears under a random netlify URL, where you can preview it and you can review your deployment logs on their dashboard. After adding your custom domain, they can set up free https using [LetsEncrypt](https://letsencrypt.org/) - and all this free for personal projects. They’re really easy to use, definitely worth checking out!
+
+Later on, you can use this random url feature to preview your posts, before publishing them to production.
 
 {% image_tag "full" "env-vars.png" "Setting environment variables in Netlify" %}
 
