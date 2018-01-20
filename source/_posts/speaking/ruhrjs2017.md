@@ -3,7 +3,7 @@ title: RuhrJS 2017
 location: Bochum, Germany
 event_start: 2017/10/14
 event_end: 2017/10/15
-summary: Spoke at an awesome and really friendly community event, in the Ruhr Valley
+description: Spoke at an awesome and really friendly community event, in the Ruhr Valley
 topic: Redundant DevOps
 categories:
 - speaking
