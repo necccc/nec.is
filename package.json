@@ -8,8 +8,9 @@
     "generate:local": "docker-compose run --rm hexo npx hexo generate",
     "generate": "npx hexo generate",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "npx hexo serve",
     "start": "docker-compose up",
-    "server": "npx hexo server"
+    "tools": "node tools.js"
   },
   "repository": {
     "type": "git",
@@ -20,7 +21,7 @@
   "bugs": {
     "url": "https://github.com/necccc/nec.is/issues"
   },
-  "homepage": "https://github.com/necccc/nec.is#readme",
+  "homepage": "https://nec.is",
   "hexo": {
     "version": "3.4.4"
   },
