@@ -75,7 +75,7 @@ The material of the bezel is also significant, he less translucent, the better. 
 
 ## Assembly
 
-<div class="video full"><video src="{% asset_path "qclock-assembly-720p.mp4" %}" autoplay loop title="Short video of the assembled clock frame">
+<div class="video full"><video src="{% asset_path "qclock-assembly-720p.mp4" %}" autoplay loop muted playsinline title="Short video of the assembled clock frame">
 </video></div>
 
 First, I’ve wrapped the strip around and inside the wooden bezel so I could see how many LEDs are around the outer and the inner side of the frame - this will be the base of several further calculations.

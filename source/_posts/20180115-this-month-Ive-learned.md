@@ -67,7 +67,7 @@ These are really the most essential commands, there are many other commands, you
 
 While working on a feature, that relies heavily on the contenteditable property of the DOM, this happened:
 
-<video src="{% asset_path "ligature.m4v" %}" autoplay loop title="Short video of how the caret interacts with a ligature in the browser">
+<video src="{% asset_path "ligature.m4v" %}" autoplay loop muted playsinline title="Short video of how the caret interacts with a ligature in the browser">
 </video>
 
 Since I know the work of [@aemkei](https://twitter.com/aemkei), and the [dark magic of zero-width Unicode characters](https://www.google.hu/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&cad=rja&uact=8&ved=0ahUKEwjnu57CudPYAhWIJ1AKHZ78AtkQtwIILDAB&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DT3xMyZH93i8&usg=AOvVaw34ISWo92p4Vb145hRQ3UN9), I prepared for the worst. Tried to hunt down any, accidentally created ghost character, but there were none. It was really two characters, handled as somewhat one, but the caret did not move while stepping over them. After a short googling the word _“Ligature”_ burned in my brain!
@@ -116,7 +116,7 @@ These are combined together using a Unicode "zero-width joiner" (`U+200D` in HTM
 
 For this site, I wanted to play with a skewed header and footer background, but leaving these slanted layers there just being static elements looked boring. So why not add some animation?
 
-<video src="{% asset_path "skew.mp4" %}" autoplay loop title="Short video of how the skewed header works">
+<video src="{% asset_path "skew.mp4" %}" autoplay loop muted playsinline title="Short video of how the skewed header works">
 </video>
 
 {% image_tag "pull-right" "skew-triangles.png" "The right-angled triangles, on the top and the bottom of the skewed rectangle" %}
