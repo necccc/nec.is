@@ -3,7 +3,7 @@ title: This month I've learned - December
 description: "Helm for Kubernetes, Ligatures, CSS variables and back to the basics with Trigonometry in December."
 categories:
 - writing
-tags: 
+tags:
 - learning
 - helm
 - kubernetes
