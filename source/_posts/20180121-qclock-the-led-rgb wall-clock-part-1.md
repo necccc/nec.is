@@ -55,7 +55,7 @@ The LED strips are available with various “resolutions” -  the number of LED
 
 To control the NeoPixels, you’ll need a microcontroller. I picked the [Tessel](https://tessel.io/) because it runs simple JavaScript, easy to use, and powerful enough. It can create its own wifi network, where it runs a small web server, which will control the clock settings.
 
-As it turned out, to drive the NeoPixels from the Tessel you either need custom firmware or treat the LED strip as a servo engine (sort of) and figure out the rest yourself. This wasn’t an option for me, but luckily Tim Pietrusky showed me a small piece of hardware, that was designed specifically to drive the NeoPixels: the [FadeCandy](https://www.adafruit.com/product/1689)
+As it turned out, to drive the NeoPixels from the Tessel you either need custom firmware or treat the LED strip as a servo engine (sort of) and figure out the rest yourself. This wasn’t an option for me, but luckily [Tim Pietrusky](https://twitter.com/timpietrusky) from [Live:JS](http://livejs.network/) showed me a small piece of hardware, that was designed specifically to drive the NeoPixels: the [FadeCandy](https://www.adafruit.com/product/1689)
 
 {% image_tag "pull-right" "fadecandy.jpg" "The FadeCandy Neopixel driver" %}
 
