@@ -196,6 +196,25 @@ section.article-meta {
         }
     }
 
+    .video.full,
+    .youtube.full {
+        position: relative;
+        height: 0;
+        width: calc(100% + 4rem);
+        margin: 2rem 0 2rem -2rem;
+        display: inherit;
+        padding-bottom: 60%;
+
+        video,
+        iframe {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+    }
+
     .read-more::after {
         content: '››';
         display: inline-block;
