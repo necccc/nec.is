@@ -1,5 +1,5 @@
 ---
-title: QCLOCK - The RGB LED wall clock, part 1
+title: Create an RGB LED wall clock - part 1
 description: "Guide to make your own RGB LED wall clock, using a Tessel, Neopixels and JavaScript - first, the hardware part"
 categories:
 - writing
