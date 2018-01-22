@@ -12,7 +12,7 @@ tags:
 - diy
 ---
 
-<div class="youtube full"><iframe src="https://www.youtube.com/embed/VG4yphlYwe4?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="full"></iframe></div>
+<div class="youtube full"><iframe src="https://www.youtube.com/embed/VG4yphlYwe4?rel=0&amp;controls=0&amp;showinfo=0&amp;autoplay=1&amp;loop=1&amp;playsinline=1&amp;modestbranding=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="full"></iframe></div>
 
 This will be the story and a guide of how you can create a wall clock like on this video. It’s a digital clock, I named it _QClock_, the outer light is the “long arm” for the minutes, the inner light is the “short arm” for the hours. The time, colors, method of showing the time, animations - all can be controlled on a small website, hosted by the clock itself.
 
