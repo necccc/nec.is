@@ -1,5 +1,5 @@
 ---
-title: QCLOCK - The RGB LED wall clock, part 1
+title: Create an RGB LED wall clock - part 1
 description: "Guide to make your own RGB LED wall clock, using a Tessel, Neopixels and JavaScript - first, the hardware part"
 categories:
 - writing
@@ -12,7 +12,7 @@ tags:
 - diy
 ---
 
-<div class="youtube full"><iframe src="https://www.youtube.com/embed/VG4yphlYwe4?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="full"></iframe></div>
+<div class="youtube full"><iframe src="https://www.youtube.com/embed/VG4yphlYwe4?rel=0&amp;controls=0&amp;showinfo=0&amp;autoplay=1&amp;loop=1&amp;playsinline=1&amp;modestbranding=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="full"></iframe></div>
 
 This will be the story and a guide of how you can create a wall clock like on this video. It’s a digital clock, I named it _QClock_, the outer light is the “long arm” for the minutes, the inner light is the “short arm” for the hours. The time, colors, method of showing the time, animations - all can be controlled on a small website, hosted by the clock itself.
 
@@ -55,7 +55,7 @@ The LED strips are available with various “resolutions” -  the number of LED
 
 To control the NeoPixels, you’ll need a microcontroller. I picked the [Tessel](https://tessel.io/) because it runs simple JavaScript, easy to use, and powerful enough. It can create its own wifi network, where it runs a small web server, which will control the clock settings.
 
-As it turned out, to drive the NeoPixels from the Tessel you either need custom firmware or treat the LED strip as a servo engine (sort of) and figure out the rest yourself. This wasn’t an option for me, but luckily Tim Pietrusky showed me a small piece of hardware, that was designed specifically to drive the NeoPixels: the [FadeCandy](https://www.adafruit.com/product/1689)
+As it turned out, to drive the NeoPixels from the Tessel you either need custom firmware or treat the LED strip as a servo engine (sort of) and figure out the rest yourself. This wasn’t an option for me, but luckily [Tim Pietrusky](https://twitter.com/timpietrusky) from [Live:JS](http://livejs.network/) showed me a small piece of hardware, that was designed specifically to drive the NeoPixels: the [FadeCandy](https://www.adafruit.com/product/1689)
 
 {% image_tag "pull-right" "fadecandy.jpg" "The FadeCandy Neopixel driver" %}
 
