@@ -1,0 +1,4 @@
+[[headers]]
+for = "/assets/examples/*"
+[headers.values]
+Access-Control-Allow-Origin = "*"
