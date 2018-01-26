@@ -2,6 +2,7 @@
 for = "/examples/assets/*"
 [headers.values]
 Access-Control-Allow-Origin = "*"
+
 [[headers]]
 for = "/examples/assets/*.pngbin"
 [headers.values]
