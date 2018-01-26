@@ -1,4 +1,8 @@
 [[headers]]
-for = "/assets/examples/*"
+for = "/examples/assets/*"
 [headers.values]
 Access-Control-Allow-Origin = "*"
+[[headers]]
+for = "/examples/assets/*.pngbin"
+[headers.values]
+Content-Type = "image/jpeg"
