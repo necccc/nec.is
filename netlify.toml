@@ -1,0 +1,20 @@
+[[headers]]
+for = "/"
+[headers.values]
+Link = [
+"</css/style.css>; rel=preload; as=style",
+"</js/script.js>; rel=preload; as=script",
+"</css/prism-okaidia.css>; rel=preload; as=style",
+"</css/prism-line-numbers.css>; rel=preload; as=style"
+]
+
+[[headers]]
+for = "/examples/assets/*"
+[headers.values]
+Access-Control-Allow-Origin = "*"
+
+[[headers]]
+for = "/examples/assets/*.pngbin"
+[headers.values]
+Access-Control-Allow-Origin = "*"
+Content-Type = "image/jpeg"
