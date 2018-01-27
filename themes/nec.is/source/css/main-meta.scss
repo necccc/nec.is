@@ -1,0 +1,62 @@
+@import 'colors.scss';
+@import 'mixins.scss';
+
+section.article-meta {
+    max-width: 100%;
+    width: 100%;
+    padding: 2rem 0 2rem;
+    margin: -6rem 0 0;
+    transform: translateY(6rem);
+    background-color: $color-light-1;
+
+    font-family: 'Libre Franklin', sans-serif;
+    font-weight: 300;
+    font-size: .9em;
+
+    &::after {
+        z-index: 1;
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        transform: skewY(calc(var(--footerSkew) * -0.6));
+        transform-origin: left top;
+        background-color: inherit;
+    }
+
+    .article-meta__inner {
+        position: relative;
+        z-index: 2;
+        max-width: 960px;
+        padding: 0 2rem 6rem;
+        margin: 0 auto;
+    }
+
+    p:first-of-type {
+        margin-top: 0;
+    }
+
+    ul.article-tag-list {
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+
+        li {
+            display: inherit;
+            padding-right: .3rem;
+
+            a::after {
+                content: ',';
+            }
+
+            &:last-child {
+                padding-right: 0;
+                a::after {
+                    content: '';
+                }
+            }
+        }
+    }
+}
