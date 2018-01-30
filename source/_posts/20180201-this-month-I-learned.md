@@ -385,7 +385,7 @@ It's still debated if embedding your web fonts in css a good or a bad idea - cac
 
 
 
-## <a name="http-status"></a> HTTP Response Statuscode test service
+## <a name="http-status"></a> HTTP Response Status code test service
 Ever wondered what would your web app, or service do, if it suddenly receives some http status code other than 200 or 403 or 5xx? Test and prepare for those with the help of this nice tool, which can respond with almost any http status code that is commonly used: [httpstat.us](https://httpstat.us/)
 
 
