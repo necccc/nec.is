@@ -365,7 +365,7 @@ If you don’t have Web Crypto support in the target browsers of your web app, o
 
 ### Performance
 
-jsperf
+As far as I've seen in [some earlier benchmarks](https://medium.com/@encryb/comparing-performance-of-javascript-cryptography-libraries-42fb138116f3), the native Web Crypto implementation is blazing fast, although it shines better if you need to encrypt or decrypt larger amount of data - see the [benchmarks by Mikhail Nasyrov](https://github.com/mnasyrov/cryptobench-js). Use the native if its possible and available, and pick a fallback from these libs if you need one.
 
 
 
@@ -379,7 +379,9 @@ Enjoy: [necccc/quick-local-https](https://github.com/necccc/quick-local-https)
 
 ## <a name="embed-google-fonts"></a> Embedding Google Fonts
 
-It's still debated if embedding your web fonts in css a good idea or bad idea - caching versus extra requests, but if you ever need to embed your selected fonts from Google Fonts, [this tool might come handy](https://amio.github.io/embedded-google-fonts/).
+It's still debated if embedding your web fonts in css a good or a bad idea - caching versus extra requests. For this site, I've tried both, and kept the fonts at Google - also, I've lowered the `font-weight` variants to only two per fonts I use.
+
+ If you ever need to embed your selected fonts from Google Fonts, [this tool might come handy](https://amio.github.io/embedded-google-fonts/).
 
 
 
