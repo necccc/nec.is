@@ -28,7 +28,7 @@ Things like these, should not be packaged:
 - Code examples
 - Usage demos
 
-These can stay in the git repository. Anyone who needs a closer look on your module, how to use it, needs examples, can find it there.
+These can stay in the git repository. Anyone who needs a closer look on your module, how to use it, needs examples, can find it there. Contributors will also use the git repo as the source of code, where development is done, and tests are ran - they don't need those in the distributed package.
 
 ### Use a whitelist
 
@@ -36,8 +36,16 @@ To tell npm what should be packaged, use the  `files` field in the `package.json
 
 Content of `files` is an array of files and folders, relative to the `package.json` file. List your folders and assets that are part of the module, or need for installing or building code if necessary.
 
-[code example]
+{% code json %}
 
+    {
+        "files": [
+            "dist",
+            "src"
+        ]
+    }
+
+{% endcode %}
 
 ### Targets
 
@@ -45,7 +53,16 @@ Is your module targeted for the browser, or node, or both? The `main` and the `b
 
 According to the [specs](https://github.com/defunctzombie/package-browser-field-spec) on `package.json` files, bundlers should parse and use the content of the `browser` field. It can be used to provide an alternate main entry point to the package itself, or just replace parts of the package when the bundler loads it targeted to browser environments.
 
-[code examples]
+{% code json %}
+
+    {
+        "main": "dist/module.js"
+        "browser": [
+
+        ]
+    }
+
+{% endcode %}
 
 ### Dependencies
 
@@ -69,7 +86,29 @@ npm comes with a tool called `npx`, which is a CLI command next to npm and can b
 
 See this example, which does the same, but without global modules, or using confusingly long and redundant paths.
 
-[example with global, with ./node_moduels/ and with npx]
+
+{% code js %}
+
+    {
+        "scripts": {
+            
+            // using babel as a global module, 
+            // exits with an error if the host hasn't installed babel as global
+            "babel": "babel src --out dist", 
+
+            // using babel as a local dependency
+            // works even if there is no global babel installed
+            "babel": "./node_modules/babel-cli/bin/babel src --out dist"
+
+            // using npx
+            // same as the previous one, but much shorter, nicer and readable 
+            "babel": "npx babel src --out dist"
+        }
+    }
+
+{% endcode %}
+
+_(You're right, the comments I've used in JSON are totally invalid, look at them as presentational decoration, and let scall it pseudo-json)_
 
 
 ### Lifecycle scripts
@@ -88,16 +127,27 @@ every field in the `scripts` can be invoked by running `npm run yourscript`. The
 - **lifecycle hooks**
 you can take any lifecycle command, or any field from the `scripts` and prefix it with `pre` or `post`.  They will run before and after the mentioned script, so you don’t have to call them explicitly. This makes your scripts shorter and cleaner
 
-[code examples]
+{% code js %}
 
-start
-stop
-test
-build
-clean
-prebuild
-prepublish
-postclean
+    {
+        "scripts": {
+            // these can be ran outside the 'run' command
+            "start": "",
+            "stop": "",
+            "test": "",
+
+            // these are accessibe via 'npm run ...'
+            "build": "",
+            "clean": "",
+
+            // these run before or after the scripts they are bound to by name
+            "prebuild": "",
+            "preclean": "",
+            "postclean": "",
+        }
+    }
+
+{% endcode %}
 
 Quick advice on these scripts:
 
@@ -165,17 +215,18 @@ npm allows you to create organizations, where which you can release packages. Th
 
 Here’s a quick start guide to scoped packages.
 
-```
-# log in to an org 
-npm login --scope=@myorg
+{% code bash %}
 
-# init an npm project within a scope/org
-npm init --scope=myorg
+    # log in to an org 
+    npm login --scope=@myorg
 
-# publish a scoped, and public package
-npm publish --access=public
-```
+    # init an npm project within a scope/org
+    npm init --scope=myorg
 
+    # publish a scoped, and public package
+    npm publish --access=public
+
+{% endcode %}
 
 
 ### Private registry
