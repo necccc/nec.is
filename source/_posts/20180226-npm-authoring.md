@@ -62,13 +62,13 @@ Recently the `module` field got introduced, where you can point bundlers towards
         // your module compiled to commonJS
         "main": "dist/module.js"
 
-        "browser": [
+        "browser": {
             // use a request-like module based on Fetch in the browser
             "request": "./shims/request-with-fetch.js",
 
             // basically this happens
             "code-for-node.js": "code-for-browser.js"
-        ],
+        },
 
         // your code in ES Modules format
         "module": "esm/module.js"
