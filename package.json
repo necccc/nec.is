@@ -10,6 +10,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "npx hexo serve",
     "start": "docker-compose up",
+    "stop": "docker-compose stop",
+    "logs": "docker-compose logs -f",
     "tools": "node tools.js"
   },
   "repository": {
