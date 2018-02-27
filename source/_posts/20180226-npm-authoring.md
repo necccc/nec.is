@@ -227,6 +227,32 @@ if a build fails, the team can investigate, no need to access the local workstat
 
 Stephan Bönnemann came up with this great tool called [semantic-release](https://github.com/semantic-release/semantic-release) a few years ago. It's an automated versioning and release tool, that creates the version number and the changelog by parsing your git commit messages. The ultimate release automation - check it out!
 
+### Deprecate!
+
+Let's say you encounter a bug in your module, you fix it, release it, and want to encourage everyone to use the new version. npm can help you with this by allowing you to *deprecate* module versions. You can deprecate certain versions, or complete version ranges if necessary using the `npm deprecate` command.
+
+{% code bash %}
+
+    # deprecate a single version
+    npm deprecate my-module@1.0.3 "this version is not supported any more, pelase update"
+
+    # deprecate everything below a version
+    # mind the double-qoutes around the version information!
+    npm deprecate my-module@"< 1.0.4" "critical bug fixed in 1.0.4, please update"
+
+{% endcode %}
+
+After this, it will show up in the install log as this
+
+{% code bash %}
+
+$ npm i my-module@1.0.2
+npm http fetch GET 200 http://registry.npmjs.org/my-module 760ms
+npm WARN deprecated my-module@1.0.2: critical bug fixed in 1.0.4, please update
+
+{% endcode %}
+
+
 
 
 
@@ -249,7 +275,7 @@ Here’s a quick start guide to scoped packages.
 
 {% code bash %}
 
-    # log in to an org 
+    # log in to an org
     npm login --scope=@myorg
 
     # init an npm project within a scope/org
