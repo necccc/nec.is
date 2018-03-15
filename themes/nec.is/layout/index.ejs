@@ -1,14 +1,12 @@
 <article class="index-intro">
-    <p>
-        Mostly online as _Nec, I'm a developer from Budapest, Hungary.
-        Organizer and curator of <a href="http://jsconfbp.com/">JSConf Budapest</a> and <a href="http://cssconfbp.rocks/">CSSConf Budapest</a>, occasional <a href="/speaking">speaker</a>, hobby hardware hacker, photographer and Lego nerd.
-        Working at <a href="http://www.ustream.tv/">IBM Cloud Video</a> as a senior frontend enginner.
-    </p>
-
+	<p>
+		Mostly online as _Nec, I'm a developer from Budapest, Hungary.
+		Organizer and curator of <a href="http://jsconfbp.com/">JSConf Budapest</a> and <a href="http://cssconfbp.rocks/">CSSConf Budapest</a>, occasional <a href="/speaking">speaker</a>, hobby hardware hacker, photographer and Lego nerd.
+		Working at <a href="http://www.ustream.tv/">IBM Cloud Video</a> as a senior frontend engineer.
+	</p>
 </article>
 
-
 <%
-    var page = site.categories.findOne({name: 'writing'})
+	var page = site.categories.findOne({name: 'writing'})
 %>
 <%- partial('_partial/archive', { pagination: 1, index: true,  page: page }) %>
