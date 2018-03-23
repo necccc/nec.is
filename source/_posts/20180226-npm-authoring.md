@@ -83,7 +83,7 @@ _(You're right, the comments I've used in JSON are totally invalid, look at them
 
 **Do not put the tools needed for development in the `dependencies` field.** This is very important, because if you do, every install of your module will bring tons of modules not needed for your package during install. This wastes disk space, network traffic and time.
 
-Everything you need during development should go to the `devDepenencies` field. This includes but not limited to:
+Everything you need during development should go to the `devDependencies` field. This includes but not limited to:
 - transpilers (like Babel)
 - bundlers (Webpack for example)
 - testing frameworks (Jest, Mocha, etc)
