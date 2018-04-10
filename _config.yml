@@ -106,11 +106,9 @@ offline:
   stripPrefix: public
   verbose: true
   runtimeCaching:
-    - urlPattern: /*
+    - urlPattern: /^https:\/\/.*\.cloudfront\.net\/*/
       handler: cacheFirst
-      options:
-        origin: *.cloudfront.net
-    - urlPattern: /*
+    - urlPattern: /^https:\/\/fonts\.googleapis\.com\/*/
       handler: cacheFirst
-      options:
-        origin: fonts.googleapis.com
+    - urlPattern: /^https:\/\/fonts\.gstatic\.com\/*/
+      handler: cacheFirst
