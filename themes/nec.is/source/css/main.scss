@@ -28,6 +28,7 @@ section.article-meta {
 	h3,
 	h4 {
 		font-family: 'Libre Franklin', sans-serif;
+		font-display: optional;
 		font-weight: 500;
 		position: relative;
 		margin: 2rem 0;
@@ -129,6 +130,7 @@ section.article-meta {
 	.article-archive-meta {
 		display: block;
 		font-family: 'Libre Franklin', sans-serif;
+		font-display: optional;
 		font-weight: 300;
 		font-size: .8rem;
 		color: lighten($color-black, 50%);
