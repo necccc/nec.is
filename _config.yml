@@ -105,3 +105,12 @@ offline:
   - public/**/*.{js,html,css,png,jpg,gif,svg,eot,ttf,woff,woff2}
   stripPrefix: public
   verbose: true
+  runtimeCaching:
+    - urlPattern: /*
+      handler: cacheFirst
+      options:
+        origin: *.cloudfront.net
+    - urlPattern: /*
+      handler: cacheFirst
+      options:
+        origin: fonts.googleapis.com
