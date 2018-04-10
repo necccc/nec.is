@@ -36,6 +36,7 @@
     "hexo-generator-feed": "1.2.2",
     "hexo-generator-index": "^0.2.0",
     "hexo-generator-tag": "^0.2.0",
+    "hexo-offline": "0.2.3",
     "hexo-prism-plugin": "^2.2.0",
     "hexo-renderer-ejs": "^0.3.0",
     "hexo-renderer-marked": "^0.3.0",
