@@ -1,6 +1,8 @@
 <%
   var bodyClass = [];
 
+  bodyClass.push(`layout-${page.layout}`)
+
   if (is_home()) {
     bodyClass.push('index')
   }
