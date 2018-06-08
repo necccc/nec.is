@@ -16,6 +16,8 @@
 				top: 1rem;
 				width: 10rem;
 			}
+
+
 		}
 		h1.title {
 			margin-top: 9rem;
@@ -27,12 +29,28 @@
 	&.header--shrink header {
 		height: 4rem;
 
-		.top h1.logo {
-			top: 0;
-			left: 0;
-			height: 2.5rem;
-			width: 2.5rem;
-			margin-top: .5rem;
+		.top {
+			h1.logo {
+				top: 0;
+				left: 0;
+				height: 2.5rem;
+				width: 2.5rem;
+				margin-top: .5rem;
+			}
+			nav ul {
+				display: none;
+			}
+
+			&::after {
+				display: block;
+				position: absolute;
+				content: "Szabolcs Szabolcsi-Toth";
+				left: 4rem;
+				color: $color-white;
+				height: 4rem;
+				line-height: 4rem;
+				font-size: 1.4rem;
+			}
 		}
 	}
 }

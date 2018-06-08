@@ -80,7 +80,13 @@ section.article-meta {
 
 	&.archive-article {
 		p {
-			margin: 1rem 0;
+			margin: calc(2rem - 2px);
+		}
+
+		&.archive-type-speaking-page {
+			p {
+				margin: 1rem 0;
+			}
 		}
 
 		h2, h3 {

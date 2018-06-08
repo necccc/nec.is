@@ -32,7 +32,7 @@
     const addHeaderShrink = function () {
         if (!document.querySelector('.header--shrink')) {
             const body = document.querySelector('body')
-            body.className += 'header--shrink ';
+            body.className += ' header--shrink ';
 
             document.querySelector('header input').checked = false;
         }
