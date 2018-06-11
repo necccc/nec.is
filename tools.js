@@ -1,7 +1,7 @@
 const tasks = {
     socialcards: require('./tools/social-cards'),
     deadlinks: require('./tools/dead-links'),
-    inclusive: require('./tools/inclusive'),
+    //inclusive: require('./tools/inclusive'),
 }
 
 var inquirer = require('inquirer');
