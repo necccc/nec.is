@@ -1,5 +1,5 @@
 ---
-title: Upcoming ESNext features to keep an eye on - Part 1
+title: Upcoming ESNext features - Part 1
 description: "I've handpicked some of the top features that I (a)wait most for JavaScript, let's see the first three"
 categories:
 - writing
@@ -7,6 +7,7 @@ tags:
 - esnext
 - ecmascript
 - tc39
+- learning
 - pipeline
 - partial evaluation
 - decorators
