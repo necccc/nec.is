@@ -1,4 +1,23 @@
 (function () {
+    // Test via a getter in the options object to see if the passive property is accessed
+    var supportsPassiveScroll = false;
+    try {
+        var opts = Object.defineProperty({}, 'passive', {
+            get: function() {
+                supportsPassiveScroll = true;
+            }
+        });
+        window.addEventListener("testPassive", null, opts);
+        window.removeEventListener("testPassive", null, opts);
+    } catch (e) {}
+
+
+    const postIntro = document.querySelector('.post-intro')
+    if (postIntro) {
+        const { scrollTop } = document.documentElement
+        const { bottom, height } = postIntro.getBoundingClientRect()
+        document.documentElement.style.setProperty(`--introBottom`, Math.round(scrollTop + bottom + (height * 0.3)) + 'px');
+    }
 
     const rem = parseInt(window.getComputedStyle(document.documentElement)['font-size'], 10);
     const headerHeight = document.querySelector('header').clientHeight;
@@ -45,25 +64,39 @@
         document.querySelector('header input').checked = false;
     }
 
+    const maxIntroOffset = -45;
+
     const onScroll = function () {
         const startTreshold = window.scrollY - (headerHeight - (headerHeight * 0.6)) >= 0;
         const endTreshold = (headerHeight - window.scrollY - (4 * rem)) < 0;
+
+
+
 
         if (startTreshold && !endTreshold) {
             window.requestAnimationFrame(() => {
                 removeHeaderShrink()
                 document.documentElement.style.setProperty(`--headerSkew`, getHeaderSkew() + 'deg');
+
+                const offset = Math.floor(((window.scrollY - 124) / 124) * maxIntroOffset)
+
+                document.documentElement.style.setProperty(`--introOffset`, offset + 'px');
             })
         } else if (endTreshold) {
             window.requestAnimationFrame(() => {
                 addHeaderShrink();
             })
+            document.documentElement.style.setProperty(`--introOffset`, maxIntroOffset + 'px');
         } else if (window.scrollY === 0) {
             removeHeaderShrink()
             document.documentElement.style.setProperty(`--headerSkew`, getHeaderSkew() + 'deg');
+            document.documentElement.style.setProperty(`--introOffset`, '0px');
         }
 
         document.documentElement.style.setProperty(`--footerSkew`, getFooterSkew() + 'deg');
+
+
+
     }
 
     const init = function () {
@@ -94,7 +127,7 @@
     })
 
     onScroll();
-    document.addEventListener('scroll', onScroll);
+    document.addEventListener('scroll', onScroll, supportsPassiveScroll ? { passive: true } : false);
 
 
 
