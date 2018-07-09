@@ -1,5 +1,6 @@
 ---
 title: Transform your codebase using codemods
+date: 2018-03-15
 description: "Learn about jscodeshift, a super-useful tool to step by step transform large codebases using small changes."
 categories:
 - writing
@@ -13,6 +14,8 @@ tags:
 This post will teach you about [jscodeshift](#jscodeshift), a super-useful tool to step by step transform large codebases using small changes. From the basics, like how to [traverse](#traverse) your code and how to [build code](#build), through some detailed look at the data you work with, like [Collections](#collection) and [NodePaths](#nodepath).
 
 At the end I'll write about [ignore patterns](#ignore-patterns) for jscodeshift, plus some [best practices](#best-practices) we've learned and handling [edge cases](#edge-cases) in code
+
+<a name="codemods" class="anchor  post-intro"></a>
 
 ## Codemods
 

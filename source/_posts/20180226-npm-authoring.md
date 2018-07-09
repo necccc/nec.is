@@ -1,5 +1,6 @@
 ---
 title: npm authoring basics
+date: 2018-02-26
 description: "What, how, and where to publish npm packages"
 categories:
 - writing
@@ -16,7 +17,7 @@ This is a comprehensive guide on npm authoring, not just for beginners. I'll vis
 
 
 
-
+<a name="what" class="anchor  post-intro"></a>
 
 ## Define what to publish
 
@@ -130,7 +131,9 @@ See this example, where all scripts do the same, using global modules, local pat
     }
 {% endcode %}
 
-### <a name="lifecycle-scripts"></a> Lifecycle scripts
+<a name="lifecycle-scripts"  class="anchor"></a>
+
+### Lifecycle scripts
 
 A great way to hack and organize your scripts and toolset in a project is to use the lifecycle scripts of npm. Three features, that can help a lot:
 
@@ -185,8 +188,9 @@ Be careful what you implement here, as they run on every install run, even if it
 
 ---
 
+<a name="versioning"  class="anchor"></a>
 
-### <a name="versioning"></a> Versioning, semver
+### Versioning, semver
 
 Suppose your code is done, built, tested and ready for publishing by now. Awesome, you’re doing great! 
 
@@ -262,7 +266,10 @@ npm WARN deprecated my-module@1.0.2: critical bug fixed in 1.0.4, please update
 ## Destinations for publishing
 After detailing what to publish and how lets take a quick look at the “Where to publish” part.
 
-### <a name="scoped-packages"></a>Scoped packages
+
+<a name="scoped-packages" class="anchor"></a>
+
+### Scoped packages
 
 npm allows you to create organizations, where you can release packages. Called _'scoped packages'_, they will appear under the organizaton name, using a notation like this: `@myorg/packagename`. This has a few perks, like:
 
@@ -286,8 +293,8 @@ Here’s a quick start guide to scoped packages.
 
 {% endcode %}
 
-
-### <a name="private-registry"></a> Private registry
+<a name="private-registry" class="anchor"></a> 
+### Private registry
 
 If your organization needs one, private registries are available by npm, called npm enterprise. Its a self-hosted solution (you have to install/maintain the server) or use it as part of npm’s SaaS products, and let them host it for you.
 
