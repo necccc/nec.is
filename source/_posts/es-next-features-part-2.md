@@ -1,6 +1,6 @@
 ---
 title: Upcoming ESNext features - Part 2
-date: 2018-06-27
+date: 2018-07-10
 description: "Take a look on the Bind Operator, Top-Level Await and Optional Chaining"
 categories:
 - writing
