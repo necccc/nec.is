@@ -311,7 +311,7 @@ The example above creates a counter component that updates its text content ever
 The [Decorators proposal](https://github.com/tc39/proposal-decorators) is in **Stage 2**, and this [article on its API](https://github.com/tc39/proposal-decorators/blob/master/METAPROGRAMMING.md) shows how to implement your own decorators in the (hopefully) near future.
 
 
-That's it for today, stay tuned for the next batch:
+That's it for today, [check out the next three features](https://nec.is/writing/upcoming-esnext-features-part-2/):
 - Bind operator
 - Top-level await
 - Optional Chaining

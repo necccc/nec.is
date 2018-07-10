@@ -161,10 +161,12 @@ More problematic use cases are the calculated module imports, and these might be
 // reaching a module, based on the visitor's state
 const text = await import(`languages/${userLang}/module.js`)
 
+
 // code splitting
 import { criticalPart } from 'critical-components'; // critical stuff loads sync
 await criticalPart(); // do render
 const lazy = await import('lazy-components'); // load the rest async
+
 
 // debugging, or import decision based on server environment
 if (process.env.NODE_ENV !== 'production') {
