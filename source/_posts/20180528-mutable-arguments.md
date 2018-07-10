@@ -1,5 +1,6 @@
 ---
 title: When arguments are mutable
+date: 2018-05-28
 description: "An exact case, when omitting strict mode can cause weird side effects"
 categories:
 - writing
@@ -11,6 +12,8 @@ tags:
 ---
 
 I've found this weird behavior of the `arguments` inside a function while playing and experimenting with some code some days ago. Normally it would not be interesting since all the code we use is usually built-transpiled and put into strict mode, but my sandbox was not - and this is an exact case when omitting strict mode can cause weird side effects.
+
+<a name="arguments" class="anchor post-intro"></a>
 
 ## Arguments
 

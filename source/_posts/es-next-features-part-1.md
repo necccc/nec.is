@@ -1,5 +1,6 @@
 ---
 title: Upcoming ESNext features - Part 1
+date: 2018-06-11
 description: "I've handpicked some of the top features that I (a)wait most for JavaScript, let's see the first three"
 categories:
 - writing
@@ -20,8 +21,8 @@ Recently I took a look at JavaScript features still in the proposal stage and ha
 - [Decorators](#decorators)
 
 
-
-## <a name="pipelines"></a>  Pipelines
+<a name="pipelines" class="anchor post-intro"></a>
+##   Pipelines
 
 Pipes and pipelines are common in other languages, not just Elm or Hack, but take the UNIX pipe itself. It's really a great tool, and in JavaScript, the closest we got is maybe the chaining pattern, like in jQuery or the Promises.
 
@@ -161,8 +162,9 @@ The F# proposal separates the `await` keyword from its async function in the pip
 They could be even more useful, with the Partial Application feature, so let's take a look at that!
 
 
+<a name="partial-application" class="anchor"></a>
 
-## <a name="partial-application"></a> Partial Application
+## Partial Application
 
 One of my top favorites. If you've tried doing functional programming in JS, or ever used `_.partial` from [lodash](https://lodash.com/docs/4.17.10#partial), you'll going to love this.
 
@@ -256,10 +258,9 @@ Check out the [proposal](https://github.com/tc39/proposal-partial-application), 
 It's currently in **stage 1**, and has several [concerns already](https://github.com/tc39/proposal-partial-application/issues)
 
 
+<a name="decorators" class="anchor"></a>
 
-
-
-## <a name="decorators"></a> Decorators
+##  Decorators
 
 This powerful new feature enables us to enhance Objects and Classes further than `defineProperty`. You can write libraries that can be used later to add extra functionality and behavior to a Class, its methods or even its fields.
 

@@ -19,8 +19,18 @@ section.article-meta {
 		&:visited {
 			color: $color-blue;
 		}
-		&:hover {
+		&:not(.anchor):hover {
 			@include underline($color-white, $color-blue)
+		}
+	}
+
+	.anchor {
+		display:block;
+		padding-top: 120px;
+		margin-top:-100px;
+		z-index: -1;
+		&:hover {
+			text-decoration: none;
 		}
 	}
 
@@ -51,6 +61,11 @@ section.article-meta {
 		border-left: 2px solid $color-black;
 		margin: 2rem 0 2rem -2rem;
 		padding-left: calc(2rem - 2px);
+
+		@media (max-width:480px) {
+			margin-left: 0;
+			padding-left: calc(1.5rem - 2px);
+		}
 	}
 
 	h3 {
@@ -162,9 +177,20 @@ section.article-meta {
 			width: 100%;
 		}
 	}
+
 	@media (max-width:480px) {
-		pre {
+
+		padding-left: 0;
+		padding-right: 0;
+
+		p, ul, ol, dl, h3, h4 {
+			margin-left: 1.5rem;
+			margin-right: 1.5rem;
+		}
+
+		pre[class*="language-"] {
 			font-size: .7rem;
+			border-radius: 0;
 		}
 	}
 
