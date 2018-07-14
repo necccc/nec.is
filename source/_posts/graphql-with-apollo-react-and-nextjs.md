@@ -223,10 +223,48 @@ There are more details and useful features, that could fill a whole blogpost, be
 
 {% image_tag "pull-right" "apollo.svg" "Apollo Platform logo" %}
 
-Apollo is a GraphQL toolset that works great with REST APIs as backend resources
+[Apollo Platform](https://www.apollographql.com/) is a GraphQL toolset that works great with REST APIs as backend resources. They have Server and Client available for free and open source, plus the Apollo Engine, which does caching, tracing and metrics really well - for a price.
 
-schema & resolvers
-apollo server & engine
+**Server & Engine**
+
+The Server takes your Schema and handles the queries and mutations from the clients. To do this, you need to write **resolvers**. These functions will fetch the actual data from wherever you want and the Server will insert them in the Query response accoring to the Schema.
+
+Resolvers can fetch whole resource Types, or even fields within Types. You can build up really complex data structures with resolvers, taking data from API endpoints, DB connections, key-value stores, anything. The client will describe what data it needs in the Query, and the hard work is done by the resolvers and the server.
+
+This means the Server needs two things to max out performance and debuggability:
+
+- caching  
+going for a REST API endpoint over and over again for the same data is far from ideal, so caching is really important
+
+Luckily, we can use another feature of the GraphQL language, called _directives_. Using cache directives in the Schema definition, we can tell the server what to cache and for how long - and is it cacheable for everyone (public) or for a certain user session (private).
+
+```graphql
+
+# cache this kind of resource for an hour
+type Person@cacheControl(maxAge: 3600) {
+    id: ID!
+    name: String!
+    height: Int
+    bio: String
+
+	# cache the image field for a week
+    picture: String @cacheControl(maxAge: 10080)
+
+	# add an extra field, which tells if the current user favourited this Person
+	# this will be cached for the current user session only
+	userFavourite: Boolean! @cacheControl(scope: PRIVATE)
+}
+
+```
+
+_**Note:** cache directives are not the part of the GraphQL language. Its done by [Apollo Cache Control](https://github.com/apollographql/apollo-cache-control) which builds upon the **extendibility** of the language, meaning that you can write your own directives!_
+
+- tracing and metrics  
+the other important capability of a server is measuring how long it takes to fetch data, and debugging any error that may occur
+
+In the Apollo Platform, these are done by the Apollo Engine. You can hook it up with your server, and it will handle caching, metrics and tracing - the data will be available on their engine dashboard.
+
+**Client + React**
 
 queries, mutations
 apollo client + react
