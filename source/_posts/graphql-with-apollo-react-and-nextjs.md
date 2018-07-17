@@ -15,12 +15,12 @@ tags:
 
 I've discovered NextJS few months ago, as a solution for Server-side Rendered React, and I'm playing with it since, integrating with various solutions for i18n, state management, routing etc. Some weeks ago I've tried it out with GraphQL, building a small page with these tools. This post is the summary I learned about some performance-tuning techniques, I will detail each of them, after a quick intro to the tools I've used:
 
- - [Quick Introduction to Next.js, GraphQL and Apollo](#intro)
+ - Quick Introduction to [Next.js](#nextjs), [GraphQL](#graphql) and [Apollo](#apollo)
  - [Paginating lists](#paginating-lists)
  - [Instant navigation from lists to details with lazy loading the data](#list-to-details)
  - [Subtree pagination of a dataset](#subtree-paging)
 
-<a name="intro" class="anchor post-intro">
+<a name="nextjs" class="anchor post-intro">
 
 ## Next.js & GraphQL & Apollo
 
@@ -35,6 +35,8 @@ First let's have a quick intro on the building blocks: Next.js, GraphQL and the 
 It works with React like a charm! Next.js relies on an extra static method on your components called `getInitialProps()`, that you can define to fetch initial data in your props, both for server-side or client side rendered components. This dead-simple pattern is really useful, and simplifies your code you're writing for first render and then the client-rendered pages, as the user navigates in your routing.
 
 As for development experience, it provides a dev mode, where Webpack HMR shines brightly, and shows your updates instantly, or hits you in the face with errors, so you can clearly see that something is wrong. It's build process creates Webpack chunks next to the server-side code, can be deployed easily, even utilizing some CDN for the static assets and chunks.
+
+<a name="graphql" class="anchor">
 
 ### GraphQL
 
@@ -219,6 +221,8 @@ mutation UploadNewPerson($person: CreatePerson) {
 
 There are more details and useful features, that could fill a whole blogpost, be sure to check out the [official GraphQL docs](http://graphql.github.io/)!
 
+<a name="apollo" class="anchor">
+
 ### Apollo
 
 {% image_tag "pull-right" "apollo.svg" "Apollo Platform logo" %}
@@ -266,14 +270,54 @@ In the Apollo Platform, these are done by the Apollo Engine. You can hook it up 
 
 **Client + React**
 
-queries, mutations
-apollo client + react
+The Apollo Client at it's core, is a great tool for connecting JavaScript to any GraphQL service. There are several sub-libraries, for various frameworks, like React or Vue, each focusing on the best way to integrate GraphQL operations into your application.
 
+Since Next.js is focused on React, I've used the `react-apollo` package in my example implementation. Using it with Next.js, it requires minimal configuration, and a small amount of setup - putting the Apollo Client Provider component in its proper place, and making it work with the `getInitialProps` method of Next.js.
 
+Apollo promotes the usage of the `<Query />` and `<Mutation />` component with your components, but if you like to separate your logic from your components, you can use the plain simple `graphql` HOC, to combine your components.
+
+```jsx
+
+const QUERY_PERSON_LIST = gql`
+query PersonList($page: Int = 1) {
+	allPersons(page: $page) {
+		id
+		name
+		picture
+	}
+}
+`
+
+// same Query used with the Query Component
+
+export default PersonListing = () => (
+	<Query query={QUERY_PERSON_LIST}>
+		{({ loading, error, data }) => {
+			if (error) return <Error />
+			if (loading || !data) return <Loading />
+
+			return <PersonList people={data.allPersons} />
+		}}
+	</Query>
+)
+
+// Used with the graphql method
+
+export default graphql(QUERY_PERSON_LIST, PersonList)
+
+```
+
+I personally prefer the plain `graphql` method, becuse later on when you start to split queries, or create more complex ones, you have the option to separate the component rendering logic from the data fetching.
+
+That's for a quick sumary of Next.js, GraphQL and Apollo, let's move on to some more complex use cases.
+
+I've made a [small app](https://github.com/necccc/nextjs-apollo-graphql), based on the Star Wars REST API, putting that API behind a GraphQL service, and fetching data from there. The link to the working site and the example code itself is on my [GitHub](https://github.com/necccc/nextjs-apollo-graphql).
 
 ## Performance tuning
 
-graphql itself is designed to help achieve performant UIs, lets fine tune it even further
+GraphQL itself is designed to help achieve performant UIs, lets fine tune it abit even further. I'll dissect three fairly common usecases.
+
+<a name="paginating-lists" class="anchor">
 
 ### Lists, pagination
 
@@ -289,6 +333,8 @@ using fetchMore at pagination
 
 
 <div class="youtube full"><iframe src="https://www.youtube.com/embed/BbdPPQ094wg?rel=0&amp;controls=0&amp;showinfo=0&amp;autoplay=0&amp;loop=1&amp;playsinline=1&amp;modestbranding=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="full"></iframe></div>
+
+<a name="list-to-details" class="anchor">
 
 ### Navigating from Lists to Details
 
@@ -307,7 +353,7 @@ done!
 
 
 
-
+<a name="subtree-paging" class="anchor">
 
 ### Subtree Pagination
 
@@ -341,6 +387,10 @@ next
 next tutorials
 remy's next course
 graphql
+https://www.youtube.com/watch?v=2It9NofBWYg
+
+[Designing a GraphQL API by Shopify](https://gist.github.com/swalkinshaw/3a33e2d292b60e68fcebe12b62bbb3e2)
+
 apollo server & engine
 apollo client with react
 next on spectrum.chat
