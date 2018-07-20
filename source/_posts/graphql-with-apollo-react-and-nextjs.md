@@ -13,12 +13,21 @@ tags:
 - performance
 ---
 
-I've discovered NextJS few months ago, as a solution for Server-side Rendered React, and I'm playing with it since, integrating with various solutions for i18n, state management, routing etc. Some weeks ago I've tried it out with GraphQL, building a small page with these tools. This post is the summary I learned about some performance-tuning techniques, I will detail each of them, after a quick intro to the tools I've used:
+I've discovered NextJS few months ago, as a solution for Server-side Rendered React, and I'm playing with it since, integrating with various solutions for i18n, state management, routing etc. Some weeks ago I've tried it out with GraphQL, building a [small page](http://bit.ly/starwars-graphql-nextjs) with these tools. This post is the summary I learned about some performance-tuning techniques, I will detail each of them, after a quick intro to the tools I've used:
 
  - Quick Introduction to [Next.js](#nextjs), [GraphQL](#graphql) and [Apollo](#apollo)
  - [Paginating lists](#paginating-lists)
  - [Instant navigation from lists to details with lazy loading the data](#list-to-details)
  - [Subtree pagination of a dataset](#subtree-paging)
+
+
+
+
+
+
+
+
+
 
 <a name="nextjs" class="anchor post-intro">
 
@@ -35,6 +44,17 @@ First let's have a quick intro on the building blocks: Next.js, GraphQL and the 
 It works with React like a charm! Next.js relies on an extra static method on your components called `getInitialProps()`, that you can define to fetch initial data in your props, both for server-side or client side rendered components. This dead-simple pattern is really useful, and simplifies your code you're writing for first render and then the client-rendered pages, as the user navigates in your routing.
 
 As for development experience, it provides a dev mode, where Webpack HMR shines brightly, and shows your updates instantly, or hits you in the face with errors, so you can clearly see that something is wrong. It's build process creates Webpack chunks next to the server-side code, can be deployed easily, even utilizing some CDN for the static assets and chunks.
+
+
+
+
+
+
+
+
+
+
+
 
 <a name="graphql" class="anchor">
 
@@ -221,6 +241,15 @@ mutation UploadNewPerson($person: CreatePerson) {
 
 There are more details and useful features, that could fill a whole blogpost, be sure to check out the [official GraphQL docs](http://graphql.github.io/)!
 
+
+
+
+
+
+
+
+
+
 <a name="apollo" class="anchor">
 
 ### Apollo
@@ -311,28 +340,203 @@ I personally prefer the plain `graphql` method, becuse later on when you start t
 
 That's for a quick sumary of Next.js, GraphQL and Apollo, let's move on to some more complex use cases.
 
-I've made a [small app](https://github.com/necccc/nextjs-apollo-graphql), based on the Star Wars REST API, putting that API behind a GraphQL service, and fetching data from there. The link to the working site and the example code itself is on my [GitHub](https://github.com/necccc/nextjs-apollo-graphql).
+I've made a [small app](http://bit.ly/starwars-graphql-nextjs), based on the Star Wars REST API, putting that API behind a GraphQL service, and fetching data from there. The link to the working site and the example code itself is on my [GitHub](https://github.com/necccc/nextjs-apollo-graphql).
+
+
+
+
+
+
+
+
 
 ## Performance tuning
 
-GraphQL itself is designed to help achieve performant UIs, lets fine tune it abit even further. I'll dissect three fairly common usecases.
+GraphQL itself is designed to help achieve performant UIs, lets fine tune it a bit even further. I'll dissect three fairly common usecases.
 
 <a name="paginating-lists" class="anchor">
 
 ### Lists, pagination
 
-start with lists
-list query, schema
-returns Types, fields
-anatomy of the props by Apollo Client
+The task is to load a list of items, and implement pagination. Plan is to use the same query but update its parameters for every new page request. So lets get the first page, and render it:
+
+```jsx
+export const getStarships = gql`
+	query getStarships {
+		starshipPages {
+			items {
+				name
+				id
+			}
+		}
+	}
+`
+
+const List = (props) => (<div>
+	<ul>
+		{
+			// data structure matches the query
+			props.data.starshipPages.items.map( item => (<li key={item.id}>
+				{item.name}
+			</li>))
+		}
+	</ul>
+</div>)
+
+export default graphql(getStarships)(List)
+```
+
+Simple, isn't it? Some details what happens above:
+
+- parse our GraphQL query using `gql`  
+this handy tag function for template literals creates graphql query structures from string for the graphql client
+- define our query  
+fetch the `starshipPages` from the schema, but only two fields from every starship, `name & id`
+- make a listing component  
+the result from the graphql query will be in the `props`
+- compose this component with the `graphql` HOC
+
+The result object from the query has [several handy methods and properties](https://www.apollographql.com/docs/react/api/react-apollo.html#graphql-query-options), like the loading state, errors or the variables of the latest query - and the actual data, following the structure of the Schema. You can use these methods and properties within your component, but if you want a bit more separation, you can define a map function for the query which allows you to compute new props for your component after the query received results but _before_ rendering.
+
+Let's play with that a bit, and include only the actual _data_ from the query, and the loading state in the props of our listing component:
+
+```jsx
+const List = (props) => (<div>
+	<ul>
+		{
+			props.data.map( item => (<li key={item.id}>
+				{item.name}
+			</li>))
+		}
+	</ul>
+</div>)
 
 
-pass in fetchMore
-using fetchMore at pagination
+export default graphql(getStarships, {
+	props: ({data, ownProps}) => {
+		// data is the query result object
+		// ownProps is the props passed to the Component
 
+		const {
+			starshipPages,
+			loading
+		} = data
 
+		// compute new props, with only the data array, and the loading state
+		const newProps = {
+			loading,
+			data: starshipPages.items
+		}
+
+		// do not forget to include the originally received props (ownProps)!
+		return Object.assign({}, ownProps, newProps)
+	}
+})(List)
+```
+
+With this, the List component is free of any lexical coupling with the GraphQL Schema, and we will be able to properly re-use it!
+
+Among the methods in the result object, there is one particular, that we will use here, called `fetchMore`. This method is designed to do pagination with GraphQL. It takes a single options object, where you can put the updated _query_, or just the new _parameters_, and a function - that is required - that will handle the result, and update the data you already have.
+
+Let's prepare our code for pagination:
+- add the `page` parameter to the query
+- set the option `notifyOnNetworkStatusChange` true, so we'll receive updates on loading state automatically
+- set the default page to 1
+- pass in actual page to props
+- implement a function to fetch the next page
+
+```jsx
+export const getStarships = gql`
+	query getStarships($page: Int = 1) { # expecting 'page' variable
+		starshipPages(page: $page) {
+			page # current page is returned by the API
+			items {
+				name
+				id
+			}
+		}
+	}
+`
+
+const List = (props) => (<div>
+	{
+		// do something meaningful during loading
+		props.loading ? 'LOADING' : ''
+	}
+	<ul>
+		{
+			props.data.map( item => (<li key={item.id}>
+				{item.name}
+			</li>))
+		}
+	</ul>
+	<button onClick={e => props.loadPage(props.page + 1) }>
+		Load Page {props.page + 1}
+	</button>
+</div>)
+
+export default graphql(getStarships, {
+	options: {
+		// this is needed to auto-update the 'loading' prop
+		notifyOnNetworkStatusChange: true,
+		variables: { // fill parameters for the query here
+			page: 1 // first query will use 1
+		},
+	},
+	props: ({data, ownProps}) => {
+		const {
+			fetchMore, // grab the fetchMore method
+			starshipPages: { items, page },
+			loading
+		} = data
+
+		const newProps = {
+			loading,
+			page,
+			data: items,
+			loadPage: (nextPage) => {
+				// use fetchMore on loagPage click
+				return fetchMore({
+					variables: {
+						page: nextPage
+					},
+					updateQuery: (prev, { variables, fetchMoreResult }) => {
+						if (!fetchMoreResult) return prev;
+						return Object.assign({}, fetchMoreResult, { variables })
+					}
+				})
+			}
+		}
+
+		return Object.assign({}, ownProps, newProps)
+	}
+})(List)
+```
+
+Now let's see what happens, if the user clicks the "Load Page" button:
+- `page` is accessed from `props`, incremented and passed to the function
+- `loadPage` calls `fetchMore`,
+  - with the new page value in `variables`,
+  - `updateQuery` to handle results
+- the query returns with values
+- inside `updateQuery` you can append the results to the ones you already have, or replace them
+- returning data from here calls the `props` method on the Query again
+- the `props` method calculates new props,
+- the component renders with the next page
+
+I've visualized this on a few slides, see them here:
 
 <div class="youtube full"><iframe src="https://www.youtube.com/embed/BbdPPQ094wg?rel=0&amp;controls=0&amp;showinfo=0&amp;autoplay=0&amp;loop=1&amp;playsinline=1&amp;modestbranding=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="full"></iframe></div>
+
+
+
+
+
+
+
+
+
+
 
 <a name="list-to-details" class="anchor">
 
@@ -350,6 +554,15 @@ done!
 
 
 <div class="youtube full"><iframe src="https://www.youtube.com/embed/ZopsOkX_AjI?rel=0&amp;controls=0&amp;showinfo=0&amp;autoplay=0&amp;loop=1&amp;playsinline=1&amp;modestbranding=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="full"></iframe></div>
+
+
+
+
+
+
+
+
+
 
 
 
@@ -374,6 +587,14 @@ on state change, flip the skip flag, update the page metadata, and let the relat
 
 
 <div class="youtube full"><iframe src="https://www.youtube.com/embed/TwNmQQfQacw?rel=0&amp;controls=0&amp;showinfo=0&amp;autoplay=0&amp;loop=1&amp;playsinline=1&amp;modestbranding=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="full"></iframe></div>
+
+
+
+
+
+
+
+
 
 
 
