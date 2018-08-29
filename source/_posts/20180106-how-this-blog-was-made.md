@@ -18,12 +18,23 @@ I’ve collected some useful info about how this blog is running, summarised in 
 * Small nice things
 
 
+
+
+
+<a name="static sites" class="anchor post-intro">
+
 ## Static sites
 
 I’ve used a few number of static site generators before, for various projects. For example, the earlier versions of [jsconfbp.com](jsconfbp.com) used Docpad and Jekyll. These were great for a start, but I soon realized a few things that bothered me. Docpad had some compatibility with node versions, and Jekyll was based on Ruby. The language is not a problem, but I moved away from it for two reasons:
 
 * I would like to keep my site on the node platform I like and use daily basis
 * I plan to move away from GitHub pages, where Jekyll is really handy - but do not wish to hassle with the setup elsewhere
+
+
+
+
+
+<a name="hexo" class="anchor">
 
 ### Hexo
 
@@ -79,6 +90,10 @@ If you’re interested, check the source of this site on GitHub.
 
 
 
+
+
+
+<a name="deployment-netlify" class="anchor">
 ## Deployment
 
 {% image_tag "pull-right" "netlify-logo.png" "The Netlify logo" %}
@@ -108,6 +123,10 @@ After the basics were settled, some ideas popped into my mind to make this blog 
 
 
 
+
+
+
+<a name="social-cards-render" class="anchor">
 ### Social card rendering
 
 {% image_tag "pull-right" "social-card.png" "The social share image for this post" %}
@@ -133,6 +152,9 @@ I've tried to move this step to the CI/deployment phase, but installing a headle
 
 
 
+
+
+<a name="instagram-gallery" class="anchor">
 ### Instagram gallery
 
 I wished to share some sights from the places I’ve been and talked, and I usually post these photos on Instagram. Unfortunately, the Instagram API documentation wasn’t too friendly on how to access their API, especially when it came to authentication. But this [small tool by the Pixel Union](http://instagram.pixelunion.net/) is an easy way to get an access token, that can be used during deployment and site generation, to fetch the images for the gallery. Under the hood, you authorize their web app, to access your photos, and they give you the access token they would use.
