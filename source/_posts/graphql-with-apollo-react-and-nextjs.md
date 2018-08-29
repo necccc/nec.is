@@ -1,7 +1,7 @@
 ---
 title: "GraphQL with Next.js and Apollo"
 description: "Introduction to a modern React stack that is really great to work with"
-date: 2018-07-24
+date: 2018-08-29
 categories:
 - writing
 tags:
@@ -13,14 +13,9 @@ tags:
 - performance
 ---
 
-I've discovered NextJS few months ago, as a solution for Server-side Rendered React, and I'm playing with it since, integrating with various solutions for i18n, state management, routing etc. Some weeks ago I've tried it out with GraphQL, building a [small page](http://bit.ly/starwars-graphql-nextjs) with these tools. This post is the summary I learned about some performance-tuning techniques, I will detail each of them, after a quick intro to the tools I've used:
+I've discovered Next.js few months ago, as a solution for Server-side Rendered React, and I'm playing with it since, integrating with various solutions for i18n, state management, routing etc. Some weeks ago I've tried it out with GraphQL, building a [small page](https://starwars-app-qcusxpjhnl.now.sh/) with these tools.
 
- - Quick Introduction to [Next.js](#nextjs), [GraphQL](#graphql) and [Apollo](#apollo)
- - [Paginating lists](#paginating-lists)
- - [Instant navigation from lists to details with lazy loading the data](#list-to-details)
- - [Subtree pagination of a dataset](#subtree-paging)
-
-
+This and the following posts are the summary I learned about some performance-tuning techniques, I will detail each of them, after a quick intro to the tools I've used.
 
 
 
@@ -266,7 +261,10 @@ Resolvers can fetch whole resource Types, or even fields within Types. You can b
 
 This means the Server needs two things to max out performance and debuggability:
 
-- caching  
+1. caching  
+2. tracing and metrics
+
+**Caching**
 going for a REST API endpoint over and over again for the same data is far from ideal, so caching is really important
 
 Luckily, we can use another feature of the GraphQL language, called _directives_. Using cache directives in the Schema definition, we can tell the server what to cache and for how long - and is it cacheable for everyone (public) or for a certain user session (private).
@@ -290,9 +288,10 @@ type Person@cacheControl(maxAge: 3600) {
 
 ```
 
-_**Note:** cache directives are not the part of the GraphQL language. Its done by [Apollo Cache Control](https://github.com/apollographql/apollo-cache-control) which builds upon the **extendibility** of the language, meaning that you can write your own directives!_
+_**Note:** cache directives are not the part of the GraphQL language. Caching is done by [Apollo Cache Control](https://github.com/apollographql/apollo-cache-control) which builds upon the **extendibility** of GraphQL, meaning that you can write your own directives!_
 
-- tracing and metrics  
+**Tracing and metrics**
+
 the other important capability of a server is measuring how long it takes to fetch data, and debugging any error that may occur
 
 In the Apollo Platform, these are done by the Apollo Engine. You can hook it up with your server, and it will handle caching, metrics and tracing - the data will be available on their engine dashboard.
@@ -338,32 +337,23 @@ export default graphql(QUERY_PERSON_LIST, PersonList)
 
 I personally prefer the plain `graphql` method, becuse later on when you start to split queries, or create more complex ones, you have the option to separate the component rendering logic from the data fetching.
 
-That's for a quick sumary of Next.js, GraphQL and Apollo, let's move on to some more complex use cases.
+I've made a [small app](https://starwars-app-qcusxpjhnl.now.sh/), based on the Star Wars REST API, putting that API behind a GraphQL service, and fetching data from there. (It's deployed on the serverless free hosting called now.sh, might take some time for a cold start) The link to the working site and the example code itself is on my [GitHub](https://github.com/necccc/nextjs-apollo-graphql).
 
-I've made a [small app](http://bit.ly/starwars-graphql-nextjs), based on the Star Wars REST API, putting that API behind a GraphQL service, and fetching data from there. The link to the working site and the example code itself is on my [GitHub](https://github.com/necccc/nextjs-apollo-graphql).
-
-
-
-
-
-
-
+That's for a quick sumary of Next.js, GraphQL and Apollo, I'll show some more complex use cases in the following posts next month. Stay tuned!
 
 
 
 ## Links & resources
 
-the apollo server on github
-the next+graphql app on github
-next
-next tutorials
-remy's next course
-graphql
-https://www.youtube.com/watch?v=2It9NofBWYg
-
-[Designing a GraphQL API by Shopify](https://gist.github.com/swalkinshaw/3a33e2d292b60e68fcebe12b62bbb3e2)
-
-apollo server & engine
-apollo client with react
-next on spectrum.chat
-apollo on spectrum.chat
+- [The Apollo server for this post on GitHub](https://github.com/necccc/starwars-graphql)
+- [The Next + GraphQL app for this post on GitHub](https://github.com/necccc/nextjs-apollo-graphql)
+- [Next.js](https://github.com/zeit/next.js)
+- [Next.js tutorials](https://nextjs.org/learn/)
+- [Remy Sharps's online course on Next.js](https://next.training.leftlogic.com/)
+- [GraphQL](https://graphql.org/)
+- [Video: Scaling GraphQL at Shopify](https://www.youtube.com/watch?v=2It9NofBWYg)
+- [Designing a GraphQL API by Shopify](https://gist.github.com/swalkinshaw/3a33e2d292b60e68fcebe12b62bbb3e2)
+- [Apollo GraphQL Server & Engine](https://www.apollographql.com/)
+- [Apollo GraphQL client with React](https://www.apollographql.com/docs/react/)
+- [Next.js on spectrum.chat](https://spectrum.chat/next-js)
+- [Apollo on spectrum.chat](https://spectrum.chat/apollo)
