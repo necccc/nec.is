@@ -361,15 +361,6 @@ Take a look at these [examples using all the cryptographic algorithms](https://g
 
 If you don’t have Web Crypto support in the target browsers of your web app, or want to encrypt/decrypt on HTTP for some reason, there are several JavaScript implementations of the most used cryptographic algorithms. The most performant may be the [Asmcrypto.js](https://github.com/asmcrypto/asmcrypto.js) from the Tresorit team, check it out!
 
-
-
-### Performance
-
-jsperf
-
-
-
-
 ## <a name="local-https"></a> Quick local HTTPS server
 Recently I needed HTTPS on my local machine several times and found out that configuring & running apache on OSX can be tedious. So I’ve created a small nginx setup in docker, that can serve some static files and assets for playing with APIs or prototyping.
 
