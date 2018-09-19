@@ -123,6 +123,7 @@ section.article-meta {
 		}
 	}
 
+	.slideshare.full,
 	.video.full,
 	.youtube.full {
 		position: relative;
@@ -144,6 +145,10 @@ section.article-meta {
 			width: 100vw;
 			margin: 0rem 0 0rem 0rem;
 		}
+	}
+
+	.slideshare.full {
+		padding-bottom: 64%;
 	}
 
 	.read-more::after {

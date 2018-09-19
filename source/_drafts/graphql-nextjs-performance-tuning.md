@@ -220,6 +220,9 @@ I've visualized this on a few slides, see them here:
 
 
 
+
+
+
 <a name="list-to-details" class="anchor">
 
 ### Navigating from Lists to Details
