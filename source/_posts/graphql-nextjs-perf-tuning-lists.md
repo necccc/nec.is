@@ -241,11 +241,4 @@ I've visualized this on a few slides, see them here:
 <iframe src="//www.slideshare.net/slideshow/embed_code/key/3Q0kKB8dLsUc1N" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
 </div>
 
-
-
-
-
-
-
-
-
+In a following post I'll show a way to make quick page transitions, from a list of items to a detailed item view, utilizing the goodies in Next.js and the cache in Apollo Client.
