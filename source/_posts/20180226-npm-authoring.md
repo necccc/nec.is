@@ -116,8 +116,8 @@ See this example, where all scripts do the same, using global modules, local pat
     {
         "scripts": {
 
-            // using babel as a global module,
-            // exits with an error if the host hasn't installed babel as global
+            // using babel as a global module or local dependency,
+            // exits with an error if the host hasn't installed depdencies or installed babel as global
             "babel": "babel src --out dist",
 
             // using babel as a local dependency
