@@ -262,4 +262,4 @@ I've tried to explain all this on a few slides, see them here:
 <iframe src="//www.slideshare.net/slideshow/embed_code/key/Lrf0vMRGlnPb9u" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
 </div>
 
-In a following post I'll
+In a following post I'll explain how to render paginated sub-lists of such detail pages like this.
