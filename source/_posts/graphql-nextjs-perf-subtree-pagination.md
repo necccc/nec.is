@@ -16,78 +16,50 @@ tags:
 
 In some previous posts I've [introduced](/writing/graphql-with-next-js-and-apollo/) Next.js and GraphQL a bit, and showed some tips on [creating and paginating lists](/writing/next-js-apollo-graphql-performance-tuning-lists-pagination/), and then quickly explained how to [load detailed data from lists, looking as instant as possible, using cache](/writing/next-js-apollo-graphql-performance-tuning-from-lists-to-details/).
 
-Today we're also looking at a detailed view of some resource but
-
-one of the properties is an array of other resources, for example
-members of a race or a faction in Star Wars
-
+In this post we're still looking at a detailed view of some resource, but lets say one of the properties is an array of other resources, for example members of a race or a faction in Star Wars!
 
 <a name="bind-operator" class="anchor post-intro">
 
+
+
+
+this was the toughest, but if we stick to familiar react best practices, like hoisting state, it's clear
+
+lets say we have some related data on details page, that is huge and would take several seconds to resolve for the graphql server
+paginate subtree in schema
+ask the first page only
+fetch data later, if needed
+
+details fetch only the first page of related data, render when ready
+compose the component rendering the related info with it's own query for paginated relating data
+put related pagination data to detail page state
+at first render, skip the relating query, since we already have the data
+the related component should not update it's own state for next page, lets hoist that data up to the details page state
+the button now updates the state in the parent component
+on state change, flip the skip flag, update the page metadata, and let the related query run
+
+
+
+
+
 ## Subtree
 
-Great thing about GraphQL types, while they may relate to each other and create complex trees, the entries of types can be stored as a flat, normalized data structure. The caching in Apollo client does exactly this, normalize your data, and provide a unique ID for every entry, whatever the type is. It will try to use any field of ID that looks like `id` or `_id`, so it's helpful to put any unique object ID in there.
+We would not query every member of the Rebel Alliance for this page, only the first ten maybe, and let the user browse or search in them. Displaying so much people on a single page wouldn't be just weird UX, but resolving all those data might take several seconds for our GraphQL server.
 
-If you have a different data schema, you can help the client to get these ID's if you want to, by passing a `dataIdFromObject` function to the Cache instance, but that's optional. See the [module docs on Normalization](https://github.com/apollographql/apollo-client/tree/master/packages/apollo-cache-inmemory#normalization) for further info on this.
+In classical REST such lists are just URLs, pointing each to the listed resource items - so if we would like to resolve a property in GraphQL, that is a list of a 100 items, that would mean a 100 new query for our resolvers on the GraphQL server.
+
+Instead, in our Schema we can tell the GraphQL server to resolve the first 6 or 10 only, and use some paging parameters to resolve more items later.
+
+This looks something like this
 
 
 ## Subtree Pagination
 
-```jsx
 
 
-// our GraphQL Query,
-// get the name and ID of some Starships
-export const getStarships = gql`
-    query getStarships {
-        starshipList {
-            items {
-                name
-                id
-            }
-        }
-    }
-`
-
-// a small component to list the data above
-const List = (props) => (<div>
-    <ul>
-        {
-            // data structure here matches the data structure in the query
-            // using next/link, we're pointing these list items to the starship detail pages
-            props.data.starshipList.items.map(item => (<li key={item.id}>
-                <Link href={{ pathname: '/starship', query: { id: item.id } }}>
-                    <a>{item.name}</a>
-                </Link>
-            </li>))
-        }
-    </ul>
-</div>)
-
-// compose the component and the GraphQL Query together
-// using the `graphql` method from react-apollo.
-export default graphql(getStarships)(List)
-
-```
 
 
-First thing that might occur to you is the Query for the detail page has parameters, and much more fields than the List page. Using the parameter `$id`, the GraphQL server can resolve the correct Starship item and send it back as a Query response. The fields are the details we would like to display on the Details page.
 
-Below the Detail component itself is a static method, called `getInitialProps`. This is one of the best features of Next.js, where we can set up props for the page Component during Server-Side Rendering, or client-side navigation. In this case, we grab the ID from the query parameters, and set in to the props, so later we can use it on the Detail page.
-
-Before creating the composed Component we need a small configuration for the GraphQL client:
- - **notifyOnNetworkStatusChange** set to `true` so we will be notified if teh client starts fetching data on the network
- - **variables** an object, where we pass the parameters for the Query, in our case, the ID
-
-This Detail page works as it is now, but we have to wait for the Query to run, before we can show any data. To make the step from the List page to the Details page instant, we have to redirect part of the Query to the cache.
-
-### Redirect in practice
-
-Simplest solution for this, is to have a separate Query with the same fields as the List had. We're going to do the following:
-
- - set up a small Query with just the `name` and the `id` - these are the fields queried for the list
- - leave the full Query as it is
- - combine the Query Components together, so when they resolve in order, they will incrementally render the detail page
 
 ```jsx
 import { compose, graphql } from 'react-apollo'
