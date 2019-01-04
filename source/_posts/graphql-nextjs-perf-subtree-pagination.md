@@ -1,7 +1,7 @@
 ---
 title: "Next.js & Apollo GraphQL Performance Tuning: Subtree Pagination"
 description: "Paginate items related to a parent resource type, for example the members of a faction in Star Wars"
-date: 2018-10-20
+date: 2019-01-20
 categories:
 - writing
 tags:
@@ -14,13 +14,11 @@ tags:
 ---
 
 
-In some previous posts I've [introduced](/writing/graphql-with-next-js-and-apollo/) Next.js and GraphQL a bit, and showed some tips on [creating and paginating lists](/writing/next-js-apollo-graphql-performance-tuning-lists-pagination/), and then quickly explained how to [load detailed data from lists, looking as instant as possible, using cache](/writing/next-js-apollo-graphql-performance-tuning-from-lists-to-details/).
+In some previous posts I've [introduced](/writing/graphql-with-next-js-and-apollo/) Next.js and GraphQL a bit, then showed some tips on [creating and paginating lists](/writing/next-js-apollo-graphql-performance-tuning-lists-pagination/), and quickly explained how to [load detailed data from lists, looking as instant as possible, using cache](/writing/next-js-apollo-graphql-performance-tuning-from-lists-to-details/).
 
-In this post we're still looking at a detailed view of some resource, but lets say one of the properties is an array of other resources, for example members of a race or a faction in Star Wars!
+In this post we're still looking at a detailed view of some resource, but lets say one of the properties is an array of **other** resources, for example members of a race or a faction in Star Wars!
 
 <a name="bind-operator" class="anchor post-intro">
-
-
 
 
 this was the toughest, but if we stick to familiar react best practices, like hoisting state, it's clear
@@ -29,6 +27,7 @@ lets say we have some related data on details page, that is huge and would take 
 paginate subtree in schema
 ask the first page only
 fetch data later, if needed
+
 
 details fetch only the first page of related data, render when ready
 compose the component rendering the related info with it's own query for paginated relating data
@@ -42,19 +41,45 @@ on state change, flip the skip flag, update the page metadata, and let the relat
 
 
 
-## Subtree
-
-We would not query every member of the Rebel Alliance for this page, only the first ten maybe, and let the user browse or search in them. Displaying so much people on a single page wouldn't be just weird UX, but resolving all those data might take several seconds for our GraphQL server.
-
-In classical REST such lists are just URLs, pointing each to the listed resource items - so if we would like to resolve a property in GraphQL, that is a list of a 100 items, that would mean a 100 new query for our resolvers on the GraphQL server.
-
-Instead, in our Schema we can tell the GraphQL server to resolve the first 6 or 10 only, and use some paging parameters to resolve more items later.
-
-This looks something like this
-
-
 ## Subtree Pagination
 
+We should not query every member of the Rebel Alliance for this page, only the first ten maybe, and let the user browse them later. Displaying so much data on a single page wouldn't be just weird UX, but resolving all those members might take several seconds for our GraphQL server.
+
+In classical REST such lists are just URLs, pointing each to the listed resource items - so if we would like to resolve a property in GraphQL, that has a list of a 100 items, that would mean a 100 new query for our resolvers on the GraphQL server.
+_(Note: In these examples our GraphQL server resolves Types and fields from a REST API backend, not from a database directly)_
+
+### Define the Schema
+
+We can tell the GraphQL server to resolve the first 10 only, and use some paging parameters to fetch more items later. Lets see this on the Species type in our Star Wars Schema!
+
+```graphql
+
+type Species {
+    id: ID
+    name: String
+    classification: String
+    homeworld: Planet
+    designation: String
+    language: String
+    average_height: String
+    average_lifespan: String
+    picture: String
+    # the 'people' field contains all members of a Species
+    # the query for this field accepts two parameters,
+    # - pick the first n items
+    # - starting from an offset
+    #
+    # by default it will get the first 10 Persons
+    people(first: Int = 10 offset: Int = 0): [Person]
+    peopleCount: Int
+}
+```
+
+Our first query can run without any parameters, because it will use the default values. Later we can fetch this field only, updating the paging parameters.
+
+We render our detail page using the cache if possible, as explained in the [previous post](). We add a button, to "Show More" members of a Species, this button should update the paging parameters of the query. But here, we have our first problem: updating the query parameters for this detail page, would fetch _all_ the data in the query _again_, and that is one thing GraphQL is intented to avoid.
+
+To solve this, we create a small component with the list of the members, and the button (if we're crafty enough, we can reuse this list on other detail pages)!
 
 
 
