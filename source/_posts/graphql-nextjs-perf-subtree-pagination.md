@@ -64,6 +64,7 @@ type Species {
     average_height: String
     average_lifespan: String
     picture: String
+
     # the 'people' field contains all members of a Species
     # the query for this field accepts two parameters,
     # - pick the first n items
@@ -71,6 +72,7 @@ type Species {
     #
     # by default it will get the first 10 Persons
     people(first: Int = 10 offset: Int = 0): [Person]
+
     peopleCount: Int
 }
 ```
@@ -79,96 +81,136 @@ Our first query can run without any parameters, because it will use the default 
 
 We render our detail page using the cache if possible, as explained in the [previous post](). We add a button, to "Show More" members of a Species, this button should update the paging parameters of the query. But here, we have our first problem: updating the query parameters for this detail page, would fetch _all_ the data in the query _again_, and that is one thing GraphQL is intented to avoid.
 
-To solve this, we create a small component with the list of the members, and the button (if we're crafty enough, we can reuse this list on other detail pages)!
+To solve this, we create a small component with the list of the members, and the button (and if we're crafty enough, we can reuse this list on other detail pages)! Notable props this component will receive are:
 
-
-
-
-
+ - **id**, to know which species we're looking at
+ - **pageData**, with all the data needed to configure the `people` field, seen above in the Schema
+ - **data**, the actual list of people
+ - **onLoadMore**, a function to call, to init the query for the next page of people
+ - **skip**, this prop indicates if the component should skip fetching data, since it's getting it from the parent component of first load
 
 ```jsx
-import { compose, graphql } from 'react-apollo'
 
-// requesting the same fields as they were in the list
-// specific to the ID we want to see in details
-export const getStarshipQuick = gql`
-    query getStarshipQuick($id: ID) {
-        Starship(id: $id) {
-            items {
-                id
-                name
-            }
-        }
-    }
-`
+    <RelatedPeople
+        id={ '' }
+        pageData={{
+            first,
+            offse,
+            total
+        }}
+        data={ [ {}, {} ] }
+        onLoadMore={ () => {} }
+        skip={ true }
+    />
 
-// requesting the full data from graphql, by the ID
-export const getStarshipFull = gql`
-    query getStarshipFull($id: ID) {
-        Starship(id: $id) {
-            items {
-                id
-                name
-                model
-                length
-                crew
-                manufacturer
-            }
-        }
-    }
-`
 
-class Starship extends React.Component {
-    render() {
-        const { starship } = this.props.data
 
-        return (<div>
-            <h1>{starship.name}</h1>
-
-            <img src="{starship.picture}" />
-
-            <ul>
-                <li>Model: {starship.model}</li>
-                <li>Length: {starship.length}</li>
-                <li>Crew: {starship.crew}</li>
-                <li>Manufacturer: {starship.manufacturer}</li>
-            </ul>
-        </div>)
-    }
-}
-
-// the getInitialProps of nextjs prepares the Starship ID for us
-// grabbing it from the query
-Detail.getInitialProps = async function ({ query }) {
-	return {
-		id: query.id
-	}
-}
-
-// we set up two things here:
-// - get notified if the GraphQL Query is in loading state
-// - put the ID from the props, to the variables, so the Query receives it
-const queryParams = {
-	options: props => {
-		return {
-			notifyOnNetworkStatusChange: true,
-			variables: {
-				id: props.id
-			},
-		}
-	}
-}
-
-// here we compose two GraphQL queries together
-// they will run in order as we compose them
-// first the Quick one - which will be redirected to the cache, and render instantly
-// then the Full one - after resolving that one from the network,
-// it will render the rest of the details
-export default compose(
-	graphql(getStarshipQuick, queryParams),
-	graphql(getStarshipFull, queryParams)
-)(Detail)
 ```
+
+Now we can use this component on our detail page!
+
+```jsx
+    // SpeciesDetails component
+
+    class SpeciesDetails extends React.Component {
+        render() {
+            const { species } = this.props.data
+
+            return (<div>
+                <h1>{species.name}</h1>
+
+                <img src="{starship.picture}" />
+
+                <ul>
+                    <li>Homeworld: {species.homeworld}</li>
+                    <li>Language: {species.language}</li>
+                    <li>Classification: {species.classification}</li>
+                    <li>Average Height: {species.average_height}</li>
+                </ul>
+
+                <h2>Members</h2>
+
+                <RelatedPeople
+                    id={ species.id }
+                    pageData={{
+                        first,
+                        offse,
+                        total
+                    }}
+                    data={ species.people }
+                    onLoadMore={ () => this.onLoadMore() }
+                    skip={ relatedPeople.skip }
+                />
+            </div>)
+        }
+
+        onLoadMore() {}
+    }
+
+    /*
+        the rest below is basically the same as in the previous post in this series
+        - setting the initial prop with next.js
+        - preparing the graphql query
+        - composing our page component with the queries, trying to fetch from cache first
+    */
+
+    SpeciesDetails.getInitialProps = async function ({ query }) {
+        return {
+            id: query.id
+        }
+    }
+
+    const queryParams = {
+        options: props => {
+            return {
+                // get notified if the GraphQL Query is in loading state
+                notifyOnNetworkStatusChange: true,
+                // put the ID from the props, to the variables, so the Query receives it
+                variables: {
+                    id: props.id
+                },
+            }
+        }
+    }
+
+    const getSpeciesQuick = gql`
+        query getSpeciesQuick($id: ID) {
+            Species(id: $id) {
+                id
+                name
+            }
+        }
+    `
+    const getSpeciesFull = gql`
+        query getSpeciesFull($id: ID) {
+            Species(id: $id) {
+                id
+                name
+                classification
+                homeworld
+                average_height
+                language
+                people {
+                    id
+                    name
+                    picture
+                }
+            }
+        }
+    `
+    export default compose(
+        graphql(getSpeciesQuick, queryParams),
+        graphql(getSpeciesFull, queryParams)
+    )(SpeciesDetails)
+
+```
+
+Note the full query, we include the field `people`, with their id, name and picture only.
+
+At first render, the query receives no parameters related to paging the `people` field, and there is no need for those, since the Schema has default values.
+
+
+
 
 I've tried to explain all this on a few slides, see them here:
 
