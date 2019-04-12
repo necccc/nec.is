@@ -57,7 +57,7 @@ As for development experience, it provides a dev mode, where Webpack HMR shines 
 
 {% image_tag "pull-right" "graphql.svg" "GraphQL logo" %}
 
-Facebook came up with GraphQL few years ago, to solve their problems around verbose and network draining APIs. It's not a framework, nor a library, its just a **query language** and as such, can be implemented in several languages fro both server-side and client-side.
+Facebook came up with GraphQL few years ago, to solve their problems around verbose and network draining APIs. It's not a framework, nor a library, its just a **query language** and as such, can be implemented in several languages for both server-side and client-side.
 
 GraphQL aims to solve several painful problems around APIs:
 
@@ -337,7 +337,7 @@ export default graphql(QUERY_PERSON_LIST, PersonList)
 
 I personally prefer the plain `graphql` method, becuse later on when you start to split queries, or create more complex ones, you have the option to separate the component rendering logic from the data fetching.
 
-I've made a [small app](https://starwars-app-qcusxpjhnl.now.sh/), based on the Star Wars REST API, putting that API behind a GraphQL service, and fetching data from there. (It's deployed on the serverless free hosting called now.sh, might take some time for a cold start) The link to the working site and the example code itself is on my [GitHub](https://github.com/necccc/nextjs-apollo-graphql).
+I've made a [small app](https://starwars-app-ettwujehho.now.sh/), based on the Star Wars REST API, putting that API behind a GraphQL service, and fetching data from there. (It's deployed on the serverless free hosting called now.sh, might take some time for a cold start) The link to the working site and the example code itself is on my [GitHub](https://github.com/necccc/nextjs-apollo-graphql).
 
 That's for a quick sumary of Next.js, GraphQL and Apollo, I'll show some more complex use cases in the following posts next month. Stay tuned!
 
