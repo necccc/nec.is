@@ -1,0 +1,22 @@
+@import '../colors.scss';
+@import '../fonts.scss';
+
+html, body {
+	background-color: $color-white;
+	color: $color-black;
+	padding: 0;
+	margin: 0;
+}
+
+.layout {
+  font-size: 1rem;
+
+  @media (max-width: 480px) {
+    font-size: 1.4rem;
+  }
+
+	font-family: $body-font;
+	line-height: 1.48em;
+	font-weight: 300;
+	overflow: hidden;
+}

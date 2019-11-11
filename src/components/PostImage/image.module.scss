@@ -1,0 +1,73 @@
+@import '../colors.scss';
+@import '../font-face.scss';
+
+.image {
+    margin-bottom: 4rem;
+    padding-bottom: 1rem;
+    // border-bottom: 1px solid lighten($color-black, 75%);
+
+    @media (max-width: 480px) {
+      margin-bottom: 1rem;
+    }
+
+
+    .description {
+        display: block;
+        font-style: italic;
+        font-family: 'Libre Franklin', sans-serif;
+        font-size: .8rem;
+        color: lighten($color-black, 50%);
+        text-align: left;
+        line-height: 1.3em;
+        padding-bottom: 1rem;
+
+        @media (max-width: 480px) {
+          font-size: 1.2rem;
+        }
+    }
+    &__pull_left,
+    &__pull_right {
+        width: 330px;
+        text-align: center;
+
+        @media (max-width:480px) {
+            width: 100%;
+        }
+
+        img {
+            max-width: 100%;
+            margin-bottom: .5rem;
+        }
+    }
+
+    &__pull_left {
+        float: left;
+        clear: left;
+        margin-right: 2rem;
+    }
+
+    &__pull_right {
+        float: right;
+        clear: right;
+        margin-left: 2rem;
+
+        .description {
+          text-align: right;
+        }
+    }
+
+    &__full {
+        width: calc(100% + 4rem);
+        margin: 2rem 0 2rem -2rem;
+        display: inherit;
+        border-bottom: none;
+
+        img {
+            width: 100%;
+        }
+
+        .description {
+            padding: 0 2rem;
+        }
+    }
+}

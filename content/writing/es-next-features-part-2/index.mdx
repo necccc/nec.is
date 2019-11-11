@@ -1,0 +1,196 @@
+---
+date: "2018-07-10"
+title: "Upcoming ESNext features - Part 2"
+description: "Take a look on the Bind Operator, Top-Level Await and Optional Chaining"
+tags:
+- esnext
+- ecmascript
+- tc39
+- learning
+- bind operator
+- top-level await
+- optional chaining
+---
+
+import Intro from "../../../src/components/Intro";
+
+<Intro>
+
+Recently I took a look at JavaScript features still in the proposal stage and handpicked the 10 top features that I (a)wait for JavaScript. It would be too long for a single post, so I've sliced it to three posts. [The first three features were Pipelines, Partial application, and Decorators](/writing/upcoming-esnext-features-part-1/), today let's take a look on the next three:
+
+- [Bind operator](#bind-operator)
+- [Top-level await](#top-level-await)
+- [Optional Chaining](#optional-chaining)
+
+</Intro>
+
+
+<a name="bind-operator" class="anchor post-intro" />
+
+## Bind operator ::
+
+The fat arrow function and the way it utilizes lexical scope solved most use cases of **binding context**. But still, there are some places, where proper scope binding has to be used. The `bind, call, apply` methods are a bit awkward in these contexts, so the TC39 is considering the introduction of the [Bind operator](https://github.com/tc39/proposal-bind-operator).
+
+Such use cases, for example:
+- we would like to run a function with an injected `this`
+- extract a method from an object as a function but bound to the context of the object it originates from
+
+How these look like in code:
+
+
+`gist:ca282f807a71930b10ea54dc2e45705f#bind-operator.js`
+
+
+### Code readability
+
+Reading the usage of the `filterCollectionByClass` function on the `elements` collection is more clear with the operator. It's like invoking a method on the collection. No more dangling with `call` or `apply`, easier to comprehend what's happening, and reducing cognitive load while reading the code itself.
+
+
+
+Let's have a quick explainer on what happens above:
+
+
+`gist:ca282f807a71930b10ea54dc2e45705f#bind-operator-explainer.js`
+
+
+The important difference here is that the first notation creates a function that can be re-used, and the second one actually runs the function - just like the difference between `bind` and `call/apply`.
+
+It's clear that the [proposed syntax](https://github.com/tc39/proposal-bind-operator) is more readable in these situations, so let's hope it moves up the stage ladder soon!
+
+
+
+
+
+
+<a name="top-level-await" class="anchor" />
+
+## Top-level await
+
+Probably a month ago, a fellow developer who started to code in Node.js recently, told me that how inconvenient is to use async functions early in your modules. Their idea was simple:
+- just create an `index.js` file,
+- require some dependencies,
+- then start to `await` data from async functions conveniently
+
+They were disappointed that first, an async function has to be created and called, and _inside that_  they can await data.
+
+I was like: HAH, gather around folks, and let me tell you the story of **top-level await**!
+
+What they did to resolve their problem, is usually called an **IIAFE**, or _immediately invoked async function expression_, the big sister of IIF expressions.
+
+
+`gist:ca282f807a71930b10ea54dc2e45705f#IIAFE.js`
+
+
+Currently, this additional boilerplate code is the solution to quickly reach the `await` keyword in your modules at a top level, and stop using callbacks, or Promises (or `.then()` and `.catch()` more precisely, since async/await is practically using Promises).
+
+### Why not allow it at the top-level scope?
+
+The question is simple, but the answer... not really. The problem originates from the behavior of async/await, so let's make that clear:
+
+**Await halts the execution of the script until the awaited expression resolves, or throws an error.**
+
+This is also true when we're using **dynamic imports** in our code, to reach modules, or computed module names in an async way - and the main concerns with top-level await comes from these use cases.
+
+
+`gist:ca282f807a71930b10ea54dc2e45705f#tla-dynamic-import.js`
+
+
+Let's go over on most of the concerns with this kind of code:
+
+
+- **Creates a single point of failure in your module tree.**
+
+During your app start, you could `await` some code, which tries to reach some resource, waiting waiting, and everything halts until it resolves.
+
+Bad news: halting your app with async/await can happen this very day, there are several _"tricks"_ for that already, like infinite loops, infinite recursion and [Atomics.wait()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Atomics/wait).
+
+
+- **Predictability suffers on module loading order**
+
+Good news: if you use declarative imports (meaning you write static module paths), by the time your code reach the problematic `await`, the module tree is parsed and ready, so this does not affect your app so drastically.
+
+More problematic use cases are the calculated module imports, and these might be really useful in real-life scenarios.
+
+
+`gist:ca282f807a71930b10ea54dc2e45705f#calculate-imports.js`
+
+
+This is the characteristic of application code, not library code, so accidentally reaching a point like this by using third party modules is very unlikely. Are you afraid that awaiting modules might block your code? Let's quote [Bradley Meck](https://github.com/bmeck) here:
+
+> await is exactly for when your app is blocked by something
+
+That keyword is telling you, that code following it, will pause the execution of the current script.
+
+- **Interoperability issues with commonjs**
+
+This might be an issue, but since ES modules are making their way in browsers and Node.js, transparent interoperability between imported and required modules has top priority. I'm pretty sure the final proposal will tell vendors and implementors how to tackle this.
+
+- **Cyclical dependencies with top-level await => race conditions, or deadlocks**
+
+Deadlocks are possible with the current solution, so we either accept them as a possibility or avoid them by creating Temporal Dead Zones in module loading/parsing. If you're interested in this, check out the [proposal](https://github.com/tc39/proposal-top-level-await) for further details.
+
+- **Encouraging dynamic imports will really slow down apps**
+
+Rich Harris from the Rollup team wrote [this gist](https://gist.github.com/Rich-Harris/41e8ccc755ea232a5e7b88dee118bcf5), detailing his concerns regarding dynamic imports.
+
+According to the comment thread there, this concert might be _partially_ valid:
+- declarative (using static module paths) dynamic imports will be present on the module tree if vendors do speculative loading or preloading.  
+In this case, if a module will be loaded dynamically, the browser/node process will be prepared for it, and won't affect speed.
+
+- imperative (using computed module paths) dynamic imports might cause problems like this, but - as we've seen above - these issues are usually relevant to application code and not library code, so this is the code you write and you have to be prepared for it
+
+### Possible workarounds
+
+The proposal suggests two possible solutions to the concerns above:
+
+1. **Block the whole module dependency tree until everything resolves**  
+Sequential dynamic imports block all the following ones until the whole graph is resolved. This is possibly the simplest and expected behavior. This solution guarantees module order in a declarative way but may block the application.
+
+2. **Block only the dependencies, the script that imports them keeps running**  
+Like if you defer all your imports in with `Promise.all`, and the importing script keeps running, and in the future at a point, they will be resolved. This solution provides developers the ability to handle errors in dependencies, or use timeouts to resolve deadlocks.
+
+**Additionally**, to ease concerns around blocking in libraries and dependencies, a constraint is suggested: top-level await could be used only in modules **without exports**. This would restrict top-level awaits to bootstrapping application code only.
+
+
+[This proposal is in Stage 2](https://github.com/tc39/proposal-top-level-await), a relatively advanced stage, and an active discussion is ongoing around it, so I think there will be updates from it in the near future.
+
+
+<a name="optional-chaining" class="anchor" />
+
+## Optional Chaining
+
+Raise your hand if you've ever done something like this in your life:
+
+
+`gist:ca282f807a71930b10ea54dc2e45705f#optional-chain-problem.js`
+
+
+Most of us have been there, receiving an object from some API or XHR request, and we would like to access a property, deeply nested somewhere inside - but we may not be sure if the data is _actually there_.
+
+To solve issues like this, the [Optional Chaining](https://github.com/TC39/proposal-optional-chaining) was proposed. The previous code would look like this, using optional chaining:
+
+
+`gist:ca282f807a71930b10ea54dc2e45705f#optional-chaining.js`
+
+
+If the `homeworld` property does not exist on the `person` object, the chain will resolve to `undefined`, instead of throwing an error - so we can add a default value easily and our code seems a bit more readable too!
+
+This works with methods, and dynamic properties as well! A quick overview of the syntax proposal:
+
+
+`gist:ca282f807a71930b10ea54dc2e45705f#optional-chaining-explainer.js`
+
+
+If the parent object or method is missing all these evaluate to `undefined`, a predictable value, it's easy to build upon them.
+
+[Optional Chaining](https://github.com/TC39/proposal-optional-chaining) is currently in Stage 1, so we won't see it in production for a while, but the proposal seems solid, and there's a [babel plugin](https://www.npmjs.com/package/babel-plugin-transform-optional-chaining) for it already!
+
+
+
+
+With these three goodies explained, I'll arrive at the last four exciting features in the next post:
+
+- Private & static fields
+- Realms
+- Nullish Coalescing operator
+- Throw expressions

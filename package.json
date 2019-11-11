@@ -1,59 +1,56 @@
 {
   "name": "nec.is",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
-    "setup": "docker-compose run --rm hexo npm install",
-    "generate:local": "docker-compose run --rm hexo npx hexo generate",
-    "generate": "npx hexo generate",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "rebuild-sass": "npm rebuild node-sass",
-    "server": "npm run rebuild-sass; npx hexo serve",
-    "start": "docker-compose up",
-    "stop": "docker-compose stop",
-    "logs": "docker-compose logs -f",
-    "tools": "node tools.js"
+    "start": "npm run dev",
+    "predev": "npx gatsby clean",
+    "dev": "npx gatsby develop",
+    "postdev": "npm run format",
+    "build": "npx gatsby build",
+    "format": "npx prettier --write \"src/**/*.js\""
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/necccc/nec.is.git"
-  },
-  "author": "nec@shell8.net",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/necccc/nec.is/issues"
-  },
-  "homepage": "https://nec.is",
-  "hexo": {
-    "version": "3.7.1"
+  "devDependencies": {},
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ],
+  "watch": {
+    "build": "src/**/*.*"
   },
   "dependencies": {
-    "dotenv": "4.0.0",
-    "hexo": "3.7.1",
-    "hexo-cli": "1.0.4",
-    "hexo-generator-archive": "^0.1.4",
-    "hexo-generator-category": "^0.1.3",
-    "hexo-generator-feed": "1.2.2",
-    "hexo-generator-index": "^0.2.0",
-    "hexo-generator-tag": "^0.2.0",
-    "hexo-offline": "0.2.3",
-    "hexo-prism-plugin": "^2.2.0",
-    "hexo-renderer-ejs": "^0.3.0",
-    "hexo-renderer-marked": "0.3.2",
-    "hexo-renderer-scss": "1.2.0",
-    "hexo-renderer-stylus": "^0.3.1",
-    "hexo-server": "^0.2.0",
-    "instagram-node": "0.5.8",
-    "is-absolute-url": "^2.1.0",
-    "puppeteer": "1.4.0",
-    "reading-time": "1.1.0",
-    "request": "2.83.0",
-    "request-promise-native": "1.0.5"
-  },
-  "devDependencies": {
-    "alex": "5.1.0",
-    "convert-svg-to-png": "0.4.0",
-    "inquirer": "6.0.0"
+    "@mdx-js/mdx": "^1.5.1",
+    "@mdx-js/react": "^1.5.1",
+    "classnames": "^2.2.6",
+    "dotenv": "^8.2.0",
+    "gatsby": "^2.16.5",
+    "gatsby-image": "^2.2.29",
+    "gatsby-mdx": "^1.0.0",
+    "gatsby-plugin-catch-links": "^2.1.15",
+    "gatsby-plugin-feed": "^2.3.19",
+    "gatsby-plugin-force-trailing-slashes": "^1.0.4",
+    "gatsby-plugin-google-analytics": "^2.1.23",
+    "gatsby-plugin-manifest": "^2.2.23",
+    "gatsby-plugin-mdx": "^1.0.52",
+    "gatsby-plugin-offline": "^3.0.16",
+    "gatsby-plugin-prefetch-google-fonts": "^1.4.3",
+    "gatsby-plugin-react-helmet": "^3.1.13",
+    "gatsby-plugin-react-svg": "^2.1.2",
+    "gatsby-plugin-sass": "^2.1.20",
+    "gatsby-plugin-sharp": "^2.2.32",
+    "gatsby-remark-copy-linked-files": "^2.1.28",
+    "gatsby-remark-embed-gist": "^1.1.6",
+    "gatsby-remark-images": "^3.1.28",
+    "gatsby-remark-prismjs": "^3.2.4",
+    "gatsby-remark-smartypants": "^2.1.14",
+    "gatsby-source-filesystem": "^2.1.33",
+    "gatsby-transformer-remark": "^2.6.30",
+    "gatsby-transformer-sharp": "^2.2.23",
+    "isomorphic-unfetch": "^3.0.0",
+    "node-sass": "^4.12.0",
+    "prettier": "^1.18.2",
+    "prismjs": "^1.17.1",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "react-helmet": "^5.2.1"
   }
 }

@@ -1,0 +1,60 @@
+@import '../colors.scss';
+@import '../font-face.scss';
+
+.quote {
+	margin-top: 2* 1.45rem;
+	margin-bottom: 2* 1.45rem;
+	padding: 0;
+	border-left: .5rem solid $color-light-2;
+	margin-left: 0;
+	padding-left: 1rem;
+	padding-right: 12rem;
+
+  @media (max-width: 480px) {
+    padding-right: 2rem;
+  }
+
+	&-full {
+		&:before {
+			display: block;
+			content: '';
+			height: 1px;
+			clear: both;
+		}
+	}
+
+	.body {
+		font-family: $heading-font;
+		font-weight: 300;
+		font-size: 1.3rem;
+		line-height: 2rem;
+    color: lighten($color-black, 40%);
+
+    @media (max-width: 480px) {
+      line-height: 2.4rem;
+    }
+	}
+
+	.footer {
+		font-family: 'Libre Franklin', sans-serif;
+		font-weight: 300;
+		font-size: $font-small;
+
+    @media (max-width: 480px) {
+      font-size: 1rem;
+    }
+
+		.by {
+			display: inline-block;
+		}
+
+		.cite {
+			display: inline-block;
+
+			&::before {
+				content: '\00B7';
+				padding: 0 .4rem;
+			}
+		}
+	}
+}

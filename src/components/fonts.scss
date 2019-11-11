@@ -1,0 +1,57 @@
+@import './font-face.scss';
+@import './mixins.scss';
+
+
+html, body {
+  font-size: 16px;
+
+  @media (max-width:480px) {
+    font-size: 12px;
+  }
+}
+
+h1,h2,h3,h4,p,ul,ol,li,blockquote,span {
+	line-height: $line-height;
+	font-weight: 300;
+}
+
+p,ul,ol,dl,blockquote {
+	padding: 0;
+	margin: 0 0 #{$line-height}rem;
+}
+
+h1,h2,h3,h4 {
+	font-family: $heading-font;
+	font-weight: 700;
+}
+
+li {
+	list-style: none;
+}
+
+h1 {
+	font-size: 3.052rem;
+}
+h2 {
+	font-size: 2.1rem;
+}
+h3 {
+	font-size: 1.65rem;
+}
+h4 {
+  font-size: 1.4rem;
+}
+
+
+a {
+	color: $color-blue;
+	text-decoration: none;
+
+	&:visited, &:active {
+		color: $color-blue;
+	}
+
+	&:not(.anchor):hover {
+		@include underline($color-white, $color-blue)
+	}
+}
