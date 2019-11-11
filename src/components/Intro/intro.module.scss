@@ -1,0 +1,27 @@
+@import '../colors.scss';
+@import '../mixins.scss';
+
+.intro {
+	position: relative;
+	z-index: 2;
+	display: block;
+	padding-top: calc(var(--headerHeight) + 2rem);
+	margin-bottom: 8rem;
+
+	&::after {
+		content: '';
+		position: absolute;
+		top: -5rem;
+		z-index: -1;
+		width: 100vw;
+		left: calc(-1 * ((100vw - 100%) / 2));
+		height: 120%;
+		transform: skewY(calc(-0.5 * var(--headerSkew)));
+		transform-origin: bottom left;
+    background-color: $color-light-1;
+
+    @media (max-width: 480px) {
+      top: -8rem;
+		}
+	}
+}

@@ -1,0 +1,140 @@
+@import '../components/colors.scss';
+@import '../components/font-face.scss';
+@import '../components/mixins.scss';
+
+.intro {
+	@include article();
+
+	padding-top: 24rem;
+  padding-bottom: 0rem;
+  position: relative;
+
+  p {
+    position: relative;
+    z-index: 2;
+  }
+
+  &::after {
+		content: '';
+		position: absolute;
+		top: -2rem;
+		z-index: 1;
+		width: 100vw;
+		left: calc(-1 * ((100vw - 100%) / 2));
+		height: 120%;
+		transform: skewY(calc(-0.5 * var(--headerSkew)));
+		transform-origin: bottom left;
+		background-color: $color-light-1;
+	}
+}
+
+
+.articles {
+  @include article();
+  padding-bottom: 2rem;
+}
+
+.article {
+	&_grid {
+		position: relative;
+		display: grid;
+
+    grid-template-columns: 1fr 1fr;
+		grid-gap: 2rem 4rem;
+
+
+    @media (max-width: 480px) {
+      display: block;
+    }
+
+		&::after {
+			content: '';
+			width: 1px;
+			height: 100%;
+			position: absolute;
+			left: 50%;
+			top: 0;
+      background-color: $color-light-2;
+
+      @media (max-width: 480px) {
+        display: none;
+      }
+		}
+
+
+		&_item {
+			position: relative;
+			background-color: $color-white;
+			z-index: 2;
+
+			h3, p {
+				position: relative;
+				z-index: 2;
+			}
+
+			a {
+				color: $color-black;
+			}
+
+			&:hover a {
+				@include underline($color-light-1, $color-blue)
+			}
+
+			&:first-child {
+				grid-column-start: 1;
+				grid-column-end: span 2;
+
+				border-bottom: 1px solid $color-light-2;
+				box-shadow: 0 2rem $color-white;
+			}
+
+
+
+      @media (max-width: 480px) {
+        border-bottom: 1px solid $color-light-2;
+        box-shadow: 0 2rem $color-white;
+
+        &:last-child {
+          border: none;
+          box-shadow: none;
+        }
+      }
+
+			&::after {
+				content: '';
+				position: absolute;
+				z-index: 1;
+				width: 100%;
+				height: 100%;
+				top: -1rem;
+				left: -1rem;
+				background-color: $color-light-1;
+				opacity: 0;
+				padding: 0;
+				transition: opacity 1 ease-in-out, padding 1 ease-in-out;
+			}
+
+			&:hover::after {
+				opacity: 1;
+				padding: 1rem;
+			}
+		}
+	}
+
+	&_meta {
+		font-size: .8rem;
+		color: $color-light-3;
+
+		&_timetoread::after,
+		&_date::after {
+			content: '\00B7';
+    		display: inline-block;
+			padding: 0 .4rem;
+		}
+
+		a {
+			color: $color-blue;
+		}
+	}
+
+}

@@ -1,0 +1,55 @@
+@import './colors.scss';
+
+
+@mixin article() {
+  max-width: 64rem;
+	box-sizing: border-box;
+  margin: 0 auto;
+  margin-bottom: 10rem;
+  padding: 0 1.45rem;
+}
+
+/*
+    fancy underlines!
+*/
+@mixin underline($background: $color-white, $text: $color-black, $position: 95%, $width: 0.04em){
+
+    text-decoration: none;
+    background:
+        linear-gradient($background, $background),
+        linear-gradient($background, $background),
+        linear-gradient($text, $text);
+    background-size: .05em $width, .05em $width, $width $width;
+    background-repeat: no-repeat, no-repeat, repeat-x;
+    text-shadow:
+        0.03em 0 $background,
+        -0.03em 0 $background,
+        0 0.03em $background,
+        0 -0.03em $background,
+        0.06em 0 $background,
+        -0.06em 0 $background,
+        0 0.06em $background,
+        0 -0.06em $background,
+        0.09em 0 $background,
+        -0.09em 0 $background,
+        0 0.09em $background,
+        0 -0.09em $background,
+        0.12em 0 $background,
+        -0.12em 0 $background,
+        //0 0.12em $background,
+        //0 -0.12em $background,
+        0.15em 0 $background,
+        -0.15em 0 $background;
+        //0 0.15em $background,
+        //0 -0.15em $background;
+    background-position: 0 $position, 100% $position;
+
+    &:before, &:after, *, *:before, *:after {
+        text-shadow: none;
+    }
+}
+
+@mixin noUnderline(){
+    text-shadow: none;
+    background: none;
+}

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Copyright 2017 mathsisfun.com -->
+<svg xmlns="http://www.w3.org/2000/svg" width="467.6" height="180.9" version="1.1">
+<defs>
+<marker id="id3" style="overflow:visible;" orient="auto">
+<path transform="matrix(0.8,0,0,0.8,10,0)" style="stroke:black; stroke-width:1pt;" d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"/>
+</marker>
+<marker id="id4" style="overflow:visible;" orient="auto">
+<path transform="matrix(-0.8,0,0,-0.8,-10,0)" style="stroke:black; stroke-width:1pt;" d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"/>
+</marker>
+<marker id="id2" style="overflow:visible;" orient="auto">
+<path transform="matrix(-0.4,0,0,-0.4,-4,0)" style="stroke:black; stroke-width:1pt;" d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"/>
+</marker>
+<marker id="id1" style="overflow:visible;" orient="auto">
+<path transform="matrix(0.4,0,0,0.4,4,0)" style="stroke:black; stroke-width:1pt;" d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"/>
+</marker>
+</defs>
+<g transform="translate(418.82556,393.5446)">
+<rect x="-418.8" y="-388.8" ry="32.4" width="189.3" height="171.3" style="color:black; overflow:visible; opacity:0.12; fill:#0197fd; stroke-width:2;"/>
+<path style="color:black; overflow:visible; fill:none; stroke:#0000ff; stroke-width:1.6;" d="m 1.8,-255.8 -201.4,0 201.2,-111.6 0.2,111.6 z"/>
+<text x="-113.4" y="-271.1" transform="scale(1.000305,0.99969509)" style="font-family:'Comic Sans MS'; font-size:25.1px; stroke-width:2.53;">θ</text>
+<path style="color:black; marker-start:url(#id1); marker-end:url(#id2); overflow:visible; fill:none; stroke:black; stroke-width:1.6;" d="m -130.9,-290.7 a 75.1,75.1 0 0 1 8.5,32.7"/>
+<path style="fill:none; stroke:black; stroke-width:0.4px;" d="m -200.7,-222 0,-25.4"/>
+<path style="fill:none; stroke:black; stroke-width:0.4px;" d="m 2.2,-222.1 0,-25.4"/>
+<path style="marker-start:url(#id3); marker-end:url(#id4); fill:none; stroke:black; stroke-width:0.72;" d="m -0.6,-236.1 -197.9,0"/>
+<path style="fill:none; stroke:black; stroke-width:0.4px;" d="m -204.8,-259 -11.3,-20.8"/>
+<path style="fill:none; stroke:black; stroke-width:0.4px;" d="M -0.7,-372.7 -12,-393.4"/>
+<path style="marker-start:url(#id3); marker-end:url(#id4); fill:none; stroke:black; stroke-width:0.72;" d="M -9.7,-382.5 -209,-271.7"/>
+<path style="fill:none; stroke:black; stroke-width:0.4px;" d="m 48.8,-254.3 -42.4,0"/>
+<path style="fill:none; stroke:black; stroke-width:0.4px;" d="m 48.6,-366.5 -42.4,0"/>
+<path style="marker-start:url(#id3); marker-end:url(#id4); fill:none; stroke:black; stroke-width:0.72;" d="m 34.7,-365 0,109.5"/>
+<text x="12.7" y="-344.2" transform="matrix(0.87572186,-0.48281592,0.48281592,0.87572186,0,0)" style="font-family:'Comic Sans MS'; font-size:16px; color:black; overflow:visible; fill:#ce5c00; stroke-width:1px;">Hypotenuse</text>
+<text x="275.9" y="27.2" transform="matrix(0,-1,1,0,0,0)" style="font-family:'Comic Sans MS'; font-size:16px; color:black; overflow:visible; fill:#c4a000; stroke-width:1px;">Opposite</text>
+<text x="-131.3" y="-217.4" style="font-family:'Comic Sans MS'; font-size:16px; color:black; overflow:visible; fill:#3465a4; stroke-width:1px;">Adjacent</text>
+<path style="fill:none; stroke:black; stroke-width:1.6;" d="m -20.8,-256.2 0,-21.9 21.5,0"/>
+<text x="-403.6" y="-355.7" style="font-family:'Comic Sans MS'; font-size:16px; color:black; overflow:visible; fill:#6600cc; stroke-width:1px;">sin θ = </text>
+<text x="-341.2" y="-344" style="font-family:'Comic Sans MS'; font-size:16px; color:black; overflow:visible; fill:#d0630b; stroke-width:1px;">Hypotenuse</text>
+<path style="fill:none; stroke:black; stroke-width:0.8;" d="m -343.1,-358.4 91.9,0"/>
+<text x="-330.9" y="-364.8" style="font-family:'Comic Sans MS'; font-size:16px; color:black; overflow:visible; fill:#c4a000; stroke-width:1px;">Opposite</text>
+<text x="-407.3" y="-304.2" style="font-family:'Comic Sans MS'; font-size:16px; color:black; overflow:visible; fill:#6600cc; stroke-width:1px;">cos θ = </text>
+<text x="-407" y="-252.2" style="font-family:'Comic Sans MS'; font-size:16px; color:black; overflow:visible; fill:#6600cc; stroke-width:1px;">tan θ = </text>
+<text x="-341.2" y="-293.7" style="font-family:'Comic Sans MS'; font-size:16px; color:black; overflow:visible; fill:#d0630b; stroke-width:1px;">Hypotenuse</text>
+<path style="fill:none; stroke:black; stroke-width:0.8;" d="m -343.1,-308 91.9,0"/>
+<path style="fill:none; stroke:black; stroke-width:0.8;" d="m -343.1,-255.5 91.9,0"/>
+<text x="-330.9" y="-262" style="font-family:'Comic Sans MS'; font-size:16px; color:black; overflow:visible; fill:#c4a000; stroke-width:1px;">Opposite</text>
+<text x="-331.8" y="-314.1" style="font-family:'Comic Sans MS'; font-size:16px; color:black; overflow:visible; fill:#3465a4; stroke-width:1px;">Adjacent</text>
+<text x="-331.8" y="-239.1" style="font-family:'Comic Sans MS'; font-size:16px; color:black; overflow:visible; fill:#3465a4; stroke-width:1px;">Adjacent</text>
+</g>
+</svg>
