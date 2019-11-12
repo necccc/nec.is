@@ -1,7 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { Link } from 'gatsby'
-
 import Layout from '../components/Layout'
 import styles from './index.module.scss'
 
@@ -16,7 +15,11 @@ const getPosts = data => {
 }
 
 export default props => (
-  <Layout title="Hi, I'm Szabolcs!">
+  <Layout
+    title="Hi, I'm Szabolcs!"
+    pathName="/"
+    skipMetaTitle
+  >
     <section className={styles.intro}>
       <p>
         Mostly online as <a href="https://twitter.com/_Nec">_Nec</a>, I'm a

@@ -16,7 +16,10 @@ const getTalks = data => {
 }
 
 export default props => (
-  <Layout title="Speaking">
+  <Layout
+    title="Speaking"
+    pathName="/"
+  >
     <section className={styles.talks}>
       <ul className={styles.talk_list}>
         {getTalks(props.data).map(

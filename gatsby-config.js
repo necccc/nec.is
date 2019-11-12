@@ -5,7 +5,7 @@ if (process.env !== 'production') {
 module.exports = {
   siteMetadata: {
     title: '_Nec',
-    description: '',
+    description: 'Personal page of Szabolcs Szabolcsi-Toth aka. @_Nec',
     keywords: '',
     twitter: '@_nec',
     twitterUrl: 'https://twitter.com/_nec',

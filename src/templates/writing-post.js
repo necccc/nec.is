@@ -14,10 +14,14 @@ const components = {
 
 function PostPageTemplate({ data: { mdx } }) {
   const { relativePath } = mdx.parent
-  const { title, date, tags, dateTime } = mdx.frontmatter
+  const { title, date, tags, dateTime, description } = mdx.frontmatter
 
   return (
-    <Layout title={title}>
+    <Layout
+      title={title}
+      pathName={ `/writing${mdx.fields.slug}` }
+      description={ description }
+    >
       <ArticleContent>
         <MDXProvider components={components}>
           <MDXRenderer>{mdx.body}</MDXRenderer>
@@ -43,8 +47,12 @@ export const pageQuery = graphql`
           relativePath
         }
       }
+      fields {
+        slug
+      }
       frontmatter {
         title
+        description
         date(formatString: "MMMM Do, YYYY")
         dateTime: date
         tags

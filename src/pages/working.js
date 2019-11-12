@@ -3,11 +3,13 @@ import classnames from 'classnames'
 import Layout from '../components/Layout'
 import css from './working.module.scss'
 
-export default (props) => {
-
-    return (
-<Layout title="Szabolcs Szabolcsi-Toth" resume>
-
+export default () => (
+  <Layout
+    title="Szabolcs Szabolcsi-Toth"
+    pathName="/working"
+    skipMetaTitle
+    resume
+  >
     <article className={ css.resumeContainer }>
 
         <h2 className={ css.resumeSectionTitle }>Technologies and Skills</h2>
@@ -165,4 +167,4 @@ export default (props) => {
 
 
     </article>
-</Layout>)}
+</Layout>)
