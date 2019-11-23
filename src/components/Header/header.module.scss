@@ -1,0 +1,270 @@
+@import '../colors.scss';
+@import '../mixins.scss';
+@import '../font-face.scss';
+
+.header {
+
+	$header: &;
+	box-sizing: border-box;
+	width: 100%;
+	position: var(--headerPosition);
+	top: calc(var(--headerTop) + 4rem);
+	z-index: 10;
+	overflow: hidden;
+
+  font-family: $heading-font;
+
+  @media (max-width:480px) {
+    position: absolute;
+  }
+
+	&::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 1;
+		width: 100%;
+		background-color: $color-black;
+
+		height: var(--headerHeight);
+		transform: skewY(var(--headerSkew));
+		transform-origin: bottom left;
+		transition: transform ease-out .07s;
+
+		@media (max-width:480px) {
+      top: -3rem;
+			transform: skewY(calc(var(--headerSkew) * 0.4));
+		}
+	}
+
+	&_top {
+		position: relative;
+		display: block;
+		z-index: 10;
+		height: 5rem;
+		max-width: 60rem;
+		margin: 0 auto;
+		margin-bottom: 2rem;
+
+		@media (max-width:480px) {
+			max-width: 100%;
+			width: 100%;
+		}
+	}
+
+	&_home {
+		position: relative;
+		z-index: 2;
+		margin: 0;
+		top: 1rem;
+		left: -1rem;
+	}
+
+	&_home_text {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+		text-indent: -999rem;
+	}
+
+	&_title {
+		position: relative;
+		top: 0;
+		z-index: 3;
+		margin: 0 auto;
+		max-width: 68rem;
+		color: #fff;
+		font-size: 2.827rem;
+		line-height: 1.45em;
+		font-weight: 500;
+		padding: 2rem 9rem 8rem 3rem;
+
+		box-sizing: border-box;
+
+		@media (max-width:480px) {
+      padding-right: 1.5rem;
+      padding-left: 1.5rem;
+		}
+	}
+
+	&_nav {
+
+		position: absolute;
+		right: 0;
+		height: 4rem;
+
+		label {
+			display: none;
+		}
+
+		&_opener {
+			&_input {
+				display: none;
+			}
+		}
+
+		&_links {
+			display: block;
+			text-align: right;
+			margin: 0;
+			height: 4rem;
+		}
+		&_link {
+			display: inline-block;
+			padding: 0 1rem;
+			font-family: $body-font;
+			height: 4rem;
+			line-height: 4rem;
+
+      @media (min-width: 480px) {
+
+        &:last-child {
+          padding-right: 0;
+        }
+      }
+
+			a {
+				display: inline-block;
+				color: $color-white;
+				border-bottom: 1px solid transparent;
+				padding: 1rem 0;
+				line-height: 2rem;
+
+				&:hover {
+					@include noUnderline();
+					border-bottom-color: $color-white;
+        }
+
+        @media (max-width: 480px) {
+          font-size: 1.1rem;
+        }
+			}
+		}
+	}
+
+	svg {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 3;
+		height: 4rem;
+		width: 4rem;
+		margin-top: .5rem;
+
+		line-height: 3rem;
+
+		path {
+			fill: $color-white;
+		}
+
+		-webkit-tap-highlight-color: rgba(0,0,0,0);
+		tap-highlight-color: rgba(0,0,0,0);
+
+    @media (max-width: 1088px) {
+      left: 4rem;
+    }
+
+		@media (max-width: 480px) {
+      left: 2rem;
+      margin-top: 0rem;
+		}
+
+		a {
+			display: block;
+			height: 100%;
+			width: 100%;
+
+			text-align: center;
+			line-height: 4rem;
+		}
+	}
+
+	&__small {
+
+		#{$header}_nav {
+			bottom: calc(calc(var(--headerHeight) * -1) + 5rem);
+
+			&_link a {
+				color: $color-light-1;
+
+				&:hover {
+					border-bottom: none;
+					text-decoration: underline;
+				}
+			}
+		}
+
+		#{$header}_home {
+			position: absolute;
+			top: auto;
+			bottom: calc(calc(var(--headerHeight) * -1) + calc(11.3rem - calc(5rem * var(--headerScrollRatio))));
+
+			svg {
+        left: 0rem;
+        top: 0rem;
+				height: 2.5em;
+				width: 2.5rem;
+
+				path {
+					fill: $color-light-1;
+				}
+			}
+		}
+  }
+
+  &-resume {
+    height: 32rem;
+
+    #{$header}_nav {
+      display: none;
+    }
+
+    svg {
+      left: 1rem;
+      top: 1rem;
+      width: 10rem;
+      height: 10rem;
+    }
+
+    #{$header}_title {
+      margin-top: 9rem;
+      padding-left: 4rem;
+      padding-right: 4rem;
+      font-size: 3.2rem;
+    }
+
+    #{$header}_top::after {
+      display: block;
+      position: absolute;
+      content: attr(smalltitle);
+      left: 4rem;
+      bottom: calc(calc(var(--headerHeight) * -1) + calc(5rem - calc(5rem * var(--headerScrollRatio))));
+
+      color: #fbfbfb;
+      height: 4rem;
+      line-height: 4rem;
+      font-size: 1.4rem;
+    }
+  }
+}
+
+.index header {
+	min-height: 31rem;
+
+	.top {
+		height: 12rem;
+		margin-bottom: 4rem;
+	}
+
+	h1.logo {
+		height: 12rem;
+		width: 12rem;
+		margin-top: 2rem;
+	}
+
+	h1.title {
+		font-weight: 500;
+	}
+}
