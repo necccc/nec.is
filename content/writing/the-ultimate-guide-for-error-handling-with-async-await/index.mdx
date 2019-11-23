@@ -1,0 +1,103 @@
+---
+date: "2019-01-01"
+title: "The Ultimate Guide for Error handling with async/await"
+description: "With async/await, handling errors got as simple as possible"
+tags:
+- learning
+- errors
+- async
+- await
+- promises
+- try-catch
+---
+import PostImage from "../../../src/components/PostImage";
+import Intro from "../../../src/components/Intro";
+import Blockquote from "../../../src/components/Blockquote";
+
+<Intro>
+
+Many developers getting familiar with async/await these days, as this feature is getting even more stable and performant in Node.js, and it's recommended to use them instead of Promises, or callbacks.
+
+But I've seen the question appear from several sources: "Okay okay, we got async/await, but how we handle errors?" This post aims to be an ultimate guide for those, who seek the answer for this. Don't worry, it won't be long, or complex!
+
+</Intro>
+
+
+
+## Let it throw
+
+<PostImage
+  image="let-it-throw.gif"
+  align="left"
+  alt="Small scene from the movie 'Frozen', with Elza handling async errors properly"
+/>
+
+Yup, that's it!
+
+Just let your async operations `throw` an error, these errors will travel up the async call stack until a point **where you actually care about them**.
+
+You can handle these errors there, log them, and let the user know about the error in some way.
+
+
+
+## Explanation
+
+In JavaScript a really clean way to code is to stick to this simple rule: Operations (functions, methods, etc) should finish their work by either
+
+- return a value (also, undefined or void), or
+- throw an error
+
+Think about it: if a function returns an error, what would that mean? The result of a process is an error? Can we store it to a database, pass it along to the user? Sure, we can type check for errors all the time, but that sounds tedious, and thankfully the somewhat-similar error-first approach is slowly behind us.
+
+
+
+### Clean & Simple
+
+Your code should be clean and never hide its intent. Looking at it should be as simple to comprehend as possible so the next developer after you, or yourself after a year (or week, or only days) can read, understand, debug or improve, or just add new functionality as easy as possible.
+
+Async/await helps you to achieve this. The code can be simple, show clear intent. The errors, well they just happen, but now you can care about them elsewhere.
+
+This is because thrown errors in JS travel up the stack. A function throws an error, the calling context receives it, and if not handled (caught in a `try/catch` block, or `.catch()` by Promises) it will be thrown again upwards, to the next context. This happens over and over again until it gets caught or we reach the end of the call stack. This s the case when the error or exception is not handled, and cause an additional **Unhandled Exception** error, and our program terminates.
+
+To handle errors like this, coming from async functions, you can use `try/catch` blocks, or if you treat your async functions as little Promise factories (which I would not advise), you can use their `.catch()` methods.
+
+
+
+### "But isn't try/catch slow? And I've heard even V8 discourages using them!"
+
+That was the case back in the days before V8 v5.9 or v6 - meaning **before Node.js 8.3.0 or Chrome 59 and the August of 2017** - that's when the new compiler of V8 was released to production!
+
+V8's old interpreter and compiler called _Crankshaft_ was performing really poor on these fields, but then, to prepare for the modern JS, ES2015 and further releases of the language, Crankshaft was replaced by **Ignition and TurboFan**, which were designed and prepared for tasks like these.
+
+
+<Blockquote
+	by={'Benedikt Meurer @bmeurer'}
+	link={'https://v8.dev/blog/high-performance-es2015'}
+	linkText={'V8 Dev Blog'}
+>
+	Fortunately, Ignition and TurboFan (V8’s new interpreter and compiler pipeline), were designed to support the entire JavaScript language from the beginning, including advanced control flow, exception handling, and most recently for-of and destructuring from ES2015. The tight integration of the architecture of Ignition and TurboFan make it possible to quickly add new features and to optimize them fast and incrementally.
+</Blockquote>
+
+
+
+## Example time!
+
+I've prepared [two small examples](https://github.com/necccc/async-await-errors) using popular web frameworks: Express and Hapi.
+
+### Express
+
+[Express](https://expressjs.com/) has a [nice default error handler middleware](https://expressjs.com/en/guide/error-handling.html) prepared to catch any errors in route handlers. So that will be the point, where you care about errors, and show them to your users.
+
+Unfortunately, Express does not handle errors thrown in async route handlers, you need to use their `next()` function argument in your route handler. To keep code clean, you can implement a small wrapper around your route handlers, that will catch the errors, and pass them to the `next` callback - like in [this great example by Gergely Nemeth](https://nemethgergely.com/error-handling-express-async-await/).
+
+### Hapi
+
+[Hapi 17](https://hapijs.com/) was rewritten to utilize async/await everywhere, so you can throw your exceptions, or even better your [Boom errors](https://github.com/hapijs/boom) at Hapi, and it will handle them nicely, and resolve the requests accordingly, no need for special middlewares, unless you have some use case for that.
+
+
+
+## Conclusion
+
+Embrace `async/await`, it's simple to use, makes your code more readable, and you can handle your errors may be easier than before. If you still have concerns, check out my [examples in this git repo](https://github.com/necccc/async-await-errors).
+
+Remember, just **let it throw** :)

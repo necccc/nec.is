@@ -1,21 +1,14 @@
 {
   "name": "nec.is",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
-    "setup": "docker-compose run --rm hexo npm install",
-    "generate:local": "docker-compose run --rm hexo npx hexo generate",
-    "generate": "npx hexo generate",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "rebuild-sass": "npm rebuild node-sass",
-    "server": "npm run rebuild-sass; npx hexo serve",
-    "start": "docker-compose up",
-    "stop": "docker-compose stop",
-    "logs": "docker-compose logs -f",
-    "tools": "node tools.js"
+    "start": "npm run dev",
+    "predev": "npx gatsby clean",
+    "dev": "npx gatsby develop",
+    "postdev": "npm run format",
+    "build": "npx gatsby build",
+    "format": "npx prettier --write \"src/**/*.js\""
   },
-<<<<<<< Updated upstream
   "repository": {
     "type": "git",
     "url": "git+https://github.com/necccc/nec.is.git"
@@ -26,40 +19,7 @@
     "url": "https://github.com/necccc/nec.is/issues"
   },
   "homepage": "https://nec.is",
-  "hexo": {
-    "version": "3.7.1"
-  },
-  "dependencies": {
-    "dotenv": "4.0.0",
-    "hexo": "3.7.1",
-    "hexo-cli": "1.0.4",
-    "hexo-generator-archive": "^0.1.4",
-    "hexo-generator-category": "^0.1.3",
-    "hexo-generator-feed": "1.2.2",
-    "hexo-generator-index": "^0.2.0",
-    "hexo-generator-tag": "^0.2.0",
-    "hexo-offline": "0.2.3",
-    "hexo-prism-plugin": "^2.2.0",
-    "hexo-renderer-ejs": "^0.3.0",
-    "hexo-renderer-marked": "0.3.2",
-    "hexo-renderer-scss": "1.2.0",
-    "hexo-renderer-stylus": "^0.3.1",
-    "hexo-server": "^0.2.0",
-    "instagram-node": "0.5.8",
-    "is-absolute-url": "^2.1.0",
-    "puppeteer": "1.4.0",
-    "reading-time": "1.1.0",
-    "request": "2.83.0",
-    "request-promise-native": "1.0.5"
-  },
-  "devDependencies": {
-    "alex": "5.1.0",
-    "convert-svg-to-png": "0.4.0",
-    "inquirer": "6.0.0"
-=======
-  "devDependencies": {
-    "isomorphic-unfetch": "^3.0.0"
-  },
+  "devDependencies": {},
   "browserslist": [
     "> 1%",
     "last 2 versions"
@@ -95,13 +55,12 @@
     "gatsby-source-filesystem": "^2.1.33",
     "gatsby-transformer-remark": "^2.6.30",
     "gatsby-transformer-sharp": "^2.2.23",
+    "isomorphic-unfetch": "^3.0.0",
     "node-sass": "^4.12.0",
     "prettier": "^1.18.2",
     "prismjs": "^1.17.1",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
-    "react-helmet": "^5.2.1",
-    "shelljs": "^0.8.3"
->>>>>>> Stashed changes
+    "react-helmet": "^5.2.1"
   }
 }
