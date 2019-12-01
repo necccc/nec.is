@@ -97,5 +97,10 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       node,
       value,
     })
+    createNodeField({
+      name: 'socialCardId',
+      node,
+      value: (Math.round(Date.now() * Math.random())).toString(32)
+    })
   }
 }

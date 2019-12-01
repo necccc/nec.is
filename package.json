@@ -9,6 +9,16 @@
     "build": "npx gatsby build",
     "format": "npx prettier --write \"src/**/*.js\""
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/necccc/nec.is.git"
+  },
+  "author": "nec@shell8.net",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/necccc/nec.is/issues"
+  },
+  "homepage": "https://nec.is",
   "devDependencies": {},
   "browserslist": [
     "> 1%",

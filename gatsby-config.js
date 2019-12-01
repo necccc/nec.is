@@ -92,6 +92,9 @@ module.exports = {
       options: {
         extensions: ['.mdx', '.md'],
         gatsbyRemarkPlugins: [
+          // {
+          //   resolve: require.resolve(`./plugins/gatsby-remark-fetch-socialcard`),
+          // },
           {
             resolve: `gatsby-remark-copy-linked-files`,
           },
