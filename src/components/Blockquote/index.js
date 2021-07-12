@@ -1,20 +1,20 @@
 import React from 'react'
-import styles from './blockquote.module.scss'
+import * as css from './blockquote.module.scss'
 import classnames from 'classnames'
 
-const Blockquote = ({ 
-  children, 
-  by, 
-  link, 
+const Blockquote = ({
+  children,
+  by,
+  link,
   linkText,
   align = 'full'
 }) => (
-  <blockquote className={classnames(styles.quote, styles[`quote-${align}`])}>
-    <p className={styles.body}>{children}</p>
-    <footer className={styles.footer}>
-      <strong className={styles.by}>{by}</strong>
+  <blockquote className={classnames(css.quote, css[`quote-${align}`])}>
+    <p className={css.body}>{children}</p>
+    <footer className={css.footer}>
+      <strong className={css.by}>{by}</strong>
       {linkText ? (
-        <cite className={styles.cite}>
+        <cite className={css.cite}>
           <a href={link}>{linkText}</a>
         </cite>
       ) : (

@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 import { Link } from 'gatsby'
 
 import Layout from '../components/Layout'
-import styles from './speaking.module.scss'
+import * as css from './speaking.module.scss'
 
 const getTalks = data => {
   return data.allMdx.edges.filter(
@@ -20,27 +20,27 @@ export default props => (
     title="Speaking"
     pathName="/"
   >
-    <section className={styles.talks}>
-      <ul className={styles.talk_list}>
+    <section className={css.talks}>
+      <ul className={css.talk_list}>
         {getTalks(props.data).map(
           ({ node: { id, parent, fields, frontmatter } }) => (
-            <li key={id} className={styles.talk_item}>
+            <li key={id} className={css.talk_item}>
               <h3>
                 <Link to={`/${parent.sourceInstanceName}/${fields.slug}`}>
-                  <span className={styles.talk_item_title}>
+                  <span className={css.talk_item_title}>
                     {frontmatter.title}
                   </span>
-                  <span className={styles.talk_item_year}>
+                  <span className={css.talk_item_year}>
                     {frontmatter.year}
                   </span>
                 </Link>
               </h3>
 
               <p>
-                <strong className={styles.talk_item_topic}>
+                <strong className={css.talk_item_topic}>
                   {frontmatter.topic}
                 </strong>
-                <small className={styles.talk_item_date}>
+                <small className={css.talk_item_date}>
                   {frontmatter.date}
                 </small>
               </p>

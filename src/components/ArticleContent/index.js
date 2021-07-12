@@ -1,8 +1,8 @@
 import React from 'react'
-import styles from './article.module.scss'
+import * as css from './article.module.scss'
 
 const ArticleContent = ({ children }) => (
-  <article className={styles.article}>{children}</article>
+  <article className={css.article}>{children}</article>
 )
 
 export default ArticleContent

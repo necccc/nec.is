@@ -1,6 +1,6 @@
 import React from 'react'
-import styles from './intro.module.scss'
+import * as css from './intro.module.scss'
 
-const Intro = ({ children }) => <span className={styles.intro}>{children}</span>
+const Intro = ({ children }) => <span className={css.intro}>{children}</span>
 
 export default Intro
