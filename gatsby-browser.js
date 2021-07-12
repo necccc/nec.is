@@ -6,8 +6,13 @@
 
  // https://www.gatsbyjs.org/packages/gatsby-remark-custom-blocks/?=remark
 //require("prismjs/themes/prism.css")
-require("prismjs/plugins/line-numbers/prism-line-numbers.css")
-require("prismjs/plugins/command-line/prism-command-line.css")
+// require("prismjs/plugins/line-numbers/prism-line-numbers.css")
+// require("prismjs/plugins/command-line/prism-command-line.css")
+
+import "@fontsource/libre-franklin/300.css"
+import "@fontsource/libre-franklin/500.css"
+import "@fontsource/libre-baskerville/400.css"
+import "@fontsource/libre-baskerville/700.css"
 
 const REM = parseInt(window.getComputedStyle(window.document.documentElement)['font-size'], 10);
 
@@ -60,7 +65,7 @@ const onScroll = function () {
 	setHeader()
 }
 
-exports.onInitialClientRender = () => {
+export const onInitialClientRender = () => {
 	// Test via a getter in the options object to see if the passive property is accessed
 	window.supportsPassiveScroll = false;
 	try {
@@ -78,6 +83,6 @@ exports.onInitialClientRender = () => {
     window.document.addEventListener('scroll', onScroll, window.supportsPassiveScroll ? { passive: true } : false);
 }
 
-exports.onRouteUpdate = ({ location, prevLocation }) => {
+export const onRouteUpdate = ({ location, prevLocation }) => {
 	onScroll();
 }
