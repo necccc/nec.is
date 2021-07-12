@@ -16,13 +16,13 @@ export default () => (
 
         <div className={ css.resumeSection }>
             <ul>
-                <li><strong>Languages:</strong>
+                <li><strong>Languages: </strong>
                   English, Hungarian</li>
-                <li><strong>Design:</strong>
+                <li><strong>Design: </strong>
                   web, responsive web, Figma, Photoshop, Illustrator</li>
-                <li><strong>Code:</strong>
+                <li><strong>Code: </strong>
                   JavaScript, TypeScript, Node.js, HTML5/CSS3, SASS/SCSS, Go, PHP, Bash</li>
-                <li><strong>Deployment & maintenance:</strong>
+                <li><strong>Deployment &amp; operations: </strong>
                   npm, linux systems, git/github/gitlab, Docker, Chef, Kubernetes, Tekton CI/CD, Hashicorp Vault, TravisCI, TeamCity</li>
             </ul>
         </div>
