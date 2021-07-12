@@ -24,7 +24,6 @@ exports.createPages = ({ graphql, actions }) => {
                   sourceInstanceName
                 }
               }
-              body
             }
           }
         }

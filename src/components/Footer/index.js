@@ -1,7 +1,7 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 import Logo from '../Logo'
-import styles from './footer.module.scss'
+import * as css from './footer.module.scss'
 
 const Footer = ({ title = '' }) => (
   <StaticQuery
@@ -19,13 +19,13 @@ const Footer = ({ title = '' }) => (
       }
     `}
     render={({ site: { siteMetadata } }) => (
-      <footer className={styles.footer}>
-        <div className={styles.footer_content}>
-          <h3 className={styles.farewell}>
+      <footer className={css.footer}>
+        <div className={css.footer_content}>
+          <h3 className={css.farewell}>
             Keep updated, contact, get in touch!
           </h3>
 
-          <ul className={styles.about}>
+          <ul className={css.about}>
             <li>
               Contact me via{' '}
               <a href="mailto:nec@shell8.net" title="email">
@@ -42,7 +42,7 @@ const Footer = ({ title = '' }) => (
 
           <hr />
 
-          <ul className={styles.links}>
+          <ul className={css.links}>
             <li>
               <a href="/working" />
               <a href={siteMetadata.githubUrl}>GitHub</a>
@@ -59,7 +59,7 @@ const Footer = ({ title = '' }) => (
           </ul>
         </div>
 
-        <div className={styles.footer_bottom}>
+        <div className={css.footer_bottom}>
           <Logo />
           <p>
             {new Date().getFullYear()} © Szabolcs Szabolcsi-Toth. All rights

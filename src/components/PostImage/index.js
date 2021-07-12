@@ -1,7 +1,7 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
-import css from './image.module.scss'
+import * as css from './image.module.scss'
 
 export default ({ image, className = '', align = 'left', alt = '' }) => (
   <StaticQuery

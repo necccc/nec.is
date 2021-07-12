@@ -92,49 +92,17 @@ module.exports = {
       options: {
         extensions: ['.mdx', '.md'],
         gatsbyRemarkPlugins: [
-          // {
-          //   resolve: require.resolve(`./plugins/gatsby-remark-fetch-socialcard`),
-          // },
           {
             resolve: `gatsby-remark-copy-linked-files`,
           },
           {
             resolve: `gatsby-remark-smartypants`,
           },
-          /* {
-            resolve: "gatsby-remark-embed-gist",
-            options: {
-              // Optional:
-
-              // the github handler whose gists are to be accessed
-              username: 'necccc',
-
-              // a flag indicating whether the github default gist css should be included or not
-              // default: true
-              includeDefaultCss: true
-            },
-          }, */
-          {
-            resolve: require.resolve(`./plugins/gatsby-remark-gist-prismjs`),
-            options: {
-              accessToken: process.env.GITHUB_ACCESS_TOKEN,
-              classPrefix: `language-`,
-              inlineCodeMarker: null,
-              aliases: {},
-              noInlineHighlight: false,
-              showLineNumbers: true,
-              languageExtensions: [],
-              prompt: {
-                user: `nec`,
-                host: `localhost`,
-                global: false,
-              },
-            }
-          }
         ],
       },
     },
 
+    'gatsby-plugin-image',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
 
@@ -232,15 +200,15 @@ module.exports = {
     'gatsby-plugin-offline',
     'gatsby-plugin-sass',
 
-    {
+/*     {
       resolve: 'gatsby-plugin-react-svg',
       options: {
           rule: {
             include: `${__dirname}/src/images`,
           }
       }
-    },
-
+    }, */
+/*
     {
       resolve: `gatsby-plugin-prefetch-google-fonts`,
       options: {
@@ -255,6 +223,6 @@ module.exports = {
           },
         ],
       },
-    },
+    },*/
   ],
 }
