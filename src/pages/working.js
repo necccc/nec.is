@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 import Layout from '../components/Layout'
-import css from './working.module.scss'
+import * as css from './working.module.scss'
 
 export default () => (
   <Layout

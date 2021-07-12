@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'gatsby'
 import classnames from 'classnames'
 import Logo from '../Logo'
-import styles from './header.module.scss'
+import * as css from './header.module.scss'
 
 export default ({ title = '', resume }) => {
   const [small, setSmall] = useState(false)
@@ -30,40 +30,40 @@ export default ({ title = '', resume }) => {
 
   return (
     <header
-      className={ classnames(styles.header, resume && styles.headerResume, small && styles.header__small) }
+      className={ classnames(css.header, resume && css.headerResume, small && css.header__small) }
     >
-      <div className={styles.header_top} smallTitle={title}>
-        <h1 className={styles.header_home} title="_Nec">
+      <div className={css.header_top} smalltitle={title}>
+        <h1 className={css.header_home} title="_Nec">
           <Link to="/" title="Go to the home page">
             <Logo />
-            <span className={styles.header_home_text}>_Nec</span>
+            <span className={css.header_home_text}>_Nec</span>
           </Link>
         </h1>
 
-        <nav className={styles.header_nav}>
+        <nav className={css.header_nav}>
           <input
-            className={styles.header_nav_opener_input}
+            className={css.header_nav_opener_input}
             type="checkbox"
             id="menu-open"
           />
-          <label htmlFor="menu-open" className={styles.header_nav_opener}>
+          <label htmlFor="menu-open" className={css.header_nav_opener}>
             <span>menu</span>
           </label>
 
-          <ul className={styles.header_nav_links}>
-            <li className={styles.header_nav_link}>
+          <ul className={css.header_nav_links}>
+            <li className={css.header_nav_link}>
               <Link to="/">writing</Link>
             </li>
-            <li className={styles.header_nav_link}>
+            <li className={css.header_nav_link}>
               <Link to="/speaking">speaking</Link>
             </li>
-            <li className={styles.header_nav_link}>
+            <li className={css.header_nav_link}>
               <a href="https://twitter.com/_Nec">twitter</a>
             </li>
           </ul>
         </nav>
       </div>
-      <h1 className={styles.header_title}>{title}</h1>
+      <h1 className={css.header_title}>{title}</h1>
     </header>
   )
 }

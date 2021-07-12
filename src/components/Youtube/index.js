@@ -1,6 +1,6 @@
 import React from 'react'
 import classnames from 'classnames'
-import css from './youtube.module.scss'
+import * as css from './youtube.module.scss'
 
 export default ({ src, className = '' }) => (
   <div className={classnames(css.embed, className)}>

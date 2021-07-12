@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { Link } from 'gatsby'
 import Layout from '../components/Layout'
-import styles from './index.module.scss'
+import * as css from './index.module.scss'
 
 const getPosts = data => {
   return data.allMdx.edges.filter(
@@ -20,7 +20,7 @@ export default props => (
     pathName="/"
     skipMetaTitle
   >
-    <section className={styles.intro}>
+    <section className={css.intro}>
       <p>
         Mostly online as <a href="https://twitter.com/_Nec">_Nec</a>, I'm a
         developer from Budapest, Hungary. Organizer and curator of{' '}
@@ -35,10 +35,10 @@ export default props => (
       </p>
     </section>
 
-    <section className={styles.articles}>
-      <ul className={styles.article_grid}>
+    <section className={css.articles}>
+      <ul className={css.article_grid}>
         {getPosts(props.data).map(({ node }) => (
-          <li key={node.id} className={styles.article_grid_item}>
+          <li key={node.id} className={css.article_grid_item}>
             <h3>
               <Link
                 to={`/${node.parent.sourceInstanceName}${node.fields.slug}`}
@@ -49,12 +49,12 @@ export default props => (
             <p>{node.frontmatter.description}</p>
 
             <p>
-              <small className={styles.article_meta}>
+              <small className={css.article_meta}>
                 Posted on{' '}
-                <span className={styles.article_meta_date}>
+                <span className={css.article_meta_date}>
                   {node.frontmatter.postdate}
                 </span>
-                <span className={styles.article_meta_timetoread}>
+                <span className={css.article_meta_timetoread}>
                   {node.timeToRead} min read
                 </span>
                 <Link

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
 import Meta from '../Meta'
-import styles from './layout.module.scss'
+import * as css from './layout.module.scss'
 import Footer from '../Footer'
 import Header from '../Header'
 
@@ -23,7 +23,7 @@ const Layout = ({
       { !skipMetaTitle && <title>{ title }</title>}
       { description && <meta name="description" content={ description } /> }
     </Helmet>
-    <main className={styles.layout}>
+    <main className={css.layout}>
       <Header title={title} resume={ resume } />
       {children}
       <Footer />

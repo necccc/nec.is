@@ -1,6 +1,6 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
-import styles from './articlemeta.module.scss'
+import * as css from './articlemeta.module.scss'
 
 const Tags = ({ tags }) =>
   tags.map((tag, i, tags) => {
@@ -34,8 +34,8 @@ const ArticleMeta = ({ relativePath = '', date, tags, dateTime }) => (
       }
     `}
     render={({ site: { siteMetadata } }) => (
-      <section className={styles.meta}>
-        <div className={styles.meta_inner}>
+      <section className={css.meta}>
+        <div className={css.meta_inner}>
           <p>
             Posted on <time dateTime={dateTime}>{date}</time>.
           </p>

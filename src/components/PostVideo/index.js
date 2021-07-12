@@ -1,6 +1,6 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
-import css from './video.module.scss'
+import * as css from './video.module.scss'
 
 export default ({ video, className = '', align = 'full', alt = '' }) => (
   <StaticQuery
@@ -29,13 +29,13 @@ export default ({ video, className = '', align = 'full', alt = '' }) => (
           return relativePath.includes(video)
         })
         .map(({ node }, i) => (<div className={classNames.join(' ')} key={`${video}-${i}`}>
-          <video 
-            src={node.publicURL} 
+          <video
+            src={node.publicURL}
             controls={ false }
             autoPlay
-            loop={ true } 
-            muted={ true } 
-            playsInline={ true } 
+            loop={ true }
+            muted={ true }
+            playsInline={ true }
             title={ alt }>
           </video>
           <small className={css.description}>{alt}</small>

@@ -1,16 +1,16 @@
 import React from 'react'
-import styles from './pic.module.scss'
+import * as css from './pic.module.scss'
 
 const Pic = props => {
   const { alt, src, title } = props
-  const classNames = [styles.image]
+  const classNames = [css.image]
 
-  classNames.push(styles[`image__pull_${title}`])
+  classNames.push(css[`image__pull_${title}`])
 
   return (
     <span className={classNames.join(' ')}>
       <img src={src} alt={alt} />
-      <small className={styles.description}>{alt}</small>
+      <small className={css.description}>{alt}</small>
     </span>
   )
 }
