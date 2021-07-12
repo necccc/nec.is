@@ -16,10 +16,14 @@ export default () => (
 
         <div className={ css.resumeSection }>
             <ul>
-                <li><strong>Languages:</strong> English, Hungarian</li>
-                <li><strong>Design:</strong> web, responsive web, Photoshop, Illustrator</li>
-                <li><strong>Code:</strong> JavaScript, Node.js, HTML5/CSS3, SASS/SCSS, PHP, Bash, Ruby</li>
-                <li><strong>Deployment & maintenance:</strong> npm, linux systems, git/github/gitlab, Docker, Chef, Kubernetes, Hashicorp Vault, TravisCI, TeamCity</li>
+                <li><strong>Languages:</strong>
+                  English, Hungarian</li>
+                <li><strong>Design:</strong>
+                  web, responsive web, Figma, Photoshop, Illustrator</li>
+                <li><strong>Code:</strong>
+                  JavaScript, TypeScript, Node.js, HTML5/CSS3, SASS/SCSS, Go, PHP, Bash</li>
+                <li><strong>Deployment & maintenance:</strong>
+                  npm, linux systems, git/github/gitlab, Docker, Chef, Kubernetes, Tekton CI/CD, Hashicorp Vault, TravisCI, TeamCity</li>
             </ul>
         </div>
 
@@ -38,7 +42,10 @@ export default () => (
             <h3>Senior Engineer</h3>
             <h4>IBM Cloud • <em>2019 - present</em></h4>
             <ul>
-                <li>Developing user facing Cloud UI's and microservices in React and Node.js</li>
+              <li>Design and implement an <a href="https://www.ibm.com/cloud/blog/announcements/devsecops-reference-implementation-for-audit-ready-compliance-across-development-teams">opinionated DevSecOps pipeline</a> for "continous compliance".
+              Aim of this toolchain to help teams transparently stay audit-ready during their daily work.</li>
+              <li>Delegate of IBM for ECMA's TC39</li>
+              <li>Developing user facing Cloud UI's and microservices in React and Node.js</li>
             </ul>
 
             <h3>Senior Frontend Engineer</h3>
@@ -81,12 +88,12 @@ export default () => (
 
         <div className={ css.resumeSection }>
 
-            <h3>JSConf Budapest 2015 - 2019</h3>
+            <h3>JSConf Budapest 2015 - present</h3>
             <h4>Curator, organizer</h4>
             <ul>
                 <li>JSConf Budapest is the part of the international JSConf family</li>
                 <li>2 day, single track event</li>
-                <li>75 speakers and ~2000 attendees since 2015</li>
+                <li>92 speakers and more than 2100 attendees since 2015</li>
                 <li>Focused on technology, culture and diversity</li>
                 <li>Curated and organized 4 successful events so far</li>
                 <li>My participation was in curating the lineup, organizing venue, catering, hotel and flight arrangements and sponsor negotiations</li>
