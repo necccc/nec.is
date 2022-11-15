@@ -32,6 +32,7 @@ const SiteMetadata = ({ pathName }) => {
         name="viewport"
         content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover"
       />
+      <link rel="me" href="https://mastodon.social/@_Nec" />
 {/*
       <meta property="og:url" content={siteUrl} />
       <meta property="og:type" content="website" />
