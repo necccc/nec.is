@@ -42,7 +42,7 @@ export default () => (
             <h3>Staff Engineer</h3>
             <h4>BinX • <em>2022 - present</em></h4>
             <ul>
-              <li></li>
+              <li>Work with the engineering team and business development to create a new financial service from the ground up</li>
             </ul>
 
             <h3>Senior Engineer</h3>
