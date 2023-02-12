@@ -39,8 +39,14 @@ export default () => (
                 <li>Event organizing</li>
             </ul>
 
+            <h3>Staff Engineer</h3>
+            <h4>BinX • <em>2022 - present</em></h4>
+            <ul>
+              <li>Work with the engineering team and business development to create a new financial service from the ground up</li>
+            </ul>
+
             <h3>Senior Engineer</h3>
-            <h4>IBM Cloud • <em>2019 - present</em></h4>
+            <h4>IBM Cloud • <em>2019 - 2022</em></h4>
             <ul>
               <li>Design and implement an <a href="https://www.ibm.com/cloud/blog/announcements/devsecops-reference-implementation-for-audit-ready-compliance-across-development-teams">opinionated DevSecOps pipeline</a> for "continous compliance".
               Aim of this toolchain to help teams transparently stay audit-ready during their daily work.</li>
