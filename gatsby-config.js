@@ -91,14 +91,16 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: ['.mdx', '.md'],
-        gatsbyRemarkPlugins: [
-          {
-            resolve: `gatsby-remark-copy-linked-files`,
-          },
-          {
-            resolve: `gatsby-remark-smartypants`,
-          },
-        ],
+        mdxOptions: {
+          remarkPlugins: [
+            {
+              resolve: `gatsby-remark-copy-linked-files`,
+            },
+            {
+              resolve: `gatsby-remark-smartypants`,
+            },
+          ],
+        }
       },
     },
 
@@ -145,34 +147,32 @@ module.exports = {
                   })
                 })
             },
-            query: `
-            {
-              allMdx(
-                sort: { order: DESC, fields: frontmatter___date },
-                filter: { frontmatter: { draft: { ne: true }}},
-                limit: 1000
-              ) {
-                edges {
-                  node {
-                    id
-                    fields {
-                      slug
-                    }
-                    frontmatter {
-                      title
-                      postdate: date(formatString: "ddd, DD MMM YYYY 11:00:00 +0100")
-                      description
-                    }
-                    parent {
-                      ... on File {
-                        sourceInstanceName
-                      }
-                    }
-                  }
-                }
-              }
-            }
-            `,
+            query: `{
+  allMdx(
+    sort: {frontmatter: {date: DESC}}
+    filter: {frontmatter: {draft: {ne: true}}}
+    limit: 1000
+  ) {
+    edges {
+      node {
+        id
+        fields {
+          slug
+        }
+        frontmatter {
+          title
+          postdate: date(formatString: "ddd, DD MMM YYYY 11:00:00 +0100")
+          description
+        }
+        parent {
+          ... on File {
+            sourceInstanceName
+          }
+        }
+      }
+    }
+  }
+}`,
             output: '/rss.xml',
             title: 'Gatsby RSS feed',
           },

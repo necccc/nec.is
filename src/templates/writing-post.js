@@ -1,6 +1,5 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { MDXProvider } from '@mdx-js/react'
 import Layout from '../components/Layout'
 import ArticleContent from '../components/ArticleContent'
@@ -12,7 +11,7 @@ const components = {
   img: Pic,
 }
 
-function PostPageTemplate({ data: { mdx } }) {
+function PostPageTemplate({ data: { mdx }, children }) {
   const { relativePath } = mdx.parent
   const { title, date, tags, dateTime, description } = mdx.frontmatter
 
@@ -24,7 +23,7 @@ function PostPageTemplate({ data: { mdx } }) {
     >
       <ArticleContent>
         <MDXProvider components={components}>
-          <MDXRenderer>{mdx.body}</MDXRenderer>
+          { children }
         </MDXProvider>
       </ArticleContent>
       <ArticleMeta
@@ -58,7 +57,6 @@ export const pageQuery = graphql`
         tags
       }
       id
-      body
     }
   }
 `

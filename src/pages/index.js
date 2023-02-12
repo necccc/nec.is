@@ -54,9 +54,6 @@ export default props => (
                 <span className={css.article_meta_date}>
                   {node.frontmatter.postdate}
                 </span>
-                <span className={css.article_meta_timetoread}>
-                  {node.timeToRead} min read
-                </span>
                 <Link
                   to={`/${node.parent.sourceInstanceName}${node.fields.slug}`}
                 >
@@ -73,11 +70,13 @@ export default props => (
 
 export const query = graphql`
   query IndexQuery {
-    allMdx(sort: {order: DESC, fields: frontmatter___date}, filter: {frontmatter: {draft: {ne: true}}}) {
+    allMdx(
+      sort: {frontmatter: {date: DESC}}
+      filter: {frontmatter: {draft: {ne: true}}}
+    ) {
       edges {
         node {
           id
-          timeToRead
           fields {
             slug
           }

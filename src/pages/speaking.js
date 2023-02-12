@@ -69,7 +69,6 @@ export const query = graphql`
           fields {
             slug
           }
-          timeToRead
           frontmatter {
             title
             year: event_start(formatString: "YYYY")

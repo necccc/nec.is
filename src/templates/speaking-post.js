@@ -1,10 +1,9 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { MDXRenderer } from 'gatsby-plugin-mdx'
 import Layout from '../components/Layout'
 import ArticleContent from '../components/ArticleContent'
 
-function PostPageTemplate({ data: { mdx } }) {
+function PostPageTemplate({ data: { mdx }, children }) {
   const { title, description } = mdx.frontmatter
 
   return (
@@ -14,7 +13,7 @@ function PostPageTemplate({ data: { mdx } }) {
       description={ description }
     >
       <ArticleContent>
-        <MDXRenderer>{mdx.body}</MDXRenderer>
+        { children }
       </ArticleContent>
     </Layout>
   )
@@ -40,7 +39,6 @@ export const pageQuery = graphql`
         description
       }
       id
-      body
     }
   }
 `
