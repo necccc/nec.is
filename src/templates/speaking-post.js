@@ -9,12 +9,10 @@ function PostPageTemplate({ data: { mdx }, children }) {
   return (
     <Layout
       title={title}
-      pathName={ `/speaking${mdx.fields.slug}` }
-      description={ description }
+      pathName={`/speaking${mdx.fields.slug}`}
+      description={description}
     >
-      <ArticleContent>
-        { children }
-      </ArticleContent>
+      <ArticleContent>{children}</ArticleContent>
     </Layout>
   )
 }
@@ -22,7 +20,7 @@ function PostPageTemplate({ data: { mdx }, children }) {
 export default PostPageTemplate
 
 export const pageQuery = graphql`
-  query($id: String!) {
+  query ($id: String!) {
     mdx(id: { eq: $id }) {
       parent {
         ... on File {
@@ -35,7 +33,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date(formatString: "MMMM Do, YYYY")
-        tags,
+        tags
         description
       }
       id

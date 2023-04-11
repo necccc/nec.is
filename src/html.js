@@ -5,9 +5,7 @@ export default class HTML extends React.Component {
   render() {
     return (
       <html {...this.props.htmlAttributes}>
-        <head>
-          {this.props.headComponents}
-        </head>
+        <head>{this.props.headComponents}</head>
         <body {...this.props.bodyAttributes}>
           {this.props.preBodyComponents}
           <div

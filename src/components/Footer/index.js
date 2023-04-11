@@ -21,9 +21,7 @@ const Footer = ({ title = '' }) => (
     render={({ site: { siteMetadata } }) => (
       <footer className={css.footer}>
         <div className={css.footer_content}>
-          <h3 className={css.farewell}>
-            Keep updated, contact, get in touch!
-          </h3>
+          <h3 className={css.farewell}>Keep updated, contact, get in touch!</h3>
 
           <ul className={css.about}>
             <li>

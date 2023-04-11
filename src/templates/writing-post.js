@@ -18,13 +18,11 @@ function PostPageTemplate({ data: { mdx }, children }) {
   return (
     <Layout
       title={title}
-      pathName={ `/writing${mdx.fields.slug}` }
-      description={ description }
+      pathName={`/writing${mdx.fields.slug}`}
+      description={description}
     >
       <ArticleContent>
-        <MDXProvider components={components}>
-          { children }
-        </MDXProvider>
+        <MDXProvider components={components}>{children}</MDXProvider>
       </ArticleContent>
       <ArticleMeta
         relativePath={relativePath}
@@ -39,7 +37,7 @@ function PostPageTemplate({ data: { mdx }, children }) {
 export default PostPageTemplate
 
 export const pageQuery = graphql`
-  query($id: String!) {
+  query ($id: String!) {
     mdx(id: { eq: $id }) {
       parent {
         ... on File {

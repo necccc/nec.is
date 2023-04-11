@@ -1,54 +1,48 @@
 import React from 'react'
-import { StaticQuery, graphql } from 'gatsby'
-import { GatsbyImage } from "gatsby-plugin-image"
+import { useStaticQuery, graphql } from 'gatsby'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import * as css from './image.module.scss'
 
-export default ({ image, className = '', align = 'left', alt = '' }) => (
-  <StaticQuery
-    query={graphql`
-      query postImageQuery {
-        source: allFile(filter: { sourceInstanceName: { eq: "postimages" } }) {
-          edges {
-            node {
-              extension
-              absolutePath
-              relativePath
-              dir
-              publicURL
-              childImageSharp {
-                gatsbyImageData(width: 800)
-              }
+export default ({ image, className = '', align = 'left', alt = '' }) => {
+  const data = useStaticQuery(graphql`
+    query postImageQuery {
+      source: allFile(filter: { sourceInstanceName: { eq: "postimages" } }) {
+        edges {
+          node {
+            extension
+            absolutePath
+            relativePath
+            dir
+            publicURL
+            childImageSharp {
+              gatsbyImageData(width: 800)
             }
           }
         }
       }
-    `}
-    render={data => {
-      const classNames = [css.image]
-      classNames.push(css[`image__pull_${align}`])
+    }
+  `)
+  const classNames = [css.image]
+  classNames.push(css[`image__pull_${align}`])
 
-      return data.source.edges
-        .filter(({ node }) => {
-          const { relativePath } = node
-          return relativePath.includes(image)
-        })
-        .map(({ node }, i) => (<span className={classNames.join(' ')} key={`${image}-${i}`}>
-          { node.childImageSharp && (
-             <GatsbyImage
-              className={css.image}
-              fluid={node.childImageSharp.fluid}
-              alt={alt}
-            />
-          )}
-          { !node.childImageSharp && (
-             <img
-              className={css.image}
-              src={node.publicURL}
-              alt={alt}
-             />
-          )}
-          <small className={css.description}>{alt}</small>
-        </span>))
-    }}
-  />
-)
+  return data.source.edges
+    .filter(({ node }) => {
+      const { relativePath } = node
+      return relativePath.includes(image)
+    })
+    .map(({ node }, i) => (
+      <span className={classNames.join(' ')} key={`${image}-${i}`}>
+        {node.childImageSharp && (
+          <GatsbyImage
+            className={css.image}
+            fluid={node.childImageSharp.fluid}
+            alt={alt}
+          />
+        )}
+        {!node.childImageSharp && (
+          <img className={css.image} src={node.publicURL} alt={alt} />
+        )}
+        <small className={css.description}>{alt}</small>
+      </span>
+    ))
+}

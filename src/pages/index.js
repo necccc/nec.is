@@ -4,7 +4,7 @@ import { Link } from 'gatsby'
 import Layout from '../components/Layout'
 import * as css from './index.module.scss'
 
-const getPosts = data => {
+const getPosts = (data) => {
   return data.allMdx.edges.filter(
     ({
       node: {
@@ -14,12 +14,8 @@ const getPosts = data => {
   )
 }
 
-export default props => (
-  <Layout
-    title="Hi, I'm Szabolcs!"
-    pathName="/"
-    skipMetaTitle
-  >
+export default (props) => (
+  <Layout title="Hi, I'm Szabolcs!" pathName="/" skipMetaTitle>
     <section className={css.intro}>
       <p>
         Mostly online as <a href="https://twitter.com/_Nec">_Nec</a>, I'm a
@@ -71,8 +67,8 @@ export default props => (
 export const query = graphql`
   query IndexQuery {
     allMdx(
-      sort: {frontmatter: {date: DESC}}
-      filter: {frontmatter: {draft: {ne: true}}}
+      sort: { frontmatter: { date: DESC } }
+      filter: { frontmatter: { draft: { ne: true } } }
     ) {
       edges {
         node {

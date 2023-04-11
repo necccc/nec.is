@@ -30,7 +30,11 @@ export default ({ title = '', resume }) => {
 
   return (
     <header
-      className={ classnames(css.header, resume && css.headerResume, small && css.header__small) }
+      className={classnames(
+        css.header,
+        resume && css.headerResume,
+        small && css.header__small
+      )}
     >
       <div className={css.header_top} smalltitle={title}>
         <h1 className={css.header_home} title="_Nec">

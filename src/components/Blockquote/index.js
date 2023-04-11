@@ -2,13 +2,7 @@ import React from 'react'
 import * as css from './blockquote.module.scss'
 import classnames from 'classnames'
 
-const Blockquote = ({
-  children,
-  by,
-  link,
-  linkText,
-  align = 'full'
-}) => (
+const Blockquote = ({ children, by, link, linkText, align = 'full' }) => (
   <blockquote className={classnames(css.quote, css[`quote-${align}`])}>
     <p className={css.body}>{children}</p>
     <footer className={css.footer}>

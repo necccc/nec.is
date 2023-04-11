@@ -5,7 +5,7 @@ import { Link } from 'gatsby'
 import Layout from '../components/Layout'
 import * as css from './speaking.module.scss'
 
-const getTalks = data => {
+const getTalks = (data) => {
   return data.allMdx.edges.filter(
     ({
       node: {
@@ -15,11 +15,8 @@ const getTalks = data => {
   )
 }
 
-export default props => (
-  <Layout
-    title="Speaking"
-    pathName="/"
-  >
+export default (props) => (
+  <Layout title="Speaking" pathName="/">
     <section className={css.talks}>
       <ul className={css.talk_list}>
         {getTalks(props.data).map(
@@ -30,9 +27,7 @@ export default props => (
                   <span className={css.talk_item_title}>
                     {frontmatter.title}
                   </span>
-                  <span className={css.talk_item_year}>
-                    {frontmatter.year}
-                  </span>
+                  <span className={css.talk_item_year}>{frontmatter.year}</span>
                 </Link>
               </h3>
 
@@ -40,9 +35,7 @@ export default props => (
                 <strong className={css.talk_item_topic}>
                   {frontmatter.topic}
                 </strong>
-                <small className={css.talk_item_date}>
-                  {frontmatter.date}
-                </small>
+                <small className={css.talk_item_date}>{frontmatter.date}</small>
               </p>
 
               <p>{frontmatter.description}</p>
