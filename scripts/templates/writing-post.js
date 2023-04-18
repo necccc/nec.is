@@ -1,11 +1,11 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
-import Layout from '../components/Layout'
-import ArticleContent from '../components/ArticleContent'
-import ArticleMeta from '../components/ArticleMeta'
+import Layout from '../../src/components/Layout'
+import ArticleContent from '../../src/components/ArticleContent'
+import ArticleMeta from '../../src/components/ArticleMeta'
 
-import Pic from '../components/Pic'
+import Pic from '../../src/components/Pic'
 
 const components = {
   img: Pic,
@@ -15,10 +15,12 @@ function PostPageTemplate({ data: { mdx }, children }) {
   const { relativePath } = mdx.parent
   const { title, date, tags, dateTime, description } = mdx.frontmatter
 
+  console.log(mdx)
+
   return (
     <Layout
       title={title}
-      pathName={`/writing${mdx.fields.slug}`}
+      pathName={`/writing/${mdx.fields.slug}`}
       description={description}
     >
       <ArticleContent>

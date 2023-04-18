@@ -1,4 +1,5 @@
 ---
+slug: "es-next-features-part-2"
 date: "2018-07-10"
 title: "Upcoming ESNext features - Part 2"
 description: "Take a look on the Bind Operator, Top-Level Await and Optional Chaining"
@@ -134,7 +135,7 @@ Deadlocks are possible with the current solution, so we either accept them as a 
 Rich Harris from the Rollup team wrote [this gist](https://gist.github.com/Rich-Harris/41e8ccc755ea232a5e7b88dee118bcf5), detailing his concerns regarding dynamic imports.
 
 According to the comment thread there, this concert might be _partially_ valid:
-- declarative (using static module paths) dynamic imports will be present on the module tree if vendors do speculative loading or preloading.  
+- declarative (using static module paths) dynamic imports will be present on the module tree if vendors do speculative loading or preloading.
 In this case, if a module will be loaded dynamically, the browser/node process will be prepared for it, and won't affect speed.
 
 - imperative (using computed module paths) dynamic imports might cause problems like this, but - as we've seen above - these issues are usually relevant to application code and not library code, so this is the code you write and you have to be prepared for it
@@ -143,10 +144,10 @@ In this case, if a module will be loaded dynamically, the browser/node process w
 
 The proposal suggests two possible solutions to the concerns above:
 
-1. **Block the whole module dependency tree until everything resolves**  
+1. **Block the whole module dependency tree until everything resolves**
 Sequential dynamic imports block all the following ones until the whole graph is resolved. This is possibly the simplest and expected behavior. This solution guarantees module order in a declarative way but may block the application.
 
-2. **Block only the dependencies, the script that imports them keeps running**  
+2. **Block only the dependencies, the script that imports them keeps running**
 Like if you defer all your imports in with `Promise.all`, and the importing script keeps running, and in the future at a point, they will be resolved. This solution provides developers the ability to handle errors in dependencies, or use timeouts to resolve deadlocks.
 
 **Additionally**, to ease concerns around blocking in libraries and dependencies, a constraint is suggested: top-level await could be used only in modules **without exports**. This would restrict top-level awaits to bootstrapping application code only.

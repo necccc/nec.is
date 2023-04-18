@@ -4,7 +4,7 @@ import classnames from 'classnames'
 import Logo from '../Logo'
 import * as css from './header.module.scss'
 
-export default ({ title = '', resume }) => {
+const Header = ({ title = '', resume }) => {
   const [small, setSmall] = useState(false)
   const treshold = resume ? 200 : 92
 
@@ -26,7 +26,7 @@ export default ({ title = '', resume }) => {
         window.document.removeEventListener('scroll', scrollSetSmall)
       }
     }
-  }, [false])
+  }, [scrollSetSmall])
 
   return (
     <header
@@ -50,7 +50,7 @@ export default ({ title = '', resume }) => {
             type="checkbox"
             id="menu-open"
           />
-          <label htmlFor="menu-open" className={css.header_nav_opener}>
+          <label htmlFor="menu-open">
             <span>menu</span>
           </label>
 
@@ -71,3 +71,5 @@ export default ({ title = '', resume }) => {
     </header>
   )
 }
+
+export default Header

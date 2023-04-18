@@ -3,7 +3,7 @@ import classnames from 'classnames'
 import Layout from '../components/Layout'
 import * as css from './working.module.scss'
 
-export default () => (
+const Working = () => (
   <Layout
     title="Szabolcs Szabolcsi-Toth"
     pathName="/working"
@@ -235,3 +235,5 @@ export default () => (
     </article>
   </Layout>
 )
+
+export default Working

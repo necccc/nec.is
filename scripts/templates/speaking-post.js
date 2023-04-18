@@ -22,15 +22,8 @@ export default PostPageTemplate
 export const pageQuery = graphql`
   query ($id: String!) {
     mdx(id: { eq: $id }) {
-      parent {
-        ... on File {
-          relativePath
-        }
-      }
-      fields {
-        slug
-      }
       frontmatter {
+        slug
         title
         date(formatString: "MMMM Do, YYYY")
         tags

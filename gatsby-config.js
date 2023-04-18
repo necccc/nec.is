@@ -94,11 +94,14 @@ module.exports = {
         mdxOptions: {
           remarkPlugins: [
             {
-              resolve: `gatsby-remark-copy-linked-files`,
+              resolve: 'gatsby-remark-copy-linked-files',
             },
             {
-              resolve: `gatsby-remark-smartypants`,
+              resolve: 'gatsby-remark-smartypants',
             },
+            {
+              resulve: 'gatsby-remark-autolink-headers'
+            }
           ],
         }
       },
@@ -142,8 +145,8 @@ module.exports = {
                 .map(edge => {
                   return Object.assign({}, edge.node.frontmatter, {
                     date: edge.node.frontmatter.postdate,
-                    url: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                    guid: site.siteMetadata.siteUrl + edge.node.fields.slug
+                    url: site.siteMetadata.siteUrl + edge.node.frontmatter.slug,
+                    guid: site.siteMetadata.siteUrl + edge.node.frontmatter.slug
                   })
                 })
             },
@@ -156,10 +159,8 @@ module.exports = {
     edges {
       node {
         id
-        fields {
-          slug
-        }
         frontmatter {
+          slug
           title
           postdate: date(formatString: "ddd, DD MMM YYYY 11:00:00 +0100")
           description

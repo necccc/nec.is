@@ -2,7 +2,7 @@ import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import * as css from './video.module.scss'
 
-export default ({ video, className = '', align = 'full', alt = '' }) => {
+const PostVideo = ({ video, className = '', align = 'full', alt = '' }) => {
   const data = useStaticQuery(graphql`
     query postVideoQuery {
       source: allFile(filter: { sourceInstanceName: { eq: "postvideos" } }) {
@@ -42,3 +42,5 @@ export default ({ video, className = '', align = 'full', alt = '' }) => {
       </div>
     ))
 }
+
+export default PostVideo

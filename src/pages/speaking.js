@@ -15,7 +15,7 @@ const getTalks = (data) => {
   )
 }
 
-export default (props) => (
+const Speaking = (props) => (
   <Layout title="Speaking" pathName="/">
     <section className={css.talks}>
       <ul className={css.talk_list}>
@@ -23,7 +23,7 @@ export default (props) => (
           ({ node: { id, parent, fields, frontmatter } }) => (
             <li key={id} className={css.talk_item}>
               <h3>
-                <Link to={`/${parent.sourceInstanceName}/${fields.slug}`}>
+                <Link to={`/${parent.sourceInstanceName}/${frontmatter.slug}`}>
                   <span className={css.talk_item_title}>
                     {frontmatter.title}
                   </span>
@@ -47,6 +47,8 @@ export default (props) => (
   </Layout>
 )
 
+export default Speaking
+
 export const query = graphql`
   query SpeakingQuery {
     allMdx {
@@ -59,10 +61,8 @@ export const query = graphql`
               sourceInstanceName
             }
           }
-          fields {
-            slug
-          }
           frontmatter {
+            slug
             title
             year: event_start(formatString: "YYYY")
             date: event_start(formatString: "MMMM Do, YYYY")

@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import * as css from './image.module.scss'
 
-export default ({ image, className = '', align = 'left', alt = '' }) => {
+const PostImage = ({ image, className = '', align = 'left', alt = '' }) => {
   const data = useStaticQuery(graphql`
     query postImageQuery {
       source: allFile(filter: { sourceInstanceName: { eq: "postimages" } }) {
@@ -46,3 +46,5 @@ export default ({ image, className = '', align = 'left', alt = '' }) => {
       </span>
     ))
 }
+
+export default PostImage

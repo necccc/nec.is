@@ -14,7 +14,7 @@ const getPosts = (data) => {
   )
 }
 
-export default (props) => (
+const Index = (props) => (
   <Layout title="Hi, I'm Szabolcs!" pathName="/" skipMetaTitle>
     <section className={css.intro}>
       <p>
@@ -37,7 +37,7 @@ export default (props) => (
           <li key={node.id} className={css.article_grid_item}>
             <h3>
               <Link
-                to={`/${node.parent.sourceInstanceName}${node.fields.slug}`}
+                to={`/${node.parent.sourceInstanceName}/${node.frontmatter.slug}`}
               >
                 {node.frontmatter.title}
               </Link>
@@ -51,7 +51,7 @@ export default (props) => (
                   {node.frontmatter.postdate}
                 </span>
                 <Link
-                  to={`/${node.parent.sourceInstanceName}${node.fields.slug}`}
+                  to={`/${node.parent.sourceInstanceName}/${node.frontmatter.slug}`}
                 >
                   Read more...
                 </Link>
@@ -64,6 +64,8 @@ export default (props) => (
   </Layout>
 )
 
+export default Index
+
 export const query = graphql`
   query IndexQuery {
     allMdx(
@@ -73,10 +75,8 @@ export const query = graphql`
       edges {
         node {
           id
-          fields {
-            slug
-          }
           frontmatter {
+            slug
             title
             date
             postdate: date(formatString: "MMMM Do")
