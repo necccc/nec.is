@@ -18,31 +18,29 @@ const getTalks = (data) => {
 const Speaking = (props) => (
   <Layout title="Speaking" pathName="/">
     <section className={css.talks}>
-      <ul className={css.talk_list}>
+
         {getTalks(props.data).map(
           ({ node: { id, parent, fields, frontmatter } }) => (
-            <li key={id} className={css.talk_item}>
-              <h3>
+            <article key={id} className={css.talk_item}>
+              <h3 className={css.talk_item_title}>
                 <Link to={`/${parent.sourceInstanceName}/${frontmatter.slug}`}>
-                  <span className={css.talk_item_title}>
+                  <span >
                     {frontmatter.title}
                   </span>
-                  <span className={css.talk_item_year}>{frontmatter.year}</span>
                 </Link>
               </h3>
 
-              <p>
+              <p className={css.talk_item_meta}>
                 <strong className={css.talk_item_topic}>
                   {frontmatter.topic}
                 </strong>
                 <small className={css.talk_item_date}>{frontmatter.date}</small>
               </p>
 
-              <p>{frontmatter.description}</p>
-            </li>
+              <p className={css.talk_content}>{frontmatter.description}</p>
+            </article>
           )
         )}
-      </ul>
     </section>
   </Layout>
 )

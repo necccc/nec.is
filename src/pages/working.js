@@ -26,7 +26,7 @@ const Working = () => (
           </li>
           <li>
             <strong>Code: </strong>
-            JavaScript, TypeScript, Node.js, HTML5/CSS3, SASS/SCSS, Go, PHP,
+            JavaScript, TypeScript, Node.js, React, HTML5/CSS3, SASS/SCSS, Go, PHP,
             Bash
           </li>
           <li>
@@ -40,15 +40,6 @@ const Working = () => (
       <h2 className={css.resumeSectionTitle}>Work Experience</h2>
 
       <div className={css.resumeSection}>
-        <h3>CEO & Organizer</h3>
-        <h4>
-          JSSC Event organizing, private company • <em>2017 - present</em>
-        </h4>
-        <ul>
-          <li>Company management</li>
-          <li>Financial management</li>
-          <li>Event organizing</li>
-        </ul>
 
         <h3>Staff Engineer</h3>
         <h4>
@@ -60,6 +51,17 @@ const Working = () => (
             new financial service from the ground up
           </li>
         </ul>
+
+        <h3>CEO & Organizer</h3>
+        <h4>
+          JSSC Event organizing, private company • <em>2017 - present</em>
+        </h4>
+        <ul>
+          <li>Company management</li>
+          <li>Financial management</li>
+          <li>Event organizing</li>
+        </ul>
+
 
         <h3>Senior Engineer</h3>
         <h4>

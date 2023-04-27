@@ -57,13 +57,13 @@ const Header = ({ title = '', resume }) => {
 
           <ul className={css.header_nav_links}>
             <li className={css.header_nav_link}>
-              <Link to="/">writing</Link>
+              <Link className={css.link} to="/">writing</Link>
             </li>
             <li className={css.header_nav_link}>
-              <Link to="/speaking">speaking</Link>
+              <Link className={css.link} to="/speaking">speaking</Link>
             </li>
             <li className={css.header_nav_link}>
-              <a href="https://twitter.com/_Nec">twitter</a>
+              <a className={css.link} href="https://twitter.com/_Nec">twitter</a>
             </li>
           </ul>
         </nav>

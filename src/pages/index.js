@@ -27,8 +27,7 @@ const Index = (props) => (
           Frontend Meetup Budapest
         </a>{' '}
         occasional <a href="/speaking">speaker</a>, hobby hardware hacker,
-        photographer and Lego nerd. Senior engineer at{' '}
-        <a href="https://cloud.ibm.com/">IBM Cloud</a>.
+        photographer and Lego nerd. Staff engineer at BinX.
       </p>
     </section>
 
