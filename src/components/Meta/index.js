@@ -1,7 +1,6 @@
-import React from "react"
-import { Helmet } from "react-helmet"
-import { graphql, useStaticQuery } from "gatsby"
-
+import { graphql, useStaticQuery } from 'gatsby'
+import React from 'react'
+import { Helmet } from 'react-helmet'
 
 const SiteMetadata = ({ pathName }) => {
   const query = graphql`
@@ -33,7 +32,7 @@ const SiteMetadata = ({ pathName }) => {
         content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover"
       />
       <link rel="me" href="https://mastodon.social/@_Nec" />
-{/*
+      {/*
       <meta property="og:url" content={siteUrl} />
       <meta property="og:type" content="website" />
       <meta property="og:locale" content="en" />

@@ -1,4 +1,5 @@
 import React from 'react'
+
 import * as css from './article.module.scss'
 
 const ArticleContent = ({ children }) => (

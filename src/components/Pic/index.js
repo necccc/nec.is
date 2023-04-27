@@ -1,7 +1,8 @@
 import React from 'react'
+
 import * as css from './pic.module.scss'
 
-const Pic = props => {
+const Pic = (props) => {
   const { alt, src, title } = props
   const classNames = [css.image]
 

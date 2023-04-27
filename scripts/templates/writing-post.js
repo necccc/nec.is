@@ -1,31 +1,30 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { MDXProvider } from '@mdx-js/react'
-import Layout from '../components/Layout'
-import ArticleContent from '../components/ArticleContent'
-import ArticleMeta from '../components/ArticleMeta'
+import Layout from '../../src/components/Layout'
+import ArticleContent from '../../src/components/ArticleContent'
+import ArticleMeta from '../../src/components/ArticleMeta'
 
-import Pic from '../components/Pic'
+import Pic from '../../src/components/Pic'
 
 const components = {
   img: Pic,
 }
 
-function PostPageTemplate({ data: { mdx } }) {
+function PostPageTemplate({ data: { mdx }, children }) {
   const { relativePath } = mdx.parent
   const { title, date, tags, dateTime, description } = mdx.frontmatter
+
+  console.log(mdx)
 
   return (
     <Layout
       title={title}
-      pathName={ `/writing${mdx.fields.slug}` }
-      description={ description }
+      pathName={`/writing/${mdx.fields.slug}`}
+      description={description}
     >
       <ArticleContent>
-        <MDXProvider components={components}>
-          <MDXRenderer>{mdx.body}</MDXRenderer>
-        </MDXProvider>
+        <MDXProvider components={components}>{children}</MDXProvider>
       </ArticleContent>
       <ArticleMeta
         relativePath={relativePath}
@@ -40,7 +39,7 @@ function PostPageTemplate({ data: { mdx } }) {
 export default PostPageTemplate
 
 export const pageQuery = graphql`
-  query($id: String!) {
+  query ($id: String!) {
     mdx(id: { eq: $id }) {
       parent {
         ... on File {
@@ -58,7 +57,6 @@ export const pageQuery = graphql`
         tags
       }
       id
-      body
     }
   }
 `

@@ -1,4 +1,5 @@
 ---
+slug: "qclock-the-led-rgb wall-clock-part-1"
 date: "2018-01-21"
 title: Create an RGB LED wall clock - part 1
 description: "Guide to make your own RGB LED wall clock, using a Tessel, Neopixels and JavaScript - first, the hardware part"
@@ -10,10 +11,10 @@ tags:
 - neopixels
 - diy
 ---
-import PostVideo from "../../../src/components/PostVideo";
 import PostImage from "../../../src/components/PostImage";
-import Youtube from "../../../src/components/Youtube"
+import PostVideo from "../../../src/components/PostVideo";
 import Intro from "../../../src/components/Intro";
+import Youtube from "../../../src/components/Youtube"
 
 <Intro>
 
@@ -55,8 +56,8 @@ Some ideas emerged, like magnetic arms, huge e-ink numbers (turns out there is s
 ### NeoPixel LED strips
 
 [NeoPixels](https://www.adafruit.com/category/168) are bright, RGB - or RGBW, if you choose those - LEDs, which can be connected to each other, to form a strip of lights. To make things even more awesome, you can program a whole strip at the beginning, using 3 pins:
-- Ground point, 
-- the signal input, 
+- Ground point,
+- the signal input,
 - a 5V power source, where the longer your LED strip the more current it will need (sometimes more than 2 Amperes!)
 
 The LED strips are available with various “resolutions” -  the number of LEDs on a 1-meter strip. I picked the average one, simple RGB with 60 LEDs on a meter. I needed approximately twice of the circumference of the planned clock since there is a strip inside and outside of the round frame.

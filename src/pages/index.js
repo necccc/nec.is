@@ -1,10 +1,11 @@
-import React from 'react'
 import { graphql } from 'gatsby'
 import { Link } from 'gatsby'
+import React from 'react'
+
 import Layout from '../components/Layout'
 import * as css from './index.module.scss'
 
-const getPosts = data => {
+const getPosts = (data) => {
   return data.allMdx.edges.filter(
     ({
       node: {
@@ -14,12 +15,8 @@ const getPosts = data => {
   )
 }
 
-export default props => (
-  <Layout
-    title="Hi, I'm Szabolcs!"
-    pathName="/"
-    skipMetaTitle
-  >
+const Index = (props) => (
+  <Layout title="Hi, I'm Szabolcs!" pathName="/" skipMetaTitle>
     <section className={css.intro}>
       <p>
         Mostly online as <a href="https://twitter.com/_Nec">_Nec</a>, I'm a
@@ -30,8 +27,7 @@ export default props => (
           Frontend Meetup Budapest
         </a>{' '}
         occasional <a href="/speaking">speaker</a>, hobby hardware hacker,
-        photographer and Lego nerd. Senior engineer at{' '}
-        <a href="https://cloud.ibm.com/">IBM Cloud</a>.
+        photographer and Lego nerd. Staff engineer at BinX.
       </p>
     </section>
 
@@ -41,7 +37,7 @@ export default props => (
           <li key={node.id} className={css.article_grid_item}>
             <h3>
               <Link
-                to={`/${node.parent.sourceInstanceName}${node.fields.slug}`}
+                to={`/${node.parent.sourceInstanceName}/${node.frontmatter.slug}`}
               >
                 {node.frontmatter.title}
               </Link>
@@ -54,11 +50,8 @@ export default props => (
                 <span className={css.article_meta_date}>
                   {node.frontmatter.postdate}
                 </span>
-                <span className={css.article_meta_timetoread}>
-                  {node.timeToRead} min read
-                </span>
                 <Link
-                  to={`/${node.parent.sourceInstanceName}${node.fields.slug}`}
+                  to={`/${node.parent.sourceInstanceName}/${node.frontmatter.slug}`}
                 >
                   Read more...
                 </Link>
@@ -71,17 +64,19 @@ export default props => (
   </Layout>
 )
 
+export default Index
+
 export const query = graphql`
   query IndexQuery {
-    allMdx(sort: {order: DESC, fields: frontmatter___date}, filter: {frontmatter: {draft: {ne: true}}}) {
+    allMdx(
+      sort: { frontmatter: { date: DESC } }
+      filter: { frontmatter: { draft: { ne: true } } }
+    ) {
       edges {
         node {
           id
-          timeToRead
-          fields {
-            slug
-          }
           frontmatter {
+            slug
             title
             date
             postdate: date(formatString: "MMMM Do")

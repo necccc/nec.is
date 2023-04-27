@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react'
-import { Link } from 'gatsby'
 import classnames from 'classnames'
+import { Link } from 'gatsby'
+import React, { useEffect, useState } from 'react'
+
 import Logo from '../Logo'
 import * as css from './header.module.scss'
 
-export default ({ title = '', resume }) => {
+const Header = ({ title = '', resume }) => {
   const [small, setSmall] = useState(false)
   const treshold = resume ? 200 : 92
 
@@ -26,11 +27,15 @@ export default ({ title = '', resume }) => {
         window.document.removeEventListener('scroll', scrollSetSmall)
       }
     }
-  }, [false])
+  }, [scrollSetSmall])
 
   return (
     <header
-      className={ classnames(css.header, resume && css.headerResume, small && css.header__small) }
+      className={classnames(
+        css.header,
+        resume && css.headerResume,
+        small && css.header__small
+      )}
     >
       <div className={css.header_top} smalltitle={title}>
         <h1 className={css.header_home} title="_Nec">
@@ -46,19 +51,19 @@ export default ({ title = '', resume }) => {
             type="checkbox"
             id="menu-open"
           />
-          <label htmlFor="menu-open" className={css.header_nav_opener}>
+          <label htmlFor="menu-open">
             <span>menu</span>
           </label>
 
           <ul className={css.header_nav_links}>
             <li className={css.header_nav_link}>
-              <Link to="/">writing</Link>
+              <Link className={css.link} to="/">writing</Link>
             </li>
             <li className={css.header_nav_link}>
-              <Link to="/speaking">speaking</Link>
+              <Link className={css.link} to="/speaking">speaking</Link>
             </li>
             <li className={css.header_nav_link}>
-              <a href="https://twitter.com/_Nec">twitter</a>
+              <a className={css.link} href="https://twitter.com/_Nec">twitter</a>
             </li>
           </ul>
         </nav>
@@ -67,3 +72,5 @@ export default ({ title = '', resume }) => {
     </header>
   )
 }
+
+export default Header
