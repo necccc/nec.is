@@ -1,7 +1,8 @@
-import React from 'react'
 import { graphql } from 'gatsby'
-import Layout from '../../components/Layout'
+import React from 'react'
+
 import ArticleContent from '../../components/ArticleContent'
+import Layout from '../../components/Layout'
 
 function Post({ data: { mdx }, children }) {
   const { title, description, slug } = mdx.frontmatter

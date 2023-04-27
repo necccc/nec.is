@@ -1,5 +1,6 @@
-import React from 'react'
 import classnames from 'classnames'
+import React from 'react'
+
 import Layout from '../components/Layout'
 import * as css from './working.module.scss'
 
@@ -67,7 +68,7 @@ const Working = () => (
         <ul>
           <li>
             Design and implement an{' '}
-            <a href="https://www.ibm.com/cloud/blog/announcements/devsecops-reference-implementation-for-audit-ready-compliance-across-development-teams">
+            <a href="https://cloud.ibm.com/docs/devsecops?topic=devsecops-cd-devsecops-pipelines">
               opinionated DevSecOps pipeline
             </a>{' '}
             for "continous compliance". Aim of this toolchain to help teams

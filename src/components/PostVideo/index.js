@@ -1,5 +1,6 @@
+import { graphql, useStaticQuery } from 'gatsby'
 import React from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
+
 import * as css from './video.module.scss'
 
 const PostVideo = ({ video, className = '', align = 'full', alt = '' }) => {

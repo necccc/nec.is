@@ -1,9 +1,10 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
-import Meta from '../Meta'
-import * as css from './layout.module.scss'
+
 import Footer from '../Footer'
 import Header from '../Header'
+import Meta from '../Meta'
+import * as css from './layout.module.scss'
 
 const Layout = ({
   title = '',

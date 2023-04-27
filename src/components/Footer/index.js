@@ -1,5 +1,6 @@
-import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
+import React from 'react'
+
 import Logo from '../Logo'
 import * as css from './footer.module.scss'
 

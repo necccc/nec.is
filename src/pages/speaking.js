@@ -1,6 +1,6 @@
-import React from 'react'
 import { graphql } from 'gatsby'
 import { Link } from 'gatsby'
+import React from 'react'
 
 import Layout from '../components/Layout'
 import * as css from './speaking.module.scss'

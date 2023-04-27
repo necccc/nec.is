@@ -1,4 +1,5 @@
 import React from 'react'
+
 import * as css from './pic.module.scss'
 
 const Pic = (props) => {

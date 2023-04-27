@@ -1,6 +1,7 @@
-import React from 'react'
-import * as css from './blockquote.module.scss'
 import classnames from 'classnames'
+import React from 'react'
+
+import * as css from './blockquote.module.scss'
 
 const Blockquote = ({ children, by, link, linkText, align = 'full' }) => (
   <blockquote className={classnames(css.quote, css[`quote-${align}`])}>

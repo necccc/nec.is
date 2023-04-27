@@ -15,6 +15,7 @@ module.exports = {
     email: 'nec@shell8.net',
     siteUrl: 'https://nec.is'
   },
+  trailingSlash: 'always',
   plugins: [
     {
       resolve: 'gatsby-source-filesystem',
@@ -181,7 +182,6 @@ module.exports = {
       },
     },
 
-    'gatsby-plugin-force-trailing-slashes',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-catch-links',
 
