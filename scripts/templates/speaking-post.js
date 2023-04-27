@@ -1,21 +1,18 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { MDXRenderer } from 'gatsby-plugin-mdx'
 import Layout from '../components/Layout'
 import ArticleContent from '../components/ArticleContent'
 
-function PostPageTemplate({ data: { mdx } }) {
+function PostPageTemplate({ data: { mdx }, children }) {
   const { title, description } = mdx.frontmatter
 
   return (
     <Layout
       title={title}
-      pathName={ `/speaking${mdx.fields.slug}` }
-      description={ description }
+      pathName={`/speaking${mdx.fields.slug}`}
+      description={description}
     >
-      <ArticleContent>
-        <MDXRenderer>{mdx.body}</MDXRenderer>
-      </ArticleContent>
+      <ArticleContent>{children}</ArticleContent>
     </Layout>
   )
 }
@@ -23,24 +20,16 @@ function PostPageTemplate({ data: { mdx } }) {
 export default PostPageTemplate
 
 export const pageQuery = graphql`
-  query($id: String!) {
+  query ($id: String!) {
     mdx(id: { eq: $id }) {
-      parent {
-        ... on File {
-          relativePath
-        }
-      }
-      fields {
-        slug
-      }
       frontmatter {
+        slug
         title
         date(formatString: "MMMM Do, YYYY")
-        tags,
+        tags
         description
       }
       id
-      body
     }
   }
 `

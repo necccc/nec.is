@@ -1,7 +1,9 @@
-import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
+import React from 'react'
+
 import * as css from './articlemeta.module.scss'
 
+/*
 const Tags = ({ tags }) =>
   tags.map((tag, i, tags) => {
     const lastBeforeOne = i === tags.length - 2
@@ -19,7 +21,7 @@ const Tags = ({ tags }) =>
         {glue}{' '}
       </>
     )
-  })
+  }) */
 
 const ArticleMeta = ({ relativePath = '', date, tags, dateTime }) => (
   <StaticQuery

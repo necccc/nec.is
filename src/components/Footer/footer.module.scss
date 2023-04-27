@@ -53,7 +53,7 @@
               color: $color-blue;
           }
           &:hover {
-              @include underline($color-light-2, $color-blue);
+            @include underline($color-light-2, $color-blue);
           }
         }
     }
@@ -104,9 +104,8 @@
       padding: 0;
       list-style-type: none;
 
-
       &:last-child::after {
-          display: none;
+        display: none;
       }
 
       li {

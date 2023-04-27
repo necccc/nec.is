@@ -2,7 +2,7 @@ const path = require(`path`);
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
 exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions;
+  /* const { createPage } = actions;
 
   return graphql(
     `
@@ -82,12 +82,12 @@ exports.createPages = ({ graphql, actions }) => {
     // instagram data https://developers.facebook.com/docs/instagram-api/reference/media
 
 
-  })
+  }) */
 }
 
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
+/*   const { createNodeField } = actions
 
   if (node.internal.type === `Mdx`) {
     const value = createFilePath({ node, getNode })
@@ -101,5 +101,5 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       node,
       value: (Math.round(Date.now() * Math.random())).toString(32)
     })
-  }
+  } */
 }

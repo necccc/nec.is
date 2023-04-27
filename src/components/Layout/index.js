@@ -1,9 +1,10 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
-import Meta from '../Meta'
-import * as css from './layout.module.scss'
+
 import Footer from '../Footer'
 import Header from '../Header'
+import Meta from '../Meta'
+import * as css from './layout.module.scss'
 
 const Layout = ({
   title = '',
@@ -14,17 +15,13 @@ const Layout = ({
   description,
 }) => (
   <>
-    <Meta
-      pathName={ pathName }
-      description={ description }
-      skipMetaTitle
-    />
+    <Meta pathName={pathName} description={description} skipMetaTitle />
     <Helmet>
-      { !skipMetaTitle && <title>{ title }</title>}
-      { description && <meta name="description" content={ description } /> }
+      {!skipMetaTitle && <title>{title}</title>}
+      {description && <meta name="description" content={description} />}
     </Helmet>
     <main className={css.layout}>
-      <Header title={title} resume={ resume } />
+      <Header title={title} resume={resume} />
       {children}
       <Footer />
     </main>

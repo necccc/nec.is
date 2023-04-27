@@ -15,6 +15,7 @@ module.exports = {
     email: 'nec@shell8.net',
     siteUrl: 'https://nec.is'
   },
+  trailingSlash: 'always',
   plugins: [
     {
       resolve: 'gatsby-source-filesystem',
@@ -91,14 +92,19 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: ['.mdx', '.md'],
-        gatsbyRemarkPlugins: [
-          {
-            resolve: `gatsby-remark-copy-linked-files`,
-          },
-          {
-            resolve: `gatsby-remark-smartypants`,
-          },
-        ],
+        mdxOptions: {
+          remarkPlugins: [
+            {
+              resolve: 'gatsby-remark-copy-linked-files',
+            },
+            {
+              resolve: 'gatsby-remark-smartypants',
+            },
+            {
+              resulve: 'gatsby-remark-autolink-headers'
+            }
+          ],
+        }
       },
     },
 
@@ -140,39 +146,35 @@ module.exports = {
                 .map(edge => {
                   return Object.assign({}, edge.node.frontmatter, {
                     date: edge.node.frontmatter.postdate,
-                    url: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                    guid: site.siteMetadata.siteUrl + edge.node.fields.slug
+                    url: site.siteMetadata.siteUrl + edge.node.frontmatter.slug,
+                    guid: site.siteMetadata.siteUrl + edge.node.frontmatter.slug
                   })
                 })
             },
-            query: `
-            {
-              allMdx(
-                sort: { order: DESC, fields: frontmatter___date },
-                filter: { frontmatter: { draft: { ne: true }}},
-                limit: 1000
-              ) {
-                edges {
-                  node {
-                    id
-                    fields {
-                      slug
-                    }
-                    frontmatter {
-                      title
-                      postdate: date(formatString: "ddd, DD MMM YYYY 11:00:00 +0100")
-                      description
-                    }
-                    parent {
-                      ... on File {
-                        sourceInstanceName
-                      }
-                    }
-                  }
-                }
-              }
-            }
-            `,
+            query: `{
+  allMdx(
+    sort: {frontmatter: {date: DESC}}
+    filter: {frontmatter: {draft: {ne: true}}}
+    limit: 1000
+  ) {
+    edges {
+      node {
+        id
+        frontmatter {
+          slug
+          title
+          postdate: date(formatString: "ddd, DD MMM YYYY 11:00:00 +0100")
+          description
+        }
+        parent {
+          ... on File {
+            sourceInstanceName
+          }
+        }
+      }
+    }
+  }
+}`,
             output: '/rss.xml',
             title: 'Gatsby RSS feed',
           },
@@ -180,7 +182,6 @@ module.exports = {
       },
     },
 
-    'gatsby-plugin-force-trailing-slashes',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-catch-links',
 

@@ -1,5 +1,6 @@
-import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
+import React from 'react'
+
 import Logo from '../Logo'
 import * as css from './footer.module.scss'
 
@@ -21,14 +22,12 @@ const Footer = ({ title = '' }) => (
     render={({ site: { siteMetadata } }) => (
       <footer className={css.footer}>
         <div className={css.footer_content}>
-          <h3 className={css.farewell}>
-            Keep updated, contact, get in touch!
-          </h3>
+          <h3 className={css.farewell}>Keep updated, contact, get in touch!</h3>
 
           <ul className={css.about}>
             <li>
               Contact me via{' '}
-              <a href="mailto:nec@shell8.net" title="email">
+              <a href="mailto:hello@nec.is" title="email">
                 email
               </a>
             </li>
@@ -44,7 +43,6 @@ const Footer = ({ title = '' }) => (
 
           <ul className={css.links}>
             <li>
-              <a href="/working" />
               <a href={siteMetadata.githubUrl}>GitHub</a>
             </li>
             <li>
