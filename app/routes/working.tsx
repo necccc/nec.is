@@ -185,16 +185,28 @@ export default function Working() {
           <h2 className={css.resume_section_title}>Community work</h2>
 
           <div className={css.resume_section}>
-            <h3>JSConf Budapest 2015 - present</h3>
-            <h4>Curator, organizer</h4>
+            <h3>JSConf Budapest 2015 - 2024</h3>
+            <h4>Curator, chief organizer</h4>
             <ul>
               <li>
-                JSConf Budapest is the part of the international JSConf family
+                <p>
+                  JSConf Budapest was the part of the international JSConf
+                  family
+                </p>
+
+                <p>
+                  <a href="https://2015.jsconfbp.com/">2015</a> |{' '}
+                  <a href="https://2016.jsconfbp.com/">2016</a> |{' '}
+                  <a href="https://2017.jsconfbp.com/">2017</a> |{' '}
+                  <a href="https://2019.jsconfbp.com/">2019</a> |{' '}
+                  <a href="https://2022.jsconfbp.com/">2022</a> |{' '}
+                  <a href="https://jsconfbp.com/">2024</a>
+                </p>
               </li>
               <li>2 day, single track event</li>
-              <li>92 speakers and more than 2100 attendees since 2015</li>
+              <li>92 speakers and more than 2500 attendees since 2015</li>
               <li>Focused on technology, culture and diversity</li>
-              <li>Curated and organized 4 successful events so far</li>
+              <li>Curated and organized 6 successful events</li>
               <li>
                 My participation was in curating the lineup, organizing venue,
                 catering, hotel and flight arrangements and sponsor negotiations
@@ -209,7 +221,7 @@ export default function Working() {
               </li>
               <li>single day single track event</li>
               <li>27 speakers and ~800 attendees since 2016</li>
-              <li>Organized and helped at 3 successful events so far</li>
+              <li>Organized and helped at 3 successful events</li>
               <li>
                 My participation was in organizing venue, catering, hotel and
                 flight arrangements and sponsor negotiations
