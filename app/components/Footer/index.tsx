@@ -22,19 +22,19 @@ export const Footer = ({ title = '' }) => (
 
       <ul className={css.links}>
         <li>
-          <a href="">GitHub</a>
+          <a href="https://github.com/necccc">GitHub</a>
         </li>
         <li>
-          <a href="">LinkedIn</a>
+          <a href="https://www.linkedin.com/in/szabolcsit">LinkedIn</a>
         </li>
         <li>
-          <a href="">Instagram</a>
+          <a href="https://www.instagram.com/_nec">Instagram</a>
         </li>
         <li>
-          <a href="">Bluesky</a>
+          <a href="https://bsky.app/profile/nec.is">Bluesky</a>
         </li>
         <li>
-          <a href="">Mastodon</a>
+          <a href="https://mastodon.social/@_Nec">Mastodon</a>
         </li>
       </ul>
     </div>
