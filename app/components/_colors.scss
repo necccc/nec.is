@@ -1,0 +1,12 @@
+@use "sass:color";
+
+$color-white: #fbfbfb;
+$color-black: #030303;
+$color-light-1: color.adjust($color-black, $lightness: 95%);
+$color-light-2: color.adjust($color-black, $lightness: 90%);
+$color-light-3: color.adjust($color-black, $lightness: 50%);
+$color-dark-1: color.adjust($color-black, $lightness: 50%);
+$color-dark-2: color.adjust($color-black, $lightness: 60%);
+$color-dark-3: color.adjust($color-black, $lightness: 70%);
+$color-blue: color.adjust(#12afc2, $lightness: -3%);
+$color-pink: #cc277e;

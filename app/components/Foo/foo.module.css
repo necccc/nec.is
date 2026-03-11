@@ -1,0 +1,7 @@
+.foo {
+  background-color: var(--bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 8rem;
+}

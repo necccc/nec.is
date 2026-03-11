@@ -1,0 +1,91 @@
+import type { Route } from '../+types/home'
+
+import { Intro } from '~/components/Intro'
+import { SlideShare } from '~/components/SlideShare'
+import { Header } from '~/components/Header'
+import { ArticleContent } from '~/components/ArticleContent'
+
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: 'Thunder Plains Conference 2017 - nec.is' },
+    {
+      name: 'description',
+      content:
+        'Picked up my old hacked coffee machine once again, and traveled across the world with it.',
+    },
+  ]
+}
+
+export default function Upfront2017() {
+  return (
+    <>
+      <Header title={'Thunder Plains Conference 2017'} resume={false} />
+      <ArticleContent>
+        <Intro>
+          <p>
+            Welcome to our impromptu coffeeshop where you can be the connected
+            smart barista! Create the coffee that blends with technology, hack &
+            tamper with hardware, and brew an espresso from the command line -
+            or from the browser!
+          </p>
+
+          <p>
+            <em>
+              Talk abstract for "Café Terminal",{' '}
+              <a href="https://2017.thunderplainsconf.com">
+                https://2017.thunderplainsconf.com
+              </a>
+            </em>
+          </p>
+        </Intro>
+
+        <p>
+          It was really exciting to visit the US for the second time, especially
+          with a huge hardcovered utility box, with an old espresso machine
+          inside! Thunder Plains seems like the local community conference
+          around Oklahoma and the surrounding nations, but that's a bit
+          deceiving. This event - althought it wasn't always called Thunder
+          Plains - is maybe older than JSConf itself, Jesse and Amanda Harlin
+          are doing this for the local community since years. The Oklahoma tech
+          community is proud to give the world talented people like Kyle Simpson
+          or John-David Dalton.
+        </p>
+        <p>
+          Everything was super-fine until I've realized one major flaw in my
+          planning for the talk: the coffee machine I've brought was an old one,
+          more than 20 years old. It's power requirements were waaay over 110V,
+          the standard for the United States. It was not a question of plug
+          converter, I needed a step-upper, a kind of transformator, that made
+          220Volts from 110. Jesse and Amanda were awesome, they tried to help
+          me find such a device the day before the event, but we've failed - so
+          I used a backup video during the presentation, I've made at home - in
+          case the TSA does find my huge plastic box dangerous, and the machine
+          fails to arrive in the county. Here are the slides for my talk:
+        </p>
+
+        <SlideShare src="//www.slideshare.net/slideshow/embed_code/key/vDWFRzp0lgeLZi" />
+
+        <p>
+          But the luckily the talk and the whole trip was a success, I've
+          received really positive feedback. Doring and after the event I've had
+          the pleasure to meet Adam Baldwin, who started the NodeSecurity
+          project. As I was curious, he explained how they manage to pinpoint
+          malicious npm pacakage installs within seconds, using docker and
+          sysdig. I've met with Laurie Voss from npm again, and it was great to
+          see John-David Dalton in person, and hear from the esm loader he's
+          working on nowadays.
+        </p>
+        <p>
+          Oklahoma City is the 8th largest city in the US by land area, it
+          streches through the Great Plains region, it was super flat. The
+          business district has some skyscrapers, but on the whole, its a reaaly
+          flat city, with a rich history of western culture. I've visited the
+          science museum on the day after the conference, and they happen to
+          have an actual size replica of an F1 rocket engine, one of five that
+          powered the 1st stage of the Saturn rockets during the Apollo
+          missions.
+        </p>
+      </ArticleContent>
+    </>
+  )
+}

@@ -6,7 +6,6 @@ yarn-debug.log*
 yarn-error.log*
 .cache
 .DS_Store
-public
 # Runtime data
 pids
 *.pid
@@ -59,5 +58,7 @@ typings/
 # dotenv environment variables file
 .env
 .vscode
-.DS_Store
-.DS_Store
+
+# React Router
+.react-router/
+build

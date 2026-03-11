@@ -1,0 +1,192 @@
+@use './components/mixins' as mixins;
+@use './components/colors' as colors;
+
+$line-height: 1.65;
+$font-small: 0.8rem;
+
+:root {
+  --bg-color: #{colors.$color-white};
+  --text-color: #{colors.$color-black};
+  --color-light-1: #{colors.$color-light-1};
+  --color-light-2: #{colors.$color-light-2};
+  --color-light-3: #{colors.$color-light-3};
+  --color-dark-1: #{colors.$color-dark-1};
+  --color-dark-2: #{colors.$color-dark-2};
+  --color-dark-3: #{colors.$color-dark-3};
+  --color-blue: #{colors.$color-blue};
+  --color-pink: #{colors.$color-pink};
+
+  --font-body: 'Libre Franklin', sans-serif;
+  --font-heading: 'Libre Baskerville', serif;
+  --font-size-small: #{$font-small};
+  --line-height: #{$line-height};
+}
+
+/* 1. Use a more-intuitive box-sizing model */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+*:not(dialog) {
+  margin: 0;
+}
+
+/* 3. Enable keyword animations */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+
+body {
+  /* 4. Add accessible line-height */
+  line-height: 1.5;
+  /* 5. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+
+  overscroll-behavior: none;
+}
+
+/* 6. Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 7. Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* 8. Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* 9. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+  font-weight: 700;
+}
+
+html,
+body {
+  background-color: var(--bg-color);
+  //background-color: colors.$color-light-1;
+  color: var(--text-color);
+  padding: 0;
+  margin: 0;
+}
+
+.layout {
+  font-size: 1rem;
+
+  @media (max-width: 480px) {
+    font-size: 1.4rem;
+  }
+
+  font-family: var(--font-body);
+  line-height: 1.48em;
+  font-weight: 300;
+  overflow: hidden;
+}
+
+p {
+  line-height: var(--line-height);
+  margin-block-end: 1rem;
+}
+
+html,
+body {
+  font-size: 16px;
+
+  @media (max-width: 480px) {
+    font-size: 12px;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+li,
+blockquote,
+span {
+  line-height: $line-height;
+  font-weight: 300;
+}
+
+p,
+ul,
+ol,
+dl,
+blockquote {
+  padding: 0;
+  margin: 0 0 #{$line-height}rem;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+
+li {
+  list-style: none;
+}
+
+h1 {
+  font-size: 3.052rem;
+}
+h2 {
+  font-size: 2.1rem;
+}
+h3 {
+  font-size: 1.65rem;
+}
+h4 {
+  font-size: 1.4rem;
+}
+
+a {
+  color: colors.$color-blue;
+  text-decoration: none;
+
+  &:visited,
+  &:active {
+    color: colors.$color-blue;
+  }
+
+  section &:not(.anchor):hover {
+    @include mixins.underline(colors.$color-white, colors.$color-blue);
+  }
+}
