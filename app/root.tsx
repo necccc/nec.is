@@ -46,6 +46,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       onScroll,
       window.supportsPassiveScroll ? { passive: true } : false
     )
+    window.document.addEventListener('beforeprint', onScroll)
   }, [])
 
   useEffect(() => {

@@ -37,6 +37,9 @@
       height: 0;
       background-color: transparent;
       border-bottom: var(--headerHeight) solid var(--text-color);
+      transform: skewY(calc(var(--headerSkew) * 0.4));
+      bottom: 0;
+      top: auto;
     }
   }
 
@@ -245,7 +248,7 @@
     }
 
     @media print {
-      height: 20rem;
+      height: 18rem;
     }
 
     #{$header}_title {
