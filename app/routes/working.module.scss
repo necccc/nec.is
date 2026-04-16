@@ -138,7 +138,7 @@
       font-size: 1rem;
       color: colors.$color-dark-1;
       font-weight: normal;
-      margin-bottom: 2rem;
+      margin-bottom: 1.2rem;
       font-family: var(--font-body);
       em {
         color: colors.$color-dark-3;
@@ -158,7 +158,9 @@
       }
 
       &:last-child {
-        margin-bottom: 0;
+        @media print {
+          margin-bottom: 0;
+        }
       }
 
       li {
@@ -170,8 +172,8 @@
         &::before {
           content: '■';
           position: absolute;
-          transform: translateX(-1.45rem);
-          top: 3px;
+          transform: translateX(-1.1rem);
+          top: -1px;
           font-size: 1rem;
           color: colors.$color-blue;
           @media print {

@@ -28,8 +28,9 @@ export default function Working() {
               <ul>
                 <li>
                   <strong>Languages: </strong>
-                  English, Hungarian
+                  English, Hungarian, currently learning Norwegian
                 </li>
+
                 <li>
                   <strong>Code: </strong>
                   TypeScript, JavaScript, Node.js, React, HTML, CSS, SASS/SCSS,
@@ -40,12 +41,17 @@ export default function Working() {
                   Fastify, Express, Hapi, sequelize, liquibase, React,
                   react-router, nextjs, react-query, zustand
                 </li>
-                <li id="work">
+                <li>
                   <strong>Deployment &amp; operations: </strong>
                   npm, AWS, linux systems, git/github/gitlab, Docker, Chef,
                   Kubernetes, Tekton CI/CD, Hashicorp Vault, TravisCI, TeamCity
                 </li>
                 <li>
+                  <strong>Architecture: </strong>
+                  Event-driven, CQRS, microservices, REST API, RPC, Server
+                  worker architecture
+                </li>
+                <li id="work">
                   <strong>Design: </strong>
                   web, responsive web, Figma, Photoshop, Illustrator
                 </li>
