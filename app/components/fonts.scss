@@ -1,5 +1,5 @@
-@use "./font-face.scss";
-@use "./mixins.scss";
+@use './font-face.scss';
+@use './mixins.scss';
 
 html,
 body {
@@ -7,6 +7,10 @@ body {
 
   @media (max-width: 480px) {
     font-size: 12px;
+  }
+
+  @media print {
+    font-size: 10px;
   }
 }
 

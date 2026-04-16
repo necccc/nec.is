@@ -9,12 +9,15 @@ export const Footer = ({ title = '' }) => (
       <ul className={css.about}>
         <li>
           Contact me via{' '}
-          <a href="mailto:hello@nec.is" title="email">
+          <a href="mailto:hello@nec.is" data-print="hello@nec.is" title="email">
             email
           </a>
         </li>
         <li>
-          Check out my <a href="/working">resume</a>
+          Check out my{' '}
+          <a href="/working" data-print="nec.is/resume">
+            resume
+          </a>
         </li>
       </ul>
 
@@ -22,19 +25,41 @@ export const Footer = ({ title = '' }) => (
 
       <ul className={css.links}>
         <li>
-          <a href="https://github.com/necccc">GitHub</a>
+          <a href="https://github.com/necccc" data-print="github.com/necccc">
+            GitHub
+          </a>
         </li>
         <li>
-          <a href="https://www.linkedin.com/in/szabolcsit">LinkedIn</a>
+          <a
+            href="https://www.linkedin.com/in/szabolcsit"
+            data-print="linkedin.com/in/szabolcsit"
+          >
+            LinkedIn
+          </a>
         </li>
         <li>
-          <a href="https://www.instagram.com/_nec">Instagram</a>
+          <a
+            href="https://www.instagram.com/_nec"
+            data-print="instagram.com/_nec"
+          >
+            Instagram
+          </a>
         </li>
         <li>
-          <a href="https://bsky.app/profile/nec.is">Bluesky</a>
+          <a
+            href="https://bsky.app/profile/nec.is"
+            data-print="bsky.app/profile/nec.is"
+          >
+            Bluesky
+          </a>
         </li>
         <li>
-          <a href="https://mastodon.social/@_Nec">Mastodon</a>
+          <a
+            href="https://mastodon.social/@_Nec"
+            data-print="mastodon.social/@_Nec"
+          >
+            Mastodon
+          </a>
         </li>
       </ul>
     </div>

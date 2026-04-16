@@ -11,6 +11,11 @@
   font-family: var(--font-body);
   font-weight: 300;
 
+  @media print {
+    background-color: transparent;
+    margin-top: 2rem;
+  }
+
   &::after {
     content: '';
     width: 100%;
@@ -28,6 +33,12 @@
     transform: skewY(4deg);
     transform-origin: bottom left;
     transition: transform ease-out 0.1s;
+
+    @media print {
+      background-color: transparent;
+      border-top: 2px solid var(--color-light-2);
+      top: -4rem;
+    }
   }
 
   &_content,
@@ -122,6 +133,17 @@
         margin-bottom: 2rem;
       }
     }
+
+    @media print {
+      a[data-print] {
+        color: var(--text-color);
+      }
+      a[data-print]::after {
+        content: ' - ' attr(data-print);
+      }
+
+      grid-template-columns: 16rem 1px 16rem;
+    }
   }
 
   &_bottom {
@@ -149,6 +171,9 @@
 
     p {
       margin-top: 1rem;
+      @media print {
+        display: none;
+      }
     }
   }
 

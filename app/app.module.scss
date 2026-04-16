@@ -96,10 +96,13 @@ h6 {
 html,
 body {
   background-color: var(--bg-color);
-  //background-color: colors.$color-light-1;
   color: var(--text-color);
   padding: 0;
   margin: 0;
+
+  @media print {
+    background-color: transparent;
+  }
 }
 
 .layout {

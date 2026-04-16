@@ -1,11 +1,16 @@
 @import '../colors.scss';
 @import '../fonts.scss';
 
-html, body {
-	background-color: $color-white;
-	color: $color-black;
-	padding: 0;
-	margin: 0;
+html,
+body {
+  background-color: $color-white;
+  color: $color-black;
+  padding: 0;
+  margin: 0;
+
+  @media print {
+    background-color: transparent;
+  }
 }
 
 .layout {
@@ -15,8 +20,8 @@ html, body {
     font-size: 1.4rem;
   }
 
-	font-family: $body-font;
-	line-height: 1.48em;
-	font-weight: 300;
-	overflow: hidden;
+  font-family: $body-font;
+  line-height: 1.48em;
+  font-weight: 300;
+  overflow: hidden;
 }
