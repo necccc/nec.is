@@ -68,7 +68,7 @@ export default function Working() {
                 <Link to="https://binx.hu/">BinX Zrt</Link> •{' '}
                 <em>2022 - present</em>
               </h4>
-              <ul>
+              <ul className={css.no_print}>
                 <li>
                   Work with the engineering team and business development to
                   create a new financial service from the ground up
@@ -99,7 +99,7 @@ export default function Working() {
               <h4>
                 JSSC Event organizing, private company • <em>2017 - present</em>
               </h4>
-              <ul>
+              <ul className={css.no_print}>
                 <li>Company management</li>
                 <li>Financial management</li>
                 <li>Event organizing</li>
@@ -114,7 +114,7 @@ export default function Working() {
                 </Link>{' '}
                 • <em>2019 - 2022</em>
               </h4>
-              <ul>
+              <ul className={css.no_print}>
                 <li>
                   Design and implement an{' '}
                   <a href="https://cloud.ibm.com/docs/devsecops?topic=devsecops-cd-devsecops-pipelines">
@@ -137,7 +137,7 @@ export default function Working() {
                 <Link to="https://video.ibm.com/">IBM Cloud Video</Link>{' '}
                 (formerly Ustream, acquired by IBM) • <em>2016 - 2019</em>
               </h4>
-              <ul>
+              <ul className={css.no_print}>
                 <li>
                   Finding solutions to a backend-for-frontend system using
                   React, to feature i18n, SSR, code splitting and Redux state
@@ -168,7 +168,7 @@ export default function Working() {
                 </Link>
                 , startup • <em>2009 - 2016</em>
               </h4>
-              <ul>
+              <ul className={css.no_print}>
                 <li>
                   Early development of mobile video/live player, with ad
                   integration
@@ -202,7 +202,7 @@ export default function Working() {
                 (later it was acquired by POSSIBLE), digital agency •{' '}
                 <em>2007 - 2009</em>
               </h4>
-              <ul>
+              <ul className={css.no_print}>
                 <li>Sites for media, telecommunication, banks</li>
                 <li>Mentoring peers</li>
               </ul>
@@ -216,7 +216,7 @@ export default function Working() {
                   (later it was acquired by POSSIBLE), digital agency •{' '}
                   <em>2004 - 2007</em>
                 </h4>
-                <ul>
+                <ul className={css.no_print}>
                   <li id="community">Agency work: media sites, microsites</li>
                 </ul>
               </div>
@@ -229,7 +229,7 @@ export default function Working() {
             <div className={css.unit}>
               <h3>JSConf Budapest 2015 - 2024</h3>
               <h4>Curator, chief organizer</h4>
-              <ul>
+              <ul className={css.no_print}>
                 <li>
                   <p>
                     JSConf Budapest was the part of the international JSConf
@@ -262,7 +262,7 @@ export default function Working() {
             <div className={css.unit}>
               <h3>CSSConf Budapest 2016 - 2019</h3>
               <h4>Organizer</h4>
-              <ul>
+              <ul className={css.no_print}>
                 <li>
                   CSSConf Budapest is the part of the international CSSConf
                   family
@@ -279,7 +279,7 @@ export default function Working() {
             <div className={css.unit}>
               <h3>Frontend Meetup Budapest 2018 - present</h3>
               <h4>Co-Organizer</h4>
-              <ul>
+              <ul className={css.no_print}>
                 <li>
                   Helping around the meetup organization, speakers, venues
                 </li>
@@ -289,7 +289,7 @@ export default function Working() {
             <div className={css.unit}>
               <h3>Global Diversity CFP Day Workshop 2018 - present</h3>
               <h4>Mentor, facilitator</h4>
-              <ul>
+              <ul className={css.no_print}>
                 <li>Helping around the organization, mentors, venue</li>
                 <li id="speaking">Mentoring at the workshop itself</li>
               </ul>
