@@ -93,6 +93,10 @@
       @media (max-width: 480px) {
         margin-bottom: 2rem;
       }
+
+      @media print {
+        font-size: 1rem;
+      }
     }
 
     hr {

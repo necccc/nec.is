@@ -59,6 +59,7 @@
 
     @media print {
       height: 0;
+      margin-bottom: 0;
     }
   }
 
@@ -245,14 +246,14 @@
 
       @media print {
         left: 4rem;
-        top: 1rem;
+        top: 0.5rem;
         width: 5rem;
         height: 5rem;
       }
     }
 
     @media print {
-      height: 12rem;
+      height: 10rem;
     }
 
     #{$header}_title {
@@ -267,10 +268,10 @@
       }
 
       @media print {
-        margin-top: -1.4rem;
+        margin-top: 0rem;
         padding-left: 11rem;
         padding-right: 4rem;
-        font-size: 2rem;
+        font-size: 1.8rem;
       }
     }
 
@@ -302,7 +303,7 @@
       #{$header}_contact {
         display: block;
         position: absolute;
-        top: 5.4rem;
+        top: 4.4rem;
         left: 11rem;
         color: var(--bg-color);
         z-index: 10;

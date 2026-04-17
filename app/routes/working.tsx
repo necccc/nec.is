@@ -22,6 +22,22 @@ export default function Working() {
       <div className={css.resume}>
         <Header title={'Szabolcs Szabolcsi-Toth'} resume={true} />
         <article className={css.resume_container} id="work">
+          <p className={css.resume_summary}>
+            Hi, I'm Szabolcs, a Staff Software Engineer with 20+ years of
+            experience across startups and global tech companies. I’ve worked
+            extensively with the latest web technologies, distributed systems,
+            service development for regulated environments, and I enjoy building
+            scalable, well-structured solutions that stand the test of time. I’m
+            a hands-on problem solver who cares about clean architecture, UX,
+            and DevEx, collaboration, and continuous improvement.
+            <br />
+            <br />
+            Alongside my engineering work, I’ve been actively involved in the
+            international tech community as a speaker and organizer. Based in
+            Norway and actively learning Norwegian, I’m looking to share my
+            experience in a meaningful, long-term role.
+          </p>
+
           <h2 className={css.resume_section_title}>Work experience</h2>
 
           <div className={css.resume_section}>
@@ -267,7 +283,10 @@ export default function Working() {
           <div className={css.resume_section}>
             <div className={css.unit}>
               <h3>JSConf Budapest 2015 - 2024</h3>
-              <h4>Curator, chief organizer</h4>
+              <h4>
+                <a href="https://jsconfbp.com/">jsconfbp.com</a> • Curator,
+                chief organizer
+              </h4>
               <ul className={css.no_print}>
                 <li>
                   <p>
@@ -342,15 +361,11 @@ export default function Working() {
               <h3>Bachelor of IT Engineering</h3>
               <h4>
                 <a href="https://mik.pte.hu/">
-                  University of Pécs - Faculty of Engineering and Information
+                  University of Pécs • Faculty of Engineering and Information
                   Technology (MIK PMMFK)
-                </a>
+                </a>{' '}
+                • Pécs, Hungary • <em>1999 - 2004</em>
               </h4>
-              <ul>
-                <li>
-                  Pécs, Hungary • <em>1999 - 2004</em>
-                </li>
-              </ul>
             </div>
           </div>
         </article>
