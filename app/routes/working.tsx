@@ -19,51 +19,14 @@ export function meta({}: Route.MetaArgs) {
 export default function Working() {
   return (
     <>
-      <div className={css.resume} id="skills">
+      <div className={css.resume}>
         <Header title={'Szabolcs Szabolcsi-Toth'} resume={true} />
-        <article className={css.resume_container}>
-          <h2 className={css.resume_section_title}>Technologies and Skills</h2>
-          <div className={css.resume_section}>
-            <div className={css.unit}>
-              <ul>
-                <li>
-                  <strong>Languages: </strong>
-                  English, Hungarian, currently learning Norwegian
-                </li>
-
-                <li>
-                  <strong>Code: </strong>
-                  TypeScript, JavaScript, Node.js, React, HTML, CSS, SASS/SCSS,
-                  Go, PHP, Bash
-                </li>
-                <li>
-                  <strong>Frameworks & libraries: </strong>
-                  Fastify, Express, Hapi, sequelize, liquibase, React,
-                  react-router, nextjs, react-query, zustand
-                </li>
-                <li>
-                  <strong>Deployment &amp; operations: </strong>
-                  npm, AWS, linux systems, git/github/gitlab, Docker, Chef,
-                  Kubernetes, Tekton CI/CD, Hashicorp Vault, TravisCI, TeamCity
-                </li>
-                <li>
-                  <strong>Architecture: </strong>
-                  Event-driven, CQRS, microservices, REST API, RPC, Server
-                  worker architecture
-                </li>
-                <li id="work">
-                  <strong>Design: </strong>
-                  web, responsive web, Figma, Photoshop, Illustrator
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <h2 className={css.resume_section_title}>Work Experience</h2>
+        <article className={css.resume_container} id="work">
+          <h2 className={css.resume_section_title}>Work experience</h2>
 
           <div className={css.resume_section}>
             <div className={css.unit}>
-              <h3>Staff Engineer</h3>
+              <h3>Staff engineer</h3>
               <h4>
                 <Link to="https://binx.hu/">BinX Zrt</Link> •{' '}
                 <em>2022 - present</em>
@@ -95,9 +58,9 @@ export default function Working() {
             </div>
 
             <div className={css.unit}>
-              <h3>CEO & Organizer</h3>
+              <h3>Founder & organizer</h3>
               <h4>
-                JSSC Event organizing, private company • <em>2017 - present</em>
+                JSSC Event organizing, private company • <em>2017 - 2025</em>
               </h4>
               <ul className={css.no_print}>
                 <li>Company management</li>
@@ -107,7 +70,7 @@ export default function Working() {
             </div>
 
             <div className={css.unit}>
-              <h3>Senior Engineer</h3>
+              <h3>Senior engineer</h3>
               <h4>
                 <Link to="https://cloud.ibm.com/catalog/architecture/deploy-arch-ibm-devsecops-alm-e1c16cac-7ea8-413f-a819-67e3a3251e44-global">
                   IBM Cloud
@@ -132,7 +95,7 @@ export default function Working() {
             </div>
 
             <div className={css.unit}>
-              <h3>Senior Frontend Engineer</h3>
+              <h3>Senior frontend engineer</h3>
               <h4>
                 <Link to="https://video.ibm.com/">IBM Cloud Video</Link>{' '}
                 (formerly Ustream, acquired by IBM) • <em>2016 - 2019</em>
@@ -161,7 +124,7 @@ export default function Working() {
             </div>
 
             <div className={css.unit}>
-              <h3>Senior Frontend Engineer</h3>
+              <h3>Senior frontend engineer</h3>
               <h4>
                 <Link to="https://web.archive.org/web/20160210020209/http://www.ustream.tv/">
                   Ustream Inc
@@ -194,7 +157,7 @@ export default function Working() {
             </div>
 
             <div className={css.unit}>
-              <h3>Senior Frontend Developer</h3>
+              <h3>Senior frontend developer</h3>
               <h4>
                 <Link to="https://web.archive.org/web/20060114013213/http://www.carnation.hu/">
                   Carnation
@@ -208,7 +171,7 @@ export default function Working() {
               </ul>
 
               <div className={css.unit}>
-                <h3>Frontend Developer</h3>
+                <h3>Frontend developer</h3>
                 <h4>
                   <Link to="https://web.archive.org/web/20060114013213/http://www.carnation.hu/">
                     Carnation
@@ -216,10 +179,86 @@ export default function Working() {
                   (later it was acquired by POSSIBLE), digital agency •{' '}
                   <em>2004 - 2007</em>
                 </h4>
-                <ul className={css.no_print}>
-                  <li id="community">Agency work: media sites, microsites</li>
+                <ul className={css.no_print} id="skills">
+                  <li>Agency work: media sites, microsites</li>
                 </ul>
               </div>
+            </div>
+          </div>
+
+          <h2 className={css.resume_section_title}>Technologies and skills</h2>
+          <div className={css.resume_section}>
+            <div className={css.unit}>
+              <ul>
+                <li>
+                  <strong>Languages: </strong>
+                  English, Hungarian, currently learning Norwegian
+                </li>
+
+                <li>
+                  <strong>Code: </strong>
+                  TypeScript, JavaScript, Node.js, React, HTML, CSS, SASS/SCSS,
+                  Go, PHP, Bash
+                </li>
+                <li>
+                  <strong>Frameworks & libraries: </strong>
+                  Fastify, Express, Hapi, sequelize, liquibase, React,
+                  react-router, nextjs, react-query, zustand
+                </li>
+                <li>
+                  <strong>Deployment &amp; operations: </strong>
+                  npm, AWS, linux systems, git/github/gitlab, Docker, Chef,
+                  Kubernetes, Tekton CI/CD, Hashicorp Vault, TravisCI, TeamCity
+                </li>
+                <li>
+                  <strong>Architecture: </strong>
+                  Event-driven, CQRS, microservices, REST API, RPC, Server
+                  worker architecture
+                </li>
+                <li id="speaking">
+                  <strong>Design: </strong>
+                  web, responsive web, Figma, Photoshop, Illustrator
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <h2 className={css.resume_section_title}>Speaking engagements</h2>
+          <div className={classNames(css.resume_section, css.speaking)}>
+            <div className={css.unit}>
+              <h3>NodeConf EU 2018</h3>
+              <h4>
+                <Link to="/speaking/nodeconf-eu-2018">
+                  Healthy & fit wombats for the greater good
+                </Link>
+              </h4>
+              <p>Kilkenny, Ireland • Nov 5-7, 2018</p>
+            </div>
+            <div className={css.unit}>
+              <h3>Thunder Plains 2017</h3>
+              <h4>
+                <Link to="/speaking/thunderplains-2017">Café terminal</Link>
+              </h4>
+              <p>Oklahoma City, OK, USA • Nov 3, 2017</p>
+            </div>
+            <div className={css.unit}>
+              <h3>RuhrJS 2017</h3>
+              <h4>
+                <Link to="/speaking/ruhrjs-2017">Redundant devOps</Link>
+              </h4>
+              <p>Bochum, Germany • Oct 14-15, 2017</p>
+            </div>
+            <div className={css.unit}>
+              <h3>UpFront Conference 2017</h3>
+              <h4>
+                <Link to="/speaking/upfront-2017">Café terminal</Link>
+              </h4>
+              <p>Manchester, UK • May 19, 2017</p>
+            </div>
+            <div className={css.unit} id="community">
+              <h3>Craft Conference 2014</h3>
+              <h4>JavaScript Module Server</h4>
+              <p>Budapest, Hungary • Apr 23-25, 2014</p>
             </div>
           </div>
 
@@ -291,61 +330,20 @@ export default function Working() {
               <h4>Mentor, facilitator</h4>
               <ul className={css.no_print}>
                 <li>Helping around the organization, mentors, venue</li>
-                <li id="speaking">Mentoring at the workshop itself</li>
+                <li>Mentoring at the workshop itself</li>
               </ul>
             </div>
           </div>
 
-          <h2 className={css.resume_section_title}>Speaking Engagements</h2>
-
-          <div className={classNames(css.resume_section, css.speaking)}>
-            <div className={css.unit}>
-              <h3>NodeConf EU 2018</h3>
-              <h4>
-                <Link to="/speaking/nodeconf-eu-2018">
-                  Healthy & fit wombats for the greater good
-                </Link>
-              </h4>
-              <p>Kilkenny, Ireland • 2018 Nov 5-7</p>
-            </div>
-            <div className={css.unit}>
-              <h3>Thunder Plains 2017</h3>
-              <h4>
-                <Link to="/speaking/thunderplains-2017">Café Terminal</Link>
-              </h4>
-              <p>Oklahoma City, OK, USA • 2017 Nov 3</p>
-            </div>
-            <div className={css.unit}>
-              <h3>RuhrJS 2017</h3>
-              <h4>
-                <Link to="/speaking/ruhrjs-2017">Redundant DevOps</Link>
-              </h4>
-              <p>Bochum, Germany • 2017 Oct 14-15</p>
-            </div>
-            <div className={css.unit}>
-              <h3>UpFront Conference 2017</h3>
-              <h4>
-                <Link to="/speaking/upfront-2017">Café Terminal</Link>
-              </h4>
-              <p>Manchester, UK • 2017 May 19</p>
-            </div>
-            <div className={css.unit}>
-              <h3>Craft Conference 2014</h3>
-              <h4>JavaScript Module Server</h4>
-              <p>Budapest, Hungary • 2014 Apr 23-25</p>
-            </div>
-          </div>
-
-          <h2 className={css.resume_section_title} id="education">
-            Education
-          </h2>
+          <h2 className={css.resume_section_title}>Education</h2>
 
           <div className={css.resume_section}>
-            <div className={css.unit}>
+            <div className={css.unit} id="education">
               <h3>Bachelor of IT Engineering</h3>
               <h4>
                 <a href="https://mik.pte.hu/">
-                  University of Pécs - MIK (PMMFK)
+                  University of Pécs - Faculty of Engineering and Information
+                  Technology (MIK PMMFK)
                 </a>
               </h4>
               <ul>

@@ -79,23 +79,23 @@ export const Header = ({ title = '', resume = false }) => {
           {resume && (
             <ul className={css.header_nav_links}>
               <li className={css.header_nav_link}>
-                <a href="#skills" className={css.link}>
-                  skills
-                </a>
-              </li>
-              <li className={css.header_nav_link}>
                 <a href="#work" className={css.link}>
                   work
                 </a>
               </li>
               <li className={css.header_nav_link}>
-                <a href="#community" className={css.link}>
-                  community
+                <a href="#skills" className={css.link}>
+                  skills
                 </a>
               </li>
               <li className={css.header_nav_link}>
                 <a href="#speaking" className={css.link}>
                   speaking
+                </a>
+              </li>
+              <li className={css.header_nav_link}>
+                <a href="#community" className={css.link}>
+                  community
                 </a>
               </li>
               <li className={css.header_nav_link}>
@@ -108,6 +108,12 @@ export const Header = ({ title = '', resume = false }) => {
         </nav>
       </div>
       <h1 className={css.header_title}>{title}</h1>
+      {resume && (
+        <span className={css.header_contact}>
+          hello@nec.is <br />
+          +47 90 12 05 40
+        </span>
+      )}
     </header>
   )
 }

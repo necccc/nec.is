@@ -223,6 +223,10 @@
     }
   }
 
+  &_contact {
+    display: none;
+  }
+
   &_resume {
     height: 32rem;
 
@@ -242,13 +246,13 @@
       @media print {
         left: 4rem;
         top: 1rem;
-        width: 10rem;
-        height: 10rem;
+        width: 5rem;
+        height: 5rem;
       }
     }
 
     @media print {
-      height: 18rem;
+      height: 12rem;
     }
 
     #{$header}_title {
@@ -263,10 +267,10 @@
       }
 
       @media print {
-        margin-top: 0rem;
-        padding-left: 16rem;
+        margin-top: -1.4rem;
+        padding-left: 11rem;
         padding-right: 4rem;
-        font-size: 2.6rem;
+        font-size: 2rem;
       }
     }
 
@@ -292,6 +296,19 @@
 
     @media (max-width: 480px) {
       height: 32rem;
+    }
+
+    @media print {
+      #{$header}_contact {
+        display: block;
+        position: absolute;
+        top: 5.4rem;
+        left: 11rem;
+        color: var(--bg-color);
+        z-index: 10;
+        font-family: var(--font-body);
+        font-size: 0.8rem;
+      }
     }
   }
 }

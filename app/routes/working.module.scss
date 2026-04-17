@@ -43,7 +43,7 @@
     }
 
     @media print {
-      padding-top: 18rem;
+      padding-top: 12rem;
       grid-gap: 0rem;
       font-size: 0.8rem;
     }
@@ -58,6 +58,7 @@
       p {
         margin-bottom: 3rem;
         @media print {
+          font-size: 0.8rem;
           margin-bottom: 0;
         }
       }
@@ -67,13 +68,14 @@
           margin-bottom: 0;
           display: inline;
           &::before {
-            content: ' - ';
+            content: ' • ';
           }
         }
       }
       h4 {
         margin-bottom: 1rem;
         @media print {
+          font-size: 0.8rem;
           display: inline;
         }
       }
@@ -131,6 +133,7 @@
     }
 
     h3 {
+      font-family: var(--font-body);
       font-size: 1.314rem;
       @media (max-width: 820px) {
         font-size: 1.6rem;
