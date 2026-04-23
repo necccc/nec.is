@@ -19,7 +19,11 @@ export function meta({}: Route.MetaArgs) {
 export default function Upfront2017() {
   return (
     <>
-      <Header title={'UpFront Conference 2017'} resume={false} />
+      <Header
+        title={'UpFront Conference 2017'}
+        resume={false}
+        subTitle="Conference talk • May 19, 2017"
+      />
       <ArticleContent>
         <Intro>
           <p>

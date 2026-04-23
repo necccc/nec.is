@@ -20,7 +20,11 @@ export function meta({}: Route.MetaArgs) {
 export default function Nodeconf2018() {
   return (
     <>
-      <Header title={'NodeConf EU 2018'} resume={false} />
+      <Header
+        title={'NodeConf EU 2018'}
+        resume={false}
+        subTitle="Conference talk • Nov 5-7, 2018"
+      />
       <ArticleContent>
         <Intro>
           <p>

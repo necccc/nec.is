@@ -99,6 +99,38 @@
     }
   }
 
+  &_with_subtitle {
+    padding: 2rem 9rem 0.4rem 3rem;
+  }
+
+  &_subtitle {
+    font-family: var(--font-body);
+    position: relative;
+    top: 0;
+    z-index: 3;
+    margin: 0 auto;
+    max-width: 68rem;
+
+    padding: 0rem 9rem 8rem 3rem;
+
+    box-sizing: border-box;
+
+    @media (max-width: 480px) {
+      padding-right: 1.5rem;
+      padding-left: 1.5rem;
+    }
+
+    span {
+      color: var(--color-light-2);
+      font-size: 1.2rem;
+      line-height: 1.45em;
+      font-weight: 500;
+      border-top: 1px solid var(--color-light-3);
+      display: inline-block;
+      padding-top: 0.8rem;
+    }
+  }
+
   &_nav {
     position: absolute;
     right: 0;
@@ -278,7 +310,7 @@
     #{$header}_top::after {
       display: block;
       position: absolute;
-      content: attr(smalltitle);
+      content: attr(small-title);
       left: 4rem;
       bottom: calc(
         calc(var(--headerHeight) * -1) +

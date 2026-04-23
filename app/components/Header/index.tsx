@@ -6,7 +6,13 @@ import css from './header.module.scss'
 import { Logo } from '../Logo'
 import { Link } from 'react-router'
 
-export const Header = ({ title = '', resume = false }) => {
+type Props = {
+  title: string
+  subTitle?: string
+  resume?: boolean
+}
+
+export const Header = ({ title = '', resume = false, subTitle }: Props) => {
   const [small, setSmall] = useState(false)
   const treshold = resume ? 200 : 92
 
@@ -38,7 +44,7 @@ export const Header = ({ title = '', resume = false }) => {
         small && css.header_small
       )}
     >
-      <div className={css.header_top} smallTitle={title}>
+      <div className={css.header_top} small-title={title}>
         <h1 className={css.header_home} title="_Nec">
           <Link to="/" title="Go to the home page">
             <Logo />
@@ -63,11 +69,11 @@ export const Header = ({ title = '', resume = false }) => {
                   working
                 </Link>
               </li>
-              {/*               <li className={css.header_nav_link}>
-                <Link className={css.link} to="/speaking">
+              <li className={css.header_nav_link}>
+                <Link className={css.link} to="/working#speaking">
                   speaking
                 </Link>
-              </li> */}
+              </li>
               <li className={css.header_nav_link}>
                 <a className={css.link} href="https://bsky.app/profile/nec.is">
                   social
@@ -107,7 +113,20 @@ export const Header = ({ title = '', resume = false }) => {
           )}
         </nav>
       </div>
-      <h1 className={css.header_title}>{title}</h1>
+
+      <h1
+        className={classnames(
+          css.header_title,
+          subTitle && css.header_with_subtitle
+        )}
+      >
+        {title}
+      </h1>
+      {subTitle && (
+        <h3 className={css.header_subtitle}>
+          <span>{subTitle}</span>
+        </h3>
+      )}
       {resume && (
         <span className={css.header_contact}>
           hello@nec.is <br />

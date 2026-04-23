@@ -16,10 +16,14 @@ export function meta({}: Route.MetaArgs) {
   ]
 }
 
-export default function Upfront2017() {
+export default function ThunderPlains2017() {
   return (
     <>
-      <Header title={'Thunder Plains Conference 2017'} resume={false} />
+      <Header
+        title={'Thunder Plains Conference 2017'}
+        resume={false}
+        subTitle="Conference talk • Nov 3, 2017"
+      />
       <ArticleContent>
         <Intro>
           <p>

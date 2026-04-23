@@ -20,7 +20,11 @@ export function meta({}: Route.MetaArgs) {
 export default function RuhrJS2017() {
   return (
     <>
-      <Header title={'RuhrJS 2017'} resume={false} />
+      <Header
+        title={'RuhrJS 2017'}
+        resume={false}
+        subTitle="Conference talk • Oct 14-15, 2017"
+      />
       <ArticleContent>
         <Intro>
           <p>
