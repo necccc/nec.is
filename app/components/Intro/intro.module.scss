@@ -6,13 +6,13 @@
   margin-bottom: 8rem;
 
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     top: -5rem;
     z-index: -1;
     width: 100vw;
     left: calc(-1 * ((100vw - 100%) / 2));
-    height: 120%;
+    height: 114%;
     transform: skewY(calc(-0.5 * var(--headerSkew)));
     transform-origin: bottom left;
     background-color: var(--color-light-1);

@@ -10,4 +10,8 @@ export default [
     'routes/speaking/thunderplains-2017.tsx'
   ),
   route('speaking/ruhrjs-2017', 'routes/speaking/ruhrjs-2017.tsx'),
+  route(
+    'case-studies/digital-bank-onboarding-flow',
+    'routes/case-studies/digital-bank-onboarding.tsx'
+  ),
 ] satisfies RouteConfig

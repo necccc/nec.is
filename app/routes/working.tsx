@@ -71,6 +71,14 @@ export default function Working() {
                   approved by assigned team members
                 </li>
               </ul>
+              <h4>Case studies:</h4>
+              <ul>
+                <li>
+                  <Link to="/case-studies/digital-bank-onboarding-flow">
+                    Onboarding customers at a digital bank
+                  </Link>
+                </li>
+              </ul>
             </div>
 
             <div className={css.unit}>
@@ -219,7 +227,7 @@ export default function Working() {
                 <li>
                   <strong>Frameworks & libraries: </strong>
                   Fastify, Express, Hapi, sequelize, liquibase, React,
-                  react-router, nextjs, react-query, zustand
+                  react-router, vite, nextjs, react-query, zustand
                 </li>
                 <li>
                   <strong>Deployment &amp; operations: </strong>

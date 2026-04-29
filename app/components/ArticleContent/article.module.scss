@@ -1,18 +1,19 @@
-@use "sass:color";
-@use "../colors" as colors;
-@use "../mixins" as mixins;
+@use 'sass:color';
+@use '../colors' as colors;
+@use '../mixins' as mixins;
 
 .article {
   @include mixins.article();
 
   h1,
-  h2 {
+  h2,
+  h3 {
     display: block;
     position: relative;
     clear: both;
 
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       display: block;
       width: 2px;
@@ -29,6 +30,14 @@
     top: 8px;
     bottom: 13px;
   }
+  h3::before {
+    top: 0;
+    bottom: 0;
+  }
+
+  h3 {
+    margin-bottom: 1.65rem;
+  }
 
   li {
     position: relative;
@@ -41,10 +50,10 @@
     }
 
     &::before {
-      content: "■";
+      content: '■';
       position: absolute;
       transform: translateX(-1.45rem);
-      top: 0;
+      top: -5px;
       color: colors.$color-blue;
       font-size: 1.45rem;
       line-height: 1.45;
@@ -61,6 +70,23 @@
     font-weight: 700;
   }
 
+  img {
+    background: transparent;
+    margin: 0 auto;
+
+    &.scale_100 {
+      width: 100%;
+    }
+
+    &.scale_70 {
+      width: 70%;
+
+      @media (max-width: 480px) {
+        width: 100%;
+      }
+    }
+  }
+
   code {
     display: inline-block;
     color: color.adjust(colors.$color-black, $lightness: 20%);
@@ -71,72 +97,17 @@
   }
 
   :global {
-    .gatsby-highlight pre[class*="language-"] {
-      code {
-        background-color: transparent;
-        font-size: 1rem;
-        padding: 0;
-
-        @media (max-width: 480px) {
-          font-size: 9px;
-        }
-      }
-    }
-
-    /* Adjust the position of the line numbers */
-    .gatsby-highlight pre[class*="language-"].line-numbers {
-      padding: 0;
-      padding-left: 2.8em;
-      overflow: initial;
-      margin-top: 0;
-
-      .line-numbers-rows,
-      .line-numbers-rows span {
-        line-height: 1.5;
-
-        @media (max-width: 480px) {
-          font-size: 14px;
-        }
-      }
-    }
-
-    /**
-    * If you only want to use line numbering
-    */
-    .gatsby-highlight {
-      background-color: #1d1f21;
-      border-radius: 0.5rem;
-      margin: 0 0 2rem;
-      padding: 1rem 1rem 2.5rem;
-      overflow: auto;
-      font-size: 1rem;
-
-      @media (max-width: 480px) {
-        width: 100vw;
-        transform: translateX(-1.45rem);
-        border-radius: 0;
-        padding-left: 1.45rem;
-      }
-
-      code {
-        background-color: none;
-      }
-      span {
-        line-height: 1.5;
-      }
-    }
-
     /**
       * atom-dark theme for `prism.js`
       * Based on Atom's `atom-dark` theme: https://github.com/atom/atom-dark-syntax
       * @author Joe Gibson (@gibsjose)
       */
-    code[class*="language-"],
-    pre[class*="language-"] {
+    code[class*='language-'],
+    pre[class*='language-'] {
       color: #c5c8c6;
       text-shadow: 0 1px rgba(0, 0, 0, 0.3);
       font-family:
-        Inconsolata, Monaco, Consolas, "Courier New", Courier, monospace;
+        Inconsolata, Monaco, Consolas, 'Courier New', Courier, monospace;
       direction: ltr;
       text-align: left;
       white-space: pre;
@@ -155,20 +126,20 @@
     }
 
     /* Code blocks */
-    pre[class*="language-"] {
+    pre[class*='language-'] {
       padding: 1em;
       margin: 0.5em 0;
       overflow: auto;
       border-radius: 0.3em;
     }
 
-    :not(pre) > code[class*="language-"],
-    pre[class*="language-"] {
+    :not(pre) > code[class*='language-'],
+    pre[class*='language-'] {
       background: #1d1f21;
     }
 
     /* Inline code */
-    :not(pre) > code[class*="language-"] {
+    :not(pre) > code[class*='language-'] {
       padding: 0.1em;
       border-radius: 0.3em;
     }

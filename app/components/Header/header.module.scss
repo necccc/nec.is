@@ -101,6 +101,11 @@
 
   &_with_subtitle {
     padding: 2rem 9rem 0.4rem 3rem;
+
+    @media (max-width: 480px) {
+      padding-right: 1.5rem;
+      padding-left: 1.5rem;
+    }
   }
 
   &_subtitle {
