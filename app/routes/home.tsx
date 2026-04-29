@@ -20,7 +20,8 @@ export default function Home() {
       <section className={css.intro}>
         <p>
           Mostly online as <strong>_nec</strong>, I'm a{' '}
-          <a href="/working">developer</a> living near Oslo, Norway.{' '}
+          <a href="/working">software engineer / architect</a> living near Oslo,
+          Norway.{' '}
         </p>
 
         <p>

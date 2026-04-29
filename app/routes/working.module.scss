@@ -99,6 +99,8 @@
       margin: 0;
       position: relative;
 
+      scroll-margin-top: 6rem;
+
       &::before {
         content: '';
         position: absolute;
@@ -144,6 +146,10 @@
         font-size: 0.8rem;
         margin-bottom: 0;
       }
+    }
+
+    h3 + p {
+      margin-top: 1.2rem;
     }
 
     p,

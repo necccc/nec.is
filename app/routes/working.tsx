@@ -1,17 +1,15 @@
-import type { Route } from './+types/home'
-
-import { Header } from '~/components/Header'
-
-import css from './working.module.scss'
 import classNames from 'classnames'
 import { Link } from 'react-router'
+import type { Route } from './+types/home'
+import { Header } from '~/components/Header'
+import css from './working.module.scss'
 
 export function meta({}: Route.MetaArgs) {
   return [
     { title: 'Szabolcs Szabolcsi-Toth' },
     {
       name: 'description',
-      content: 'Résumé for Szabolcs Szabolcsi-Toth',
+      content: 'Resume for Szabolcs Szabolcsi-Toth',
     },
   ]
 }
@@ -21,7 +19,7 @@ export default function Working() {
     <>
       <div className={css.resume}>
         <Header title={'Szabolcs Szabolcsi-Toth'} resume={true} />
-        <article className={css.resume_container} id="work">
+        <article className={css.resume_container}>
           <p className={css.resume_summary}>
             Hi, I'm Szabolcs, a Staff Software Engineer with 20+ years of
             experience across startups and global tech companies. I’ve worked
@@ -38,7 +36,9 @@ export default function Working() {
             experience in a meaningful, long-term role.
           </p>
 
-          <h2 className={css.resume_section_title}>Work experience</h2>
+          <h2 className={css.resume_section_title} id="work">
+            Work experience
+          </h2>
 
           <div className={css.resume_section}>
             <div className={css.unit}>
@@ -71,7 +71,9 @@ export default function Working() {
                   approved by assigned team members
                 </li>
               </ul>
-              <h4>Case studies:</h4>
+              <h4>
+                <strong>Case studies:</strong>
+              </h4>
               <ul>
                 <li>
                   <Link to="/case-studies/digital-bank-onboarding-flow">
@@ -203,14 +205,33 @@ export default function Working() {
                   (later it was acquired by POSSIBLE), digital agency •{' '}
                   <em>2004 - 2007</em>
                 </h4>
-                <ul className={css.no_print} id="skills">
+                <ul className={css.no_print} id="case-studies">
                   <li>Agency work: media sites, microsites</li>
                 </ul>
               </div>
             </div>
           </div>
 
-          <h2 className={css.resume_section_title}>Technologies and skills</h2>
+          <h2 className={css.resume_section_title}>Case studies</h2>
+          <div className={css.resume_section}>
+            <div className={css.unit}>
+              <h3>
+                <Link to="/case-studies/digital-bank-onboarding-flow">
+                  Onboarding customers at a digital bank
+                </Link>
+              </h3>
+
+              <p>
+                In this case study, I’d like to focus on the architectural
+                decisions that made a fully digital customer onboarding possible
+                at a digital bank
+              </p>
+            </div>
+          </div>
+
+          <h2 className={css.resume_section_title} id="skills">
+            Technologies and skills
+          </h2>
           <div className={css.resume_section}>
             <div className={css.unit}>
               <ul>
@@ -239,7 +260,7 @@ export default function Working() {
                   Event-driven, CQRS, microservices, REST API, RPC, Server
                   worker architecture
                 </li>
-                <li id="speaking">
+                <li>
                   <strong>Design: </strong>
                   web, responsive web, Figma, Photoshop, Illustrator
                 </li>
@@ -247,7 +268,9 @@ export default function Working() {
             </div>
           </div>
 
-          <h2 className={css.resume_section_title}>Speaking engagements</h2>
+          <h2 className={css.resume_section_title} id="speaking">
+            Speaking engagements
+          </h2>
           <div className={classNames(css.resume_section, css.speaking)}>
             <div className={css.unit}>
               <h3>NodeConf EU 2018</h3>
@@ -279,14 +302,16 @@ export default function Working() {
               </h4>
               <p>Manchester, UK • May 19, 2017</p>
             </div>
-            <div className={css.unit} id="community">
+            <div className={css.unit}>
               <h3>Craft Conference 2014</h3>
               <h4>JavaScript Module Server</h4>
               <p>Budapest, Hungary • Apr 23-25, 2014</p>
             </div>
           </div>
 
-          <h2 className={css.resume_section_title}>Community work</h2>
+          <h2 className={css.resume_section_title} id="community">
+            Community work
+          </h2>
 
           <div className={css.resume_section}>
             <div className={css.unit}>
@@ -362,10 +387,12 @@ export default function Working() {
             </div>
           </div>
 
-          <h2 className={css.resume_section_title}>Education</h2>
+          <h2 className={css.resume_section_title} id="education">
+            Education
+          </h2>
 
           <div className={css.resume_section}>
-            <div className={css.unit} id="education">
+            <div className={css.unit}>
               <h3>Bachelor of IT Engineering</h3>
               <h4>
                 <a href="https://mik.pte.hu/">

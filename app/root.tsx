@@ -6,12 +6,14 @@ import {
   Scripts,
   ScrollRestoration,
   useLocation,
+  useNavigationType,
+  type Location,
 } from 'react-router'
 
 import type { Route } from './+types/root'
 import css from './app.module.scss'
 import { Footer } from './components/Footer'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { onScroll } from './browser.client'
 
 import '@fontsource/libre-franklin/300.css'
@@ -20,7 +22,9 @@ import '@fontsource/libre-baskerville/400.css'
 import '@fontsource/libre-baskerville/700.css'
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  let location = useLocation()
+  const location = useLocation()
+  const navigationType = useNavigationType()
+  const [nav, setNav] = useState<Location | null>(null)
 
   useEffect(() => {
     window.supportsPassiveScroll = false
@@ -50,8 +54,33 @@ export function Layout({ children }: { children: React.ReactNode }) {
   }, [])
 
   useEffect(() => {
-    onScroll()
-  }, [location])
+    const height = onScroll()
+
+    if (location.pathname === '/working') {
+      if (location.pathname === nav?.pathname) {
+        console.log('same page navigation', location.hash)
+
+        if (location.hash) {
+          const id = location.hash.replace('#', '')
+          document
+            .getElementById(id)
+            ?.scrollIntoView({ behavior: 'instant', block: 'start' })
+        }
+      } else {
+        if (navigationType !== 'POP') {
+          console.log('arrived here', location.hash)
+          if (location.hash) {
+            const id = location.hash.replace('#', '')
+            document
+              .getElementById(id)
+              ?.scrollIntoView({ behavior: 'instant', block: 'start' })
+          }
+        }
+      }
+    }
+
+    setNav(location)
+  }, [location, navigationType])
 
   return (
     <html lang="en">
@@ -79,11 +108,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
 
       <body>
+        <ScrollRestoration />
         <main className={css.layout}>
           {children}
           <Footer />
         </main>
-        <ScrollRestoration />
         <Scripts />
       </body>
     </html>

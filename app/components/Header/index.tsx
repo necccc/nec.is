@@ -62,55 +62,49 @@ export const Header = ({ title = '', resume = false, subTitle }: Props) => {
             <span>menu</span>
           </label>
 
-          {!resume && (
-            <ul className={css.header_nav_links}>
-              <li className={css.header_nav_link}>
-                <Link className={css.link} to="/working">
-                  working
-                </Link>
-              </li>
-              <li className={css.header_nav_link}>
-                <Link className={css.link} to="/working#speaking">
-                  speaking
-                </Link>
-              </li>
-              <li className={css.header_nav_link}>
-                <a className={css.link} href="https://bsky.app/profile/nec.is">
-                  social
-                </a>
-              </li>
-            </ul>
-          )}
-
-          {resume && (
-            <ul className={css.header_nav_links}>
-              <li className={css.header_nav_link}>
-                <a href="#work" className={css.link}>
-                  work
-                </a>
-              </li>
-              <li className={css.header_nav_link}>
-                <a href="#skills" className={css.link}>
-                  skills
-                </a>
-              </li>
-              <li className={css.header_nav_link}>
-                <a href="#speaking" className={css.link}>
-                  speaking
-                </a>
-              </li>
-              <li className={css.header_nav_link}>
-                <a href="#community" className={css.link}>
-                  community
-                </a>
-              </li>
-              <li className={css.header_nav_link}>
-                <a href="#education" className={css.link}>
-                  education
-                </a>
-              </li>
-            </ul>
-          )}
+          <ul className={css.header_nav_links}>
+            <li className={css.header_nav_link}>
+              <Link to="/working#work" preventScrollReset className={css.link}>
+                work
+              </Link>
+            </li>
+            <li className={css.header_nav_link}>
+              <Link
+                to="/working#case-studies"
+                preventScrollReset
+                className={css.link}
+              >
+                case studies
+              </Link>
+            </li>
+            <li className={css.header_nav_link}>
+              <Link
+                to="/working#skills"
+                preventScrollReset
+                className={css.link}
+              >
+                skills
+              </Link>
+            </li>
+            <li className={css.header_nav_link}>
+              <Link
+                to="/working#speaking"
+                preventScrollReset
+                className={css.link}
+              >
+                speaking
+              </Link>
+            </li>
+            <li className={css.header_nav_link}>
+              <Link
+                to="/working#community"
+                preventScrollReset
+                className={css.link}
+              >
+                community
+              </Link>
+            </li>
+          </ul>
         </nav>
       </div>
 
