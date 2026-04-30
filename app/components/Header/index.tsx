@@ -6,13 +6,21 @@ import css from './header.module.scss'
 import { Logo } from '../Logo'
 import { Link } from 'react-router'
 
+type ActiveMenu = 'work' | 'case-studies' | 'skills' | 'speaking' | 'community'
+
 type Props = {
   title: string
   subTitle?: string
   resume?: boolean
+  activeMenu?: ActiveMenu
 }
 
-export const Header = ({ title = '', resume = false, subTitle }: Props) => {
+export const Header = ({
+  title = '',
+  resume = false,
+  subTitle,
+  activeMenu,
+}: Props) => {
   const [small, setSmall] = useState(false)
   const treshold = resume ? 200 : 92
 
@@ -64,7 +72,14 @@ export const Header = ({ title = '', resume = false, subTitle }: Props) => {
 
           <ul className={css.header_nav_links}>
             <li className={css.header_nav_link}>
-              <Link to="/working#work" preventScrollReset className={css.link}>
+              <Link
+                to="/working#work"
+                preventScrollReset
+                className={classnames(
+                  css.link,
+                  activeMenu === 'work' && css.active
+                )}
+              >
                 work
               </Link>
             </li>
@@ -72,7 +87,10 @@ export const Header = ({ title = '', resume = false, subTitle }: Props) => {
               <Link
                 to="/working#case-studies"
                 preventScrollReset
-                className={css.link}
+                className={classnames(
+                  css.link,
+                  activeMenu === 'case-studies' && css.active
+                )}
               >
                 case studies
               </Link>
@@ -81,7 +99,10 @@ export const Header = ({ title = '', resume = false, subTitle }: Props) => {
               <Link
                 to="/working#skills"
                 preventScrollReset
-                className={css.link}
+                className={classnames(
+                  css.link,
+                  activeMenu === 'skills' && css.active
+                )}
               >
                 skills
               </Link>
@@ -90,7 +111,10 @@ export const Header = ({ title = '', resume = false, subTitle }: Props) => {
               <Link
                 to="/working#speaking"
                 preventScrollReset
-                className={css.link}
+                className={classnames(
+                  css.link,
+                  activeMenu === 'speaking' && css.active
+                )}
               >
                 speaking
               </Link>
@@ -99,7 +123,10 @@ export const Header = ({ title = '', resume = false, subTitle }: Props) => {
               <Link
                 to="/working#community"
                 preventScrollReset
-                className={css.link}
+                className={classnames(
+                  css.link,
+                  activeMenu === 'community' && css.active
+                )}
               >
                 community
               </Link>

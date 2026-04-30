@@ -23,6 +23,7 @@ export default function ThunderPlains2017() {
         title={'Thunder Plains Conference 2017'}
         resume={false}
         subTitle="Conference talk • Nov 3, 2017"
+        activeMenu="speaking"
       />
       <ArticleContent>
         <Intro>

@@ -28,6 +28,7 @@ export default function DigiBankOnboardingCaseStudy() {
         title={'Onboarding customers at a digital bank'}
         resume={false}
         subTitle={'Case study'}
+        activeMenu="case-studies"
       />
       <ArticleContent>
         <Intro>

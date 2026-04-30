@@ -23,6 +23,7 @@ export default function Upfront2017() {
         title={'UpFront Conference 2017'}
         resume={false}
         subTitle="Conference talk • May 19, 2017"
+        activeMenu="speaking"
       />
       <ArticleContent>
         <Intro>

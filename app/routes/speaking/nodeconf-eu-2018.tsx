@@ -24,6 +24,7 @@ export default function Nodeconf2018() {
         title={'NodeConf EU 2018'}
         resume={false}
         subTitle="Conference talk • Nov 5-7, 2018"
+        activeMenu="speaking"
       />
       <ArticleContent>
         <Intro>

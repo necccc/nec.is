@@ -14,4 +14,8 @@ export default [
     'case-studies/digital-bank-onboarding-flow',
     'routes/case-studies/digital-bank-onboarding.tsx'
   ),
+  route(
+    'case-studies/fintech-change-approval-system',
+    'routes/case-studies/fintech-change-approval-system.tsx'
+  ),
 ] satisfies RouteConfig

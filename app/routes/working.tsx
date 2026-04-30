@@ -227,6 +227,19 @@ export default function Working() {
                 at a digital bank
               </p>
             </div>
+            {/*   <div className={css.unit}>
+              <h3>
+                <Link to="/case-studies/fintech-change-approval-system">
+                  Internal change approval service for fintech
+                </Link>
+              </h3>
+
+              <p>
+                Our task was to design and implement a system where departments
+                could create and review changes regardless of the underlying
+                services in a secure and audited way.
+              </p>
+            </div> */}
           </div>
 
           <h2 className={css.resume_section_title} id="skills">
