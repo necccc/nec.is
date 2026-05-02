@@ -166,9 +166,9 @@
       height: 4rem;
       line-height: 4rem;
 
-      @media (min-width: 820px) {
+      @media (max-width: #{defaults.$small-screen-width}) {
         &:last-child {
-          padding-right: 0;
+          display: none;
         }
       }
 
