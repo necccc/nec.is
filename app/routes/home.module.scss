@@ -1,3 +1,4 @@
+@use '../components/defaults' as defaults;
 @use '../components/mixins' as mixins;
 @use '../components/colors' as colors;
 
@@ -40,7 +41,7 @@
     grid-template-columns: 1fr 1fr;
     grid-gap: 2rem 4rem;
 
-    @media (max-width: 480px) {
+    @media (max-width: #{defaults.$small-screen-width}) {
       display: block;
     }
 
@@ -53,7 +54,7 @@
       top: 0;
       background-color: var(--color-light-2);
 
-      @media (max-width: 480px) {
+      @media (max-width: #{defaults.$small-screen-width}) {
         display: none;
       }
     }
@@ -85,7 +86,7 @@
         box-shadow: 0 2rem colors.$color-white;
       }
 
-      @media (max-width: 480px) {
+      @media (max-width: #{defaults.$small-screen-width}) {
         border-bottom: 1px solid colors.$color-light-2;
         box-shadow: 0 2rem colors.$color-white;
 

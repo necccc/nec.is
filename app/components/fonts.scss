@@ -1,3 +1,4 @@
+@use './defaults' as defaults;
 @use './font-face.scss';
 @use './mixins.scss';
 
@@ -5,7 +6,7 @@ html,
 body {
   font-size: 16px;
 
-  @media (max-width: 480px) {
+  @media (max-width: #{defaults.$small-screen-width}) {
     font-size: 12px;
   }
 

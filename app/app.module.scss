@@ -1,8 +1,6 @@
+@use './components/defaults' as defaults;
 @use './components/mixins' as mixins;
 @use './components/colors' as colors;
-
-$line-height: 1.65;
-$font-small: 0.8rem;
 
 :root {
   --bg-color: #{colors.$color-white};
@@ -18,8 +16,8 @@ $font-small: 0.8rem;
 
   --font-body: 'Libre Franklin', sans-serif;
   --font-heading: 'Libre Baskerville', serif;
-  --font-size-small: #{$font-small};
-  --line-height: #{$line-height};
+  --font-size-small: #{defaults.$font-small};
+  --line-height: #{defaults.$line-height};
 }
 
 /* 1. Use a more-intuitive box-sizing model */
@@ -108,7 +106,7 @@ body {
 .layout {
   font-size: 1rem;
 
-  @media (max-width: 480px) {
+  @media (max-width: #{defaults.$small-screen-width}) {
     font-size: 1.4rem;
   }
 
@@ -127,7 +125,7 @@ html,
 body {
   font-size: 16px;
 
-  @media (max-width: 480px) {
+  @media (max-width: #{defaults.$small-screen-width}) {
     font-size: 12px;
   }
 }
@@ -142,7 +140,7 @@ ol,
 li,
 blockquote,
 span {
-  line-height: $line-height;
+  line-height: defaults.$line-height;
   font-weight: 300;
 }
 
@@ -152,7 +150,7 @@ ol,
 dl,
 blockquote {
   padding: 0;
-  margin: 0 0 #{$line-height}rem;
+  margin: 0 0 #{defaults.$line-height}rem;
 }
 
 h1,

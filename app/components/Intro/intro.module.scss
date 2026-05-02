@@ -1,3 +1,5 @@
+@use '../defaults' as defaults;
+
 .intro {
   position: relative;
   z-index: 2;
@@ -17,7 +19,7 @@
     transform-origin: bottom left;
     background-color: var(--color-light-1);
 
-    @media (max-width: 480px) {
+    @media (max-width: #{defaults.$small-screen-width}) {
       top: -8rem;
     }
   }
