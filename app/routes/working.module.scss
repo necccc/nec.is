@@ -206,6 +206,12 @@
           top: -1px;
           font-size: 1rem;
           color: colors.$color-blue;
+
+          @media (max-width: #{defaults.$small-screen-width}) {
+            transform: translateX(-1.4rem);
+            top: 3px;
+          }
+
           @media print {
             transform: translateX(-1rem);
             top: -3.5px;
