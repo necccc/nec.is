@@ -114,6 +114,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
           <Footer />
         </main>
         <Scripts />
+        <script
+          src="https://cdn.counter.dev/script.js"
+          data-id="732f5d36-2a4f-4bee-9f62-a91550708b48"
+          data-utcoffset="2"
+        ></script>
       </body>
     </html>
   )
