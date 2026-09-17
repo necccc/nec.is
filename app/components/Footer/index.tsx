@@ -19,6 +19,12 @@ export const Footer = ({ title = '' }) => (
             resume
           </a>
         </li>
+        <li>
+          Posts I've{' '}
+          <a href="/reading" data-print="nec.is/reading">
+            read recently
+          </a>
+        </li>
       </ul>
 
       <hr />
