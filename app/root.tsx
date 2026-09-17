@@ -58,8 +58,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
     if (location.pathname === '/working') {
       if (location.pathname === nav?.pathname) {
-        console.log('same page navigation', location.hash)
-
         if (location.hash) {
           const id = location.hash.replace('#', '')
           document
@@ -68,7 +66,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
         }
       } else {
         if (navigationType !== 'POP') {
-          console.log('arrived here', location.hash)
           if (location.hash) {
             const id = location.hash.replace('#', '')
             document
