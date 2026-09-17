@@ -1,0 +1,67 @@
+@use '../components/defaults' as defaults;
+@use '../components/mixins' as mixins;
+@use '../components/colors' as colors;
+
+.intro {
+  @include mixins.article();
+
+  padding-top: 24rem;
+  padding-bottom: 4rem;
+  position: relative;
+  min-height: 60.8vh;
+
+  h2,
+  h3,
+  p {
+    position: relative;
+    z-index: 2;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: -2rem;
+    z-index: 1;
+    width: 100vw;
+    left: calc(-1 * ((100vw - 100%) / 2));
+    height: 120%;
+    transform: skewY(calc(-0.5 * var(--headerSkew)));
+    transform-origin: bottom left;
+    background-color: colors.$color-light-1;
+  }
+}
+
+.bookmarks {
+  margin: 0;
+  position: relative;
+  z-index: 2;
+
+  li {
+    margin-top: 1.5rem;
+    color: colors.$color-black;
+
+    h4 {
+      font-size: 1.2rem;
+    }
+    small {
+      display: block;
+      font-style: italic;
+    }
+    a {
+      display: inline-block;
+    }
+
+    .meta {
+      position: relative;
+      padding-block: 0.3rem;
+      display: block;
+      padding-left: 1rem;
+      border-left: 1px solid colors.$color-black;
+
+      P {
+        margin-top: 0.6rem;
+        margin-bottom: 0;
+      }
+    }
+  }
+}
