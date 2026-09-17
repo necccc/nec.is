@@ -167,7 +167,6 @@
       line-height: 4rem;
 
       @media screen and (max-width: #{defaults.$small-screen-width}) {
-        &:nth-last-child(2),
         &:last-child {
           display: none;
         }

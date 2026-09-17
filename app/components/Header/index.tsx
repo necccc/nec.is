@@ -6,13 +6,7 @@ import css from './header.module.scss'
 import { Logo } from '../Logo'
 import { Link } from 'react-router'
 
-type ActiveMenu =
-  | 'work'
-  | 'case-studies'
-  | 'skills'
-  | 'speaking'
-  | 'community'
-  | 'reading'
+type ActiveMenu = 'work' | 'case-studies' | 'skills' | 'speaking' | 'community'
 
 type Props = {
   title: string
@@ -135,18 +129,6 @@ export const Header = ({
                 )}
               >
                 community
-              </Link>
-            </li>
-            <li className={css.header_nav_link}>
-              <Link
-                to="/reading"
-                preventScrollReset
-                className={classnames(
-                  css.link,
-                  activeMenu === 'reading' && css.active
-                )}
-              >
-                reading
               </Link>
             </li>
           </ul>

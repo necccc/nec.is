@@ -1,8 +1,6 @@
 import type { Route } from './+types/home'
 import { Header } from '~/components/Header'
 import css from './home.module.scss'
-import { getBookmarks } from '~/data/getBookmarks'
-import dayjs from 'dayjs'
 
 export function meta({}: Route.MetaArgs) {
   return [
